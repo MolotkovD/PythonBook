@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Python Book</string>
+    <string name="open_nav">OPEN</string>
+    <string name="close_nav">CLOSE</string>
+</resources>
