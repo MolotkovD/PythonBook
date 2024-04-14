@@ -18,16 +18,12 @@
             android:id="@+id/headtoolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFF444"
-            />
+            android:background="#FFF444" />
 
-
-        <TextView
+        <WebView
+            android:id="@+id/mainWeb"
             android:layout_width="match_parent"
-            android:layout_height="276dp"
-            android:layout_gravity="fill"
-            android:text="Hello World!" />
-
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
