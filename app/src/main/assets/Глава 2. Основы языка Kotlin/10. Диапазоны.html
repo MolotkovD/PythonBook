@@ -1,0 +1,88 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Диапазоны</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Диапазон представляет набор значений или неокторый интервал. Для создания диапазона применяется оператор <span class="b">..</span>:</p>
+<div><div id="highlighter_602716" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range = 1..5&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// диапазон [1, 2, 3, 4, 5]</code></div></div></td></tr></tbody></table></div></div>
+<p>Этот оператор принимает два значения - границы диапазона, и все элементы между этими значениями (включая их самих) составляют диапазон.</p>
+<p>Диапазон необязательно должна представлять числовые данные. Например, это могут быть строки:</p>
+<div><div id="highlighter_593235" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range =&nbsp; </code><code class="kt string">"a"</code><code class="kt plain">..</code><code class="kt string">"d"</code></div></div></td></tr></tbody></table></div></div>
+<p>Оператор <span class="b">..</span> позволяет создать диапазон по нарастающей, где каждый следующий элемент будет больше предыдущего. 
+С помощью специальной функции <span class="b">downTo</span> можно построить диапазон в обратном порядке:</p>
+<div><div id="highlighter_540548" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range1 =&nbsp; 1..5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 1 2 3 4 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">range2 =&nbsp; 5 downTo 1&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 5 4 3 2 1</code></div></div></td></tr></tbody></table></div></div>
+<p>Еще одна специальная функция <span class="b">step</span> позволяет задать шаг, на который будут изменяться последующие элементы:</p>
+<div><div id="highlighter_566793" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range1 = 1..10 step 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 1 3 5 7 9</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">range2 = 10 downTo 1 step 3&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 10 7 4 1</code></div></div></td></tr></tbody></table></div></div>
+<p>Еще одна функция <span class="b">until</span> позволяет не включать верхнюю границу в диапазон:</p>
+<div><div id="highlighter_50510" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range1 = 1 until 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 1 2 3 4 5 6 7 8</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">range2 = 1 until 9 step 2&nbsp;&nbsp; </code><code class="kt comments">// 1 3 5 7</code></div></div></td></tr></tbody></table></div></div>
+<p>С помощью специальных операторов можно проверить наличие или отсутствие элементов в диапазоне:</p>
+<ul>
+<li><p><span class="b">in</span>: возвращает true, если объект имеется в диапазоне</p></li>
+<li><p><span class="b">!in</span>: возвращает true, если объект отсутствует в диапазоне</p></li>
+</ul>
+<div><div id="highlighter_762208" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">range = 1..5</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">isInRange = 5 </code><code class="kt keyword">in</code> <code class="kt plain">range</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(isInRange)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">isInRange = 86 </code><code class="kt keyword">in</code> <code class="kt plain">range</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(isInRange)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">isNotInRange = 6 !</code><code class="kt keyword">in</code> <code class="kt plain">range</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(isNotInRange)&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">isNotInRange = 3 !</code><code class="kt keyword">in</code> <code class="kt plain">range</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(isNotInRange)&nbsp;&nbsp; </code><code class="kt comments">// false</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h3>Перебор диапазона</h3>
+<p>С помощью цикла for можно перебирать диапазон:</p>
+<div><div id="highlighter_771998" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">range1 = 5 downTo 1 </code></div><div class="line number2 index1 alt1"><code class="kt keyword">for</code><code class="kt plain">(c </code><code class="kt keyword">in</code> <code class="kt plain">range1) print(c)&nbsp;&nbsp; </code><code class="kt comments">// 54321</code></div><div class="line number3 index2 alt2"><code class="kt plain">println()</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt keyword">val</code> <code class="kt plain">range2 = </code><code class="kt string">'a'</code><code class="kt plain">..</code><code class="kt string">'d'</code></div><div class="line number6 index5 alt1"><code class="kt keyword">for</code><code class="kt plain">(c </code><code class="kt keyword">in</code> <code class="kt plain">range2) print(c)&nbsp;&nbsp; </code><code class="kt comments">// abcd</code></div><div class="line number7 index6 alt2"><code class="kt plain">println()</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt keyword">for</code><code class="kt plain">(c </code><code class="kt keyword">in</code> <code class="kt plain">1..9) print(c)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 123456789</code></div><div class="line number10 index9 alt1"><code class="kt plain">println()</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt keyword">for</code><code class="kt plain">(c </code><code class="kt keyword">in</code> <code class="kt plain">1 until 9) print(c)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 12345678</code></div><div class="line number13 index12 alt2"><code class="kt plain">println()</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="kt keyword">for</code><code class="kt plain">(c </code><code class="kt keyword">in</code> <code class="kt plain">1..9 step 2) print(c)&nbsp; </code><code class="kt comments">// 13579</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

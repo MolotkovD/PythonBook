@@ -1,0 +1,123 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>launch и Job</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Для создания корутины нужен построитель корутин. И одним из построителей корутин в пакете <code>kotlinx.coroutines</code> является функция 
+<span class="b">launch</span>. В принципе в прошлых темах уже было рассмотрено, как с помощью <code>launch</code> создавать корутины. Сейчас же рассмотрем некоторые аспекты подробнее.</p>
+<p>Прежде всего, <code>launch()</code>, как правило, применяется, когда нам не надо возвращать результат из корутины и когда нам ее надо выполнять одновременно 
+с другим кодом.</p>
+<h3>Job</h3>
+<p>Построитель корутин <span class="b">launch</span> возвращает объект <span class="b">Job</span>, с помощью которого можно управлять запущеной корутиной:</p>
+<div><div id="highlighter_523691" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">job: Job = launch{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Some coroutin"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Например, его метод <span class="b">join()</span> позволяет ожидать, пока корутина не завершится. Например:</p>
+<div><div id="highlighter_800312" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch{</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">1..5){</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Start"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"End"</code><code class="kt plain">)</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае мы получим следующий консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Start
+End
+1
+2
+3
+4
+5
+</pre>
+</div>
+<p>Теперь явным образом применим интерфейс <span class="b">Job</span>:</p>
+<div><div id="highlighter_995246" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">job = launch{</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">1..5){</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Start"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">job.join() </code><code class="kt comments">// ожидаем завершения корутины</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"End"</code><code class="kt plain">)</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь корутина также запускается с помощью <code>launch</code>, однако благодаря методу <code>join()</code> полученного объекта Job 
+функция main остановит выполнение и будет ожидать завершения корутины и только после ее завершения продолжит работу. Соответственно в данном случае консольный вывод будет 
+иным:</p>
+<div class="console">
+<pre class="consoletext">Start
+1
+2
+3
+4
+5
+End
+</pre>
+</div>
+<h3>Отложенное выполнение</h3>
+<p>По умолчанию построитель корутин <span class="b">launch</span> создает и сразу же запускает корутину. Однако Kotlin также позволяет применять технику отложенного запуска 
+корутины (lazy-запуск), при котором корутина запускается при вызове метода <span class="b">start()</span> объекта <span class="b">Job</span>.</p>
+<p>Для установки отложенного запуска в функцию <code>launch()</code> передается значение <code>start = CoroutineStart.LAZY</code></p>
+<p>Чтобы увидеть разницу, сначала возьмем корутину со стандартным выполнением:</p>
+<div><div id="highlighter_696682" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// корутина создана и запущена</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch( ) {</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(200L)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Coroutine has started"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(1000L)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Other actions in main method"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Чтобы позволить корутины выполниться до остальных действий в методе main, после определения корутины установлена задержка в 1 секунду. В итоге здесь получим следующий консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Coroutine has started
+Other actions in main method
+</pre>
+</div>
+<p>Теперь применим отложенное выполнение:</p>
+<div><div id="highlighter_204064" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// корутина создана, но не запущена</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">job = launch(start = CoroutineStart.LAZY) {</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(200L)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Coroutine has started"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(1000L)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">job.start() </code><code class="kt comments">// запускаем корутину</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Other actions in main method"</code><code class="kt plain">)</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Теперь корутина только создается с помощью функции <code>launch</code>, но непосредственно она запускается только при вызове метода <code>job.start()</code>, соответственно мы получим другой результат 
+программы:</p>
+<div class="console">
+<pre class="consoletext">Other actions in main method
+Coroutine has started
+</pre>
+</div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

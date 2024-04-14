@@ -1,0 +1,91 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Анонимные функции</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Анонимные функции выглядят как обычные за тем исключением, что они не имеют имени. Анонимная функция может иметь одно выражение:</p>
+<div><div id="highlighter_252361" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x + y</code></div></div></td></tr></tbody></table></div></div>
+<p>Либо может представлять блок кода:</p>
+<div><div id="highlighter_916206" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int{ </code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">x + y</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Анонимную функцию можно передавать в качестве значения переменной:</p>
+<div><div id="highlighter_661611" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">message = </code><code class="kt keyword">fun</code><code class="kt plain">()=println(</code><code class="kt string">"Hello"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">message()</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь переменной <code>message</code> передается анонимная функция <code>fun()=println("Hello")</code>. Эта анонимная функция не принимает параметров и просто выводит 
+на консоль строку "Hello". Таким образом, переменная <code>message</code> будет представлять тип <code>() -&gt; Unit</code>.</p>
+<p>Далее мы можем вызывать эту функцию через имя переменной как обычную функцию: <code>message()</code>.</p>
+<p>Другой пример - анонимная функция с параметрами:</p>
+<div><div id="highlighter_119735" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">sum = </code><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x + y </code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result = sum(5, 4)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 9</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае переменной <code>sum</code> присваивается анонимная функция, которая принимает два параметра - два целых числа типа Int и возвращает их сумму.</p>
+<p>Также через имя переменной мы можем вызвать эту анонимную функцию, передав ей некоторые значения для параметров и получить ее результат: <code>val result = sum(5, 4)</code></p>
+<h3>Анонимная функция как аргумент функции</h3>
+<p>Анонимную функцию можно передавать в функцию, если параметр соответствует типу этой функции:</p>
+<div><div id="highlighter_56339" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">doOperation(9,5, </code><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x + y )&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 14</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">doOperation(9,5, </code><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x - y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 4</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action = </code><code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x * y</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">doOperation(9, 5, action)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 45</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt keyword">fun</code> <code class="kt plain">doOperation(x: Int, y: Int, op: (Int, Int) -&gt;Int){</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result = op(x, y)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result)</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h3>Возвращение анонимной функции из функции</h3>
+<p>И также фунция может возвращать анонимную функцию в качестве результата:</p>
+<div><div id="highlighter_118130" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action1 = selectAction(1)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result1 = action1(4, 5)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 9</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action2 = selectAction(3)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result2 = action2(4, 5)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 20</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action3 = selectAction(9)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result3 = action3(4, 5)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 0</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="kt keyword">fun</code> <code class="kt plain">selectAction(key: Int): (Int, Int) -&gt; Int{</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// определение возвращаемого результата</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">when</code><code class="kt plain">(key){</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">1 -&gt; </code><code class="kt keyword">return</code> <code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x + y</code></div><div class="line number20 index19 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">2 -&gt; </code><code class="kt keyword">return</code> <code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x - y</code></div><div class="line number21 index20 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">3 -&gt; </code><code class="kt keyword">return</code> <code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = x * y</code></div><div class="line number22 index21 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">else</code> <code class="kt plain">-&gt; </code><code class="kt keyword">return</code> <code class="kt keyword">fun</code><code class="kt plain">(x: Int, y: Int): Int = 0</code></div><div class="line number23 index22 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number24 index23 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция <code>selectAction()</code> в зависимости от переданного значения возвращает одну из четырех анонимных функций. Последняя анонимная функция 
+<code>fun(x: Int, y: Int): Int = 0</code> просто возвращает число 0.</p>
+<p>При обращении к <code>selectAction()</code> переменная получит определенную анонимную функцию:</p>
+<div><div id="highlighter_512538" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">action1 = selectAction(1)</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть в данном случае переменная <code>action1</code> хранит ссылку на функцию <code>fun(x: Int, y: Int): Int = x + y</code></p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

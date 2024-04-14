@@ -1,0 +1,131 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Циклы</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Циклы представляют вид управляющих конструкций, которые позволяют в зависимости от определенных условий выполнять некоторое действие множество раз.</p>
+<h3>for</h3>
+<p>Цикл <span class="b">for</span> пробегается по всем элементам коллекции. В этом плане цикл <span class="b">for</span> в Kotlin эквивалентен циклу <code>for-each</code> в ряде других языков программирования. 
+Его формальная форма выглядит следующим образом:</p>
+<div><div id="highlighter_109724" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">for</code><code class="kt plain">(переменная </code><code class="kt keyword">in</code> <code class="kt plain">последовательность){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">выполняемые инструкции</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Например, выведем все квадраты чисел от 1 до 9, используя цикл for:</p>
+<div><div id="highlighter_430081" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">for</code><code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt plain">1..9){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">print(</code><code class="kt string">"${n * n} \t"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае перебирается последовательность чисел от 1 до 9. При каждом проходе цикла (итерации цикла) из этой последовательности будет извлекаться элемент и 
+помещаться в переменную n. И через переменную n можно манипулировать значением элемента. То есть в данном случае мы получим следующий консольный вывод:</p>
+<pre class="sh">1 	4 	9 	16 	25 	36 	49 	64 	81</pre>
+<p>Циклы могут быть вложенными. Например, выведем таблицу умножения:</p>
+<div><div id="highlighter_976545" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">1..9){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(j </code><code class="kt keyword">in</code> <code class="kt plain">1..9){</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">print(</code><code class="kt string">"${i * j} \t"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println()</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В итоге на консоль будет выведена следующая таблица умножения:</p>
+<pre class="sh">1 	2 	3 	4 	5 	6 	7 	8 	9 	
+2 	4 	6 	8 	10 	12 	14 	16 	18 	
+3 	6 	9 	12 	15 	18 	21 	24 	27 	
+4 	8 	12 	16 	20 	24 	28 	32 	36 	
+5 	10 	15 	20 	25 	30 	35 	40 	45 	
+6 	12 	18 	24 	30 	36 	42 	48 	54 	
+7 	14 	21 	28 	35 	42 	49 	56 	63 	
+8 	16 	24 	32 	40 	48 	56 	64 	72 	
+9 	18 	27 	36 	45 	54 	63 	72 	81
+</pre>
+
+<h3>Цикл while</h3>
+<p>Цикл while повторяет определенные действия пока истинно некоторое условие:</p>
+<div><div id="highlighter_610305" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">i = 10</code></div><div class="line number2 index1 alt1"><code class="kt keyword">while</code><code class="kt plain">(i &gt; 0){</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i*i)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">i--;</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь пока переменная i больше 0, будет выполняться цикл, в котором на консоль будет выводиться квадрат значения i.</p>
+<p>В данном случае вначале проверяется условие (i &gt; 0) и если оно истинно (то есть возвращает true), то выполняется цикл. 
+И вполне может быть ситуация, когда к началу выполнения цикла условие не будет выполняться. Например, переменная i 
+изначально меньше 0, тогда цикл вообще не будет выполняться.</p>
+<h3>do..while</h3>
+<p>Есть и другая форма цикла while - do..while:</p>
+<div><div id="highlighter_700480" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">i = -1</code></div><div class="line number2 index1 alt1"><code class="kt keyword">do</code><code class="kt plain">{</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i*i)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">i--;</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">while</code><code class="kt plain">(i &gt; 0)</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае вначале выполняется блок кода после ключевого слова <span class="b">do</span>, а потом оценивается условие после 
+while. Если условие истинно, то повторяется выполнение блока после do. То есть несмотря на то, что в данном случае 
+переменная i меньше 0 и она не соответствует условию, тем не менее блок do выполнится хотя бы один раз.</p>
+<h3>Операторы continue и break</h3>
+<p>Иногда при использовании цикла возникает необходимость при некоторых условиях не дожидаться выполнения всех инструкций в цикле, 
+перейти к новой итерации. Для этого можно использовать оператор <span class="b">continue</span>:</p>
+<div><div id="highlighter_623090" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">for</code><code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt plain">1..8){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(n == 5) </code><code class="kt keyword">continue</code><code class="kt plain">;</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(n * n)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае когда n будет равно 5, сработает оператор continue. И последующая инструкция, которая выводит на консоль квадрат числа, 
+не будет выполняться. Цикл перейдет к обработке следующего элемента в массиве</p>
+<p>Бывает, что при некоторых условиях нам вовсе надо выйти из цикла, прекратить его выполнение. В этом случае применяется 
+оператор <span class="b">break</span>:</p>
+<div><div id="highlighter_164718" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">for</code><code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt plain">1..5){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(n == 5) </code><code class="kt keyword">break</code><code class="kt plain">;</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(n * n)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае когда n окажется равен 5, то с помощью оператора break будет выполнен выход из цикла. Цикл полностью завершится.</p>
+<p>Однако следует помнить, что оператор <span class="b">bresk</span> выводит только из текущего цикла, где он вызывается. Например, возьмем следующую конструкцию с внешним и внутренним циклами:</p>
+<div><div id="highlighter_474199" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">1..3){</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(j </code><code class="kt keyword">in</code> <code class="kt plain">1..3){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(j == 3) </code><code class="kt keyword">break</code><code class="kt plain">;</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Сколько раз здесь будет выведена строка "Hello"? Очевидно 6 раз.</p>
+<pre class="sh">Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+</pre>
+<p>Каждый раз во внутреннем цикле j окажется равна 3, произойдет переход к новой итерации внешнего цикла по i. Но что если нам надо вообще выйти из всех циклов, в том числе и из внешнего? 
+Наиболее простым в данном случае способом будет использование меток:</p>
+<div><div id="highlighter_578214" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">outerloop@ </code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">1..3){</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(j </code><code class="kt keyword">in</code> <code class="kt plain">1..3){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(j == 3) </code><code class="kt keyword">break</code><code class="kt plain">@outerloop;</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае внешний цикл маркирован меткой <code>outerloop</code>. Название метки произвольное, единственное, что заврешается символом <code>@</code>. И кода во внутреннем цикле будет 
+выполняться условие <code>j == 3</code> оператор <span class="b">break</span> выйдет из цикла, предваряемого меткой <code>outerloop</code></p>
+<div><div id="highlighter_101964" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">if</code><code class="kt plain">(j == 3) </code><code class="kt keyword">break</code><code class="kt plain">@outerloop;</code></div></div></td></tr></tbody></table></div></div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

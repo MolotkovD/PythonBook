@@ -1,0 +1,136 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Ведение в массивы</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Для хранения набора значений в Kotlin, как и в других языках программирования, можно использовать <span class="b">массивы</span>. 
+При этом массив может хранить данные только одного  того же типа. В Kotlin массивы представлены типом <span class="b">Array</span>.</p>
+<p>При определении массива после типа <code>Array</code> в угловых скобках необходимо указать, объекты какого типа могут храниться в массиве. Например, 
+определим массив целых чисел:</p><p>
+</p><div><div id="highlighter_932584" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers: Array&lt;Int&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>С помощью встроенной функции <span class="b">arrayOf()</span> можно передать набор значений, которые будут составлять массив:</p>
+<div><div id="highlighter_713188" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers: Array&lt;Int&gt; = arrayOf(1, 2, 3, 4, 5)</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть в данном случае в массиве 5 чисел от 1 до 5.</p>
+
+<p>Также можно использовать неявную типизацию и сразу передать набор значений массива:</p>
+<div><div id="highlighter_441119" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = arrayOf(1, 2, 3, 4, 5)</code></div></div></td></tr></tbody></table></div></div>
+<p>В этом случае тип элементов массива будет выводиться из типа значений из функции <code>arrayOf()</code></p>
+<p>Но что, если мы хотим создать массив, элементы которого будут не установлены (например, мы изначально не знаем, что это будут за элементы)? 
+В этом случае для создания массива мы можем использовать встроенную функцию <b>arrayOfNulls()</b>. ОНа создает массив из элементов, каждый из который имеет значение 
+<span class="b">null</span> - то есть фактически не установленное значение. В эту функцию передается количество элементов:</p>
+<div><div id="highlighter_550973" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = arrayOfNulls&lt;Int&gt;(3)&nbsp; </code><code class="kt comments">// [null, null, null]</code></div></div></td></tr></tbody></table></div></div>
+<p>После названия функции в угловых скобках указывается тип элементов массива. Так, в примере выше это тип <span class="b">Int</span>. В данном случае создается массив из трех элементов, 
+каждый из которых равен по умолчанию <b>null</b>, то есть не имеет никакого значения.</p>
+
+
+<p>Также имеются один способо создать массив и инициализировать его значениями:</p>
+<div><div id="highlighter_473938" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = Array(3, {5}) </code><code class="kt comments">// [5, 5, 5]</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь применяется конструктор класса Array. В этот конструктор передаются два значения. 
+Первое значение - число 3 - указывает, сколько элементов будет в массиве. В данном случае 3 элемента. 
+Второе значение - число 5 представляет выражение, которое генерирует элементы массива. Оно заключается в фигурные скобки. В данном случае в фигурных скобках 
+стоит число 5, то есть все элементы массива будут представлять число 5. Таким образом, массив будет состоять из трех пятерок.</p>
+<p>Но выражение, которое создает элементы массива, может быть и более сложным. Например:</p>
+<div><div id="highlighter_261551" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">i = 1;</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">numbers = Array(3, { i++ * 2}) </code><code class="kt comments">// [2, 4, 6]</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае элемент массива является результатом умножения переменной i на 2. При этом при каждом обращении к переменой i ее значение увеличивается на единицу.</p>
+
+
+<h3>Обращение к элементам массива</h3>
+<p>С помощью индексов мы можем обратиться к определенному элементу в массиве. Индексация начинается с нуля, то есть первый элемент будет иметь индекс 0. Индекс 
+указывается в квадратных скобках:</p>
+<div><div id="highlighter_305853" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = arrayOf(1, 2, 3, 4, 5)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">n = numbers[1]&nbsp; </code><code class="kt comments">// получаем второй элемент&nbsp; n=2</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(n)</code></div><div class="line number4 index3 alt1"><code class="kt plain">numbers[2] = 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// переустанавливаем третий элемент</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(</code><code class="kt string">"numbers[2] = ${numbers[2]}"</code><code class="kt plain">) </code><code class="kt comments">// numbers[2] = 7</code></div></div></td></tr></tbody></table></div></div>
+<h3>Размер массива</h3>
+<p>Каждый массив имеет свойство <span class="b">size</span>, которое хранит количество элементов массива:</p>
+<div><div id="highlighter_787017" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numbers&nbsp; = arrayOf(1, 2, 3, 4, 5);</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(numbers.size)&nbsp;&nbsp; </code><code class="kt comments">// 5</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">people = arrayOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(people.size)&nbsp;&nbsp; </code><code class="kt comments">// 3</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>Перебор массивов</h3>
+<p>Для перебора массивов можно применять цикл <span class="b">for</span>:</p>
+<div><div id="highlighter_761712" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numbers = arrayOf(1, 2, 3, 4, 5)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(number </code><code class="kt keyword">in</code> <code class="kt plain">numbers){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">print(</code><code class="kt string">"$number \t"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае переменная numbers представляет массив чисел. При переборе этого массива в цикле каждый его элемент оказывается в переменной <code>number</code>, 
+значение которой, к примеру, можно вывести на консоль. Консольный вывод программы:</p>
+<pre class="sh">1  2  3  4  5
+</pre>
+<p>Подобным образом можно перебирать массивы и других типов:</p>
+<div><div id="highlighter_537004" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">people = arrayOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(person </code><code class="kt keyword">in</code> <code class="kt plain">people){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">print(</code><code class="kt string">"$person \t"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Консольный вывод программы:</p>
+<pre class="sh">Tom   Sam   Bob
+</pre>
+
+<h3>Проверка наличия элемента в массиве</h3>
+<p>Как и в случае с последовательностью мы можем проверить наличие или отсутствие элементов в массиве с помощью операторов <span class="b">in</span> и 
+<span class="b">!in</span>:</p>
+<div><div id="highlighter_980576" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = arrayOf(1, 2, 3, 4, 5)</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">println(4 </code><code class="kt keyword">in</code> <code class="kt plain">numbers)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(2 !</code><code class="kt keyword">in</code> <code class="kt plain">numbers)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+<h3>Массивы для базовых типов</h3>
+<p>Для упрощения создания массива в Kotlin определены дополнительные типы <span class="b">BooleanArray</span>, <span class="b">ByteArray</span>, <span class="b">ShortArray</span>, <span class="b">IntArray</span>, <span class="b">LongArray</span>, <span class="b">CharArray</span>, <span class="b">FloatArray</span> и <span class="b">DoubleArray</span>, 
+которые позволяют создавать массивы для определенных типов. Например, тип <code>IntArray</code> позволяет определить массив объектов <code>Int</code>, а <code>DoubleArray</code> - массив объектов <code>Double</code>:</p>
+<div><div id="highlighter_936040" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers: IntArray = intArrayOf(1, 2, 3, 4, 5)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">doubles: DoubleArray = doubleArrayOf(2.4, 4.5, 1.2)</code></div></div></td></tr></tbody></table></div></div>
+<p>Для определения данных для этих массивов можно применять функции, которые начинаются на название типа в нижнем регистре, например, 
+<code>int</code>, и затем идет <code>ArrayOf</code>.</p>
+<p>Аналогично для инициализации подобных массивов также можно применять конструктор соответствуюшего класса:</p>
+<div><div id="highlighter_912836" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">numbers = IntArray(3, {5})</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">doubles = DoubleArray(3, {1.5})</code></div></div></td></tr></tbody></table></div></div>
+
+===================
+
+
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

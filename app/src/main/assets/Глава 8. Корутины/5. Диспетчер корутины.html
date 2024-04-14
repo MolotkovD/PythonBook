@@ -1,0 +1,128 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Диспетчер корутины</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Контекст корутины включает себя такой элемент как <span class="b">диспетчер корутины</span>. 
+Диспетчер корутины определяет какой поток или какие потоки будут использоваться для выполнения корутины.</p>
+<p>Все построители корутины, в частности, функции <code>launch</code> и <code>async</code> в качестве необязательного параметра принимают 
+объект типа <span class="b">CoroutineContext</span>, который может использоваться для определения диспетчера создаваемой корутины.</p>
+<p>Когда функция <span class="b">launch</span> вызывается без параметров, она перенимает контекст, в котором она создается и запускается. Например, используем 
+метод <span class="b">Thread.currentThread()</span>, который предоставляет JDK, чтобы получить данные потока корутины:</p>
+<div><div id="highlighter_396741" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch {</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Корутина выполняется на потоке: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Функция main выполняется на потоке: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь с помощью переменной <code>Thread.currentThread().name</code> мы можем получить имя потока. И в данном случае мы получим консольный вывод наподобие следующего:</p>
+<div class="console">
+<pre class="consoletext">Функция main выполняется на потоке: main
+Корутина выполняется на потоке: DefaultDispatcher-worker-1
+</pre>
+</div>
+<p>Мы видим, что функция <code>main</code> выполняется на потоке под названием "main" (который собственно и отведен для выполнения этой функции), а 
+корутина выполняется на другом потоке с названием <code>DefaultDispatcher-worker-1</code>. Если мы обратимся к отладчику корутин, то мы сможем увидеть применяемый корутиной диспетчер:</p>
+<img src="../pics/coroutine6.png" alt="Coroutine Dispatcher in Kotlin">
+<p>Здесь мы видим, что корутина, которая выполняется в потоке "DefaultDispatcher-worker-1", применяет диспетчер <span class="b">Dispatcher.Default</span>.</p>
+<p>Поскольку контекст корутин в функции <code>main</code> создается в данном случае с помощью функции <span class="b">coroutineScope</span>, которая устанавливает 
+для создаваемых корутин по умолчанию диспетчер типа <span class="b">Dispatcher.Default</span>. И, корутина, определенная в примере выше перенимает этот контекст вместе с 
+данным типом диспетчера.</p>
+<p>Что это значит? Рассмотрим доступные типы диспетчеров:</p>
+<ul>
+<li><p><span class="b">Dispatchers.Default</span>: применяется по умолчанию, если тип диспетчера не указан явным образом. 
+Этот тип использует общий пул разделяемых фоновых потоков и подходит для вычислений, которые не работают с операциями ввода-вывода (операциями с файлами, базами данных, сетью) и 
+которые требуют интенсивного потребления ресурсов центрального процессора.</p></li>
+<li><p><span class="b">Dispatchers.IO</span>: использует общий пул потоков, создаваемых по мере необходимости, 
+и предназначен для выполнения операций ввода-вывода (например, операции с файлами или сетевыми запросами).</p></li>
+<li><p><span class="b">Dispatchers.Main</span>: применяется в графических приложениях, например, в приложениях Android или JavaFX.</p></li>
+<li><p><span class="b">Dispatchers.Unconfined</span>: корутина не закреплена четко за определенным потоком или пулом потоков. Она запускается в текущем 
+потоке до первой приостановки. После возобновления работы корутина продолжает работу в одном из потоков, который сторого не фиксирован. 
+Разработчики языка Kotlin в обычной ситуации не рекомендуют использовать данный тип.</p></li>
+<li><p><span class="b">newSingleThreadContext</span> и <span class="b">newFixedThreadPoolContext</span>: позволяют вручную задать поток/пул для выполнения корутины</p></li>
+</ul>
+<p>И мы можем сами задать для корутины диспетчер, передав в функцию <code>launch</code> (а также <code>async</code>) соответствующее значение:</p>
+<div><div id="highlighter_852108" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch(Dispatchers.Default) {&nbsp;&nbsp; </code><code class="kt comments">// явным образом определяем диспетчер Dispatcher.Default</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Корутина выполняется на потоке: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Функция main выполняется на потоке: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h3>Dispatchers.Unconfined</h3>
+<p>Тип <code>Dispatchers.Unconfined</code> запускает корутину в текущем вызывающем потоке до первой приостановки. После возобновления корутина продолжает работу в 
+одном из потоков, который строго не фиксирован. Подобный тип подходит для корутин, которым не требуется интенсивно потреблять время CPU или работать с общими данными, 
+наподобие объектов пользовательского интерфейса. Применим данный тип:</p>
+<div><div id="highlighter_653503" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch(Dispatchers.Unconfined) {</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Поток корутины (до остановки): ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(500L)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Поток корутины (после остановки): ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Поток функции main: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Поток корутины (до остановки): main
+Поток функции main: main
+Поток корутины (после остановки): kotlinx.coroutines.DefaultExecutor
+</pre>
+</div>
+<h3>newSingleThreadContext</h3>
+<p><span class="b">newSingleThreadContext</span> вручную запускает поток с указанным именем:</p>
+<div><div id="highlighter_373479" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch(newSingleThreadContext(</code><code class="kt string">"Custom Thread"</code><code class="kt plain">)) {</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Поток корутины: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Поток функции main: ${Thread.currentThread().name}"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае для выполнения корутины будет запускаться поток с именем "Custom Thread". Консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Поток функции main: main
+Поток корутины: Custom Thread
+</pre>
+</div>
+<p>В то же время выделенный поток является довольно затратным ресурсом. 
+И в реальном приложении подобый поток следует либо 
+освобождать с помощью функции <span class="b">close()</span>, если он больше не нужен, либо 
+хранить в глобальной переменной и использовать его повторно для подобных задач 
+на протяжении работы приложения.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="3adc27bc57"></div></div></body></html>

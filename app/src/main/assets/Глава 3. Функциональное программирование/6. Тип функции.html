@@ -1,0 +1,100 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Тип функции</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>В Kotlin все является объектом, в том числе и функции. И функции, как и другие объекты, имеют определенный тип. Тип функции определяется следующим образом:</p>
+<div><div id="highlighter_140003" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">(типы_параметров) -&gt; возвращаемый_тип</code></div></div></td></tr></tbody></table></div></div>
+<p>Возьмем функцию которая не принимает никаких параметров и ничего не возвращает:</p>
+<div><div id="highlighter_637626" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">hello(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Она имеет тип</p>
+<div><div id="highlighter_574625" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">() -&gt; Unit</code></div></div></td></tr></tbody></table></div></div>
+<p>Если функция не принимает параметров, в определении типа указываются пустые скобки. Если не указан возвращаемый тип, то фактически а в качестве типа возвращаемого значения 
+применяется тип <code>Unit</code>.</p><p>
+</p><p>Возьмем другую функцию:</p>
+<div><div id="highlighter_641872" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int): Int{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Эта функция принимает два параметра типа Int и возвращает значение типа Int, поэтому она имеет тип</p>
+<div><div id="highlighter_921960" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">(Int, Int) -&gt; Int</code></div></div></td></tr></tbody></table></div></div>
+<p>Что дает нам знание типа функции? Используя тип функции, мы можем определять переменные и параметры других функций, которые будут представлять функции.</p>
+<h3>Переменные-функции</h3>
+<p>Переменная может представлять функцию. С помощью типа функции можно определить, какие именно функции переменная может представлять:</p>
+<div><div id="highlighter_168212" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">message: () -&gt; Unit </code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">message = ::hello</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">message()</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt keyword">fun</code> <code class="kt plain">hello(){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь переменная <code>message</code> представляет функцию с типом <code>() -&gt; Unit</code>, то есть функцию без параметров, которая ничего не возвращает. 
+Далее определена как раз такая функция - <code>hello()</code>, соответственно мы можем передать функцию hello переменной message.</p>
+<p>Чтобы передать функцию, перед названием функции ставится оператор <span class="b">::</span></p>
+<div><div id="highlighter_587810" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">message = ::hello</code></div></div></td></tr></tbody></table></div></div>
+<p>Затем мы можем обращаться к переменной <code>message()</code> как к обычной функции:</p>
+<div><div id="highlighter_656543" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">message()</code></div></div></td></tr></tbody></table></div></div>
+<p>Так как переменная message ссылается на функцию hello, то при вызове <code>message()</code> фактически будет вызываться функция <code>hello()</code>.</p>
+<p>При этом тип функции также может выводится исходя из присваемого переменной значения:</p>
+<div><div id="highlighter_928480" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">message = ::hello </code><code class="kt comments">// message имеет тип () -&gt; Unit</code></div></div></td></tr></tbody></table></div></div>
+<p>Рассмотрим другой пример, когда переменная ссылается на функцию с параметрами:</p>
+<div><div id="highlighter_508883" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">operation: (Int, Int) -&gt; Int = ::sum</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result = operation(3, 5)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result) </code><code class="kt comments">// 8</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int): Int{</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Переменная operation представляет функцию с типом <code>(Int, Int) -&gt; Int</code>, то есть функцию с двумя параметрами типа Int и возвращаемым значением типа Int. 
+Соответственно такой переменной мы можем присвоить функцию <code>sum</code>, которая соответствует этому типу.</p>
+<p>Затем через имя переменной фактически можно обращаться к функции <code>sum()</code>, передавая ей значения для параметров и получая ее результат:</p>
+<div><div id="highlighter_449655" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">result = operation(3, 5)</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом динамически можно менять значение, главное чтобы оно соответствовало типу переменной:</p>
+<div><div id="highlighter_842097" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// operation указывает на функцию sum</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">operation: (Int, Int) -&gt; Int = ::sum</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result1 = operation(14, 5)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result1) </code><code class="kt comments">// 19</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// operation указывает на функцию subtract</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">operation = ::subtract&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result2 = operation(14, 5)</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result2) </code><code class="kt comments">// 9</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int): Int{</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div><div class="line number17 index16 alt2"><code class="kt keyword">fun</code> <code class="kt plain">subtract(a: Int, b: Int): Int{</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a - b</code></div><div class="line number19 index18 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

@@ -1,0 +1,147 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Null и nullable-типы</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Ключевое слово <span class="b">null</span> представляет специальный литерал, который указывает, что переменная не имеет как такового значения. То есть у нее по сути отсутствует значение.</p>
+<div><div id="highlighter_475200" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">n = </code><code class="kt keyword">null</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(n)&nbsp; </code><code class="kt comments">// null</code></div></div></td></tr></tbody></table></div></div>
+<p>Подобное значение может быть полезно в ряде ситуациях, когда необходимо использовать данные, но при этом точно неизвестно, а есть ли в реальности 
+эти данные. Например, мы получаем данные по сети, данные могут прийти или не прийти. Либо может быть ситуация, когда нам надо явным образом указать, что 
+данные не установлены.</p>
+<p>Однако переменным стандартных типов, например, типа Int или String или любых других классов, мы не можем просто взять и присвоить значение null:</p>
+<div><div id="highlighter_278190" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">n : Int = </code><code class="kt keyword">null</code>&nbsp;&nbsp; <code class="kt comments">// ! Ошибка, переменная типа Int допускает только числа</code></div></div></td></tr></tbody></table></div></div>
+<p>Мы можем присвоить значение null только переменной, которая представляет тип Nullable. Чтобы превратить обычный тип в тип nullable, достаточно поставить после названия типа 
+вопросительный знак:</p>
+<div><div id="highlighter_401211" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt comments">// val n : Int = null&nbsp; //! ошибка, Int не допускает значение null</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">d : Int? = </code><code class="kt keyword">null</code> <code class="kt comments">// норм, Int? допускает значение null</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом мы можем передавать переменным nullable-типов как значение null, так и конкретные значения, которые укладываются в диапазон значений данного типа:</p>
+<div><div id="highlighter_310406" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">age : Int? = </code><code class="kt keyword">null</code></div><div class="line number2 index1 alt1"><code class="kt plain">age = 34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Int? допускает null и числа</code></div><div class="line number3 index2 alt2"><code class="kt keyword">var</code> <code class="kt plain">name : String? = </code><code class="kt keyword">null</code></div><div class="line number4 index3 alt1"><code class="kt plain">name = </code><code class="kt string">"Tom"</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="kt comments">// String? допускает null и строки</code></div></div></td></tr></tbody></table></div></div>
+<p>Nullable-типы могут представлять и создаваемые разработчиком классы:</p>
+<div><div id="highlighter_942998" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">bob: Person = Person(</code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// bob = null // ! Ошибка - bob представляет тип Person и не допускает null</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">tom: Person? = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom = </code><code class="kt keyword">null</code>&nbsp; <code class="kt comments">// норм - tom представляет тип Person? и допускает null</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String)</code></div></div></td></tr></tbody></table></div></div>
+
+<p>В то же время надо понимать, что String? и Int? - это не то же самое, что и String и Int. Nullable типы имеют ряд ограничений:</p>
+<ul>
+<li><p>Значения nullable-типов нельзя присвоить напрямую переменным, которые не допускают значения null</p><p>
+</p><div><div id="highlighter_940296" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">message : String? = </code><code class="kt string">"Hello"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">hello: String = message&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ! Ошибка - hello не допускает значение null</code></div></div></td></tr></tbody></table></div></div></li>
+<li><p>У объектов nullable-типов нельзя вызвать напрямую те же функции и свойства, которые есть у обычных типов</p><p>
+</p><div><div id="highlighter_320648" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">message : String? = </code><code class="kt string">"Hello"</code></div><div class="line number2 index1 alt1"><code class="kt comments">// у типа String свойство length возвращает длину строки</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(</code><code class="kt string">"Message length: ${message.length}"</code><code class="kt plain">)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ! Ошибка</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p>Нельзя передавать значения nullable-типов в качестве аргумента в функцию, где требуется конкретное значение, которое не может представлять null</p><p></p></li>
+</ul>
+<h3>Оператор ?:</h3>
+<p>Одним из преимуществ Kotlin состоит в том, что его система типов позволяет определять проблемы, связанные с использованием null, во время компиляции, 
+а не во время выполнения. Например, возьмем следующий код:</p>
+<div><div id="highlighter_268301" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">name : String?&nbsp; = </code><code class="kt string">"Tom"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">userName: String = name </code><code class="kt comments">// ! Ошибка</code></div></div></td></tr></tbody></table></div></div>
+<p>Переменная name хранит строку "Tom". Переменная userName представляет тип String и тоже может хранить строки, но тем не менее напрямую 
+в данном случае мы не можем передать значение из переменной name в userName. В данном случае для компилятора неизвестно, каким значением 
+инициализирована переменная name. Ведь переменная name может содержать и значение null, которое недопустимо для типа String.</p>
+<p>В этом случае мы можем использовать оператор <span class="b">?:</span>, который позволяет предоставить альтернативное значение, если присваиваемое 
+значение равно null:</p>
+<div><div id="highlighter_305190" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">name : String?&nbsp; = </code><code class="kt string">"Tom"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">userName: String = name ?: </code><code class="kt string">"Undefined"</code>&nbsp; <code class="kt comments">// если name = null, то присваивается "Undefined"</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="kt keyword">var</code> <code class="kt plain">age: Int? = 23</code></div><div class="line number5 index4 alt2"><code class="kt keyword">val</code> <code class="kt plain">userAge: Int = age ?:0&nbsp; </code><code class="kt comments">// если age равно null, то присваивается число 0</code></div></div></td></tr></tbody></table></div></div>
+<p>Оператор <span class="b">?:</span> принимает два операнда. Если первый операнд не равен null, то возвращается значение первого операнда. Если 
+первый операнд равен null, то возвращается значение второго операнда.</p>
+<p>То есть это все равно, если бы мы написали:</p>
+<div><div id="highlighter_796583" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">name : String?&nbsp; = </code><code class="kt string">"Tom"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">userName: String</code></div><div class="line number3 index2 alt2"><code class="kt keyword">if</code><code class="kt plain">(name!=</code><code class="kt keyword">null</code><code class="kt plain">){</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">userName = name</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Но оператор ?: позволяет сократить подобную конструкцию.</p>
+<h3>Оператор ?.</h3>
+<p>Оператор <span class="b">?.</span> позволяет объединить проверку значения объекта на null и обратиться к функциям или свойствам этого объекта.</p>
+<p>Например, у строк есть свойство length, которое возвращает длину строки в символах. У объекта <code>String?</code> мы просто так не можем обратиться к свойству length, 
+так как если объект <code>String?</code> равен null, то и строки как таковой нет, и соответственно длину строки нельзя определить. И в этом случае мы можем применить оператор 
+<span class="b">?.</span>:</p>
+<div><div id="highlighter_337719" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">message : String? = </code><code class="kt string">"Hello"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">length: Int? = message?.length</code></div></div></td></tr></tbody></table></div></div>
+<p>Если переменная <code>message</code> вдруг равна <code>null</code>, то переменная <code>length</code> получит значение <code>null</code>. 
+Если переменная name содержит строку, то возвращается длина этой строки. 
+По сути выражение <code>val length: Int? = message?.length</code> эквивалентно следующему коду:</p>
+<div><div id="highlighter_799551" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">length: Int?</code></div><div class="line number2 index1 alt1"><code class="kt keyword">if</code><code class="kt plain">(message != </code><code class="kt keyword">null</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">length = message.length</code></div><div class="line number4 index3 alt1"><code class="kt keyword">else</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">length = </code><code class="kt keyword">null</code></div></div></td></tr></tbody></table></div></div>
+<p>С помощью оператора <code>?.</code> подобным образом можно обращаться к любым свойствам и функциям объекта.</p>
+<p>Также в данном случае мы могли совместить оба выше рассмотренных оператора:</p>
+<div><div id="highlighter_38434" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">message : String?&nbsp; = </code><code class="kt string">"Hello"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">length: Int = message?.length ?:0</code></div></div></td></tr></tbody></table></div></div>
+<p>Теперь переменная length не допускает значения null. И если переменная name не определена, то length получает число 0.</p>
+<p>Используя этот оператор, можно создавать цепочки проверок на null:</p>
+<div><div id="highlighter_894779" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">tom: Person? = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tomName: String? = tom?.name?.uppercase()</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tomName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// TOM</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">bob: Person? = </code><code class="kt keyword">null</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">bobName: String? = bob?.name?.uppercase()</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(bobName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">sam: Person? = Person(</code><code class="kt keyword">null</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">samName: String? = sam?.name?.uppercase()</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(samName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div><div class="line number16 index15 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String?)</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь класс Person в первичном конструкторе принимает значение типа <code>String?</code>, то есть это можт быть строка, а может быть <code>null</code>.</p>
+<p>Допустим, мы хотим получить переданное через конструктор имя пользователя в верхнем регистре (заглавными буквами). Для перевода текста в верхний регистр у 
+класса String есть функция <span class="b">uppercase()</span>. Однако может сложиться ситуация, когда либо объект Person равен null, либо его свойство <code>name</code> (
+которое представляет тип String?) равно null. И в этом случае перед вызовом функции <code>uppercase()</code> нам надо проверять на null все эти объекты. А оператор 
+<span class="b">?.</span> позволяет сократить код проверки:</p>
+<div><div id="highlighter_176705" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">tomName: String? = tom?.name?.uppercase()</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть если <code>tom</code> не равен null, то обращаемся к его свойству <code>name</code>. Далее если <code>name</code> не равен null, то обращаемся 
+к ее функции <code>uppercase()</code>. Если какое-то звено в этой проверки возвратит null, переменная <code>tomName</code> тоже будет равна null.</p>
+<p>Но здесь мы также можем избежать финального возвращения null и присвоить значение по умолчанию:</p>
+<div><div id="highlighter_239059" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">tomName: String = tom?.name?.uppercase() ?: </code><code class="kt string">"Undefined"</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>Оператор !!</h3>
+<p>Оператор <span class="b">!!</span> (not-null assertion operator) принимает один операнд. Если операнд равен null, то генерируется исключение. 
+Если операнд не равен null, то возвращается его значение.</p>
+<p>Например, следующий код компилятор не пропустит:</p>
+<div><div id="highlighter_174481" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">name : String? = </code><code class="kt string">"Tom"</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">id: String = name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Ошибка</code></div></div></td></tr></tbody></table></div></div>
+<p>Так как name потенциально может быть равно null, поэтому мы не можем присвоить это значение переменной id. Но здесь по коду очевидно, что name НЕ равно null. Возможно, где-то дальше в программе оно может измениться на null, 
+но здесь мы уверены, что оно не равно null. Поэтому для утверждения, что nullable-переменная не равна null, мы как раз можем использовать оператор <span class="b">!!</span>:</p>
+<div><div id="highlighter_635969" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">name : String? = </code><code class="kt string">"Tom"</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">id: String = name!!</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(id)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Поскольку данный оператор возвращает объект, который не представляет nullable-тип, то после применения оператора мы можем обратиться к методам и свойствам этого 
+объекта:</p>
+<div><div id="highlighter_14104" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">name : String? = </code><code class="kt string">"Tom"</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">nameLength = name!!.length</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(nameLength)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть данный оператор применяется, когда мы уверены, что значение НЕ равно <span class="b">null</span>. Если же мы применим этот оператор к значению null, то программа сгенерирует исключение:</p>
+<div><div id="highlighter_834991" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">try</code><code class="kt plain">{</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">name : String? = </code><code class="kt keyword">null</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">id= name!!</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(id)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">catch</code><code class="kt plain">(e:Exception){</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(e.message)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

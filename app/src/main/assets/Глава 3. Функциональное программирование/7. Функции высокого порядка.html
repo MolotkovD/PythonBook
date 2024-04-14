@@ -1,0 +1,94 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Функции высокого порядка</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Функции высокого порядка (high order function) - это функции, которые либо принимают функцию в качестве параметра, либо возвращают функцию, либо и то, и другое.</p>
+<h3>Функция как параметр функции</h3>
+<p>Чтобы функция могла принимать другую функцию через параметр, этот параметр должен представлять тип функции:</p>
+<div><div id="highlighter_920987" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">displayMessage(::morning)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">displayMessage(::evening)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">fun</code> <code class="kt plain">displayMessage(mes: () -&gt; Unit){</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">mes()</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt keyword">fun</code> <code class="kt plain">morning(){</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Good Morning"</code><code class="kt plain">)</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div><div class="line number12 index11 alt1"><code class="kt keyword">fun</code> <code class="kt plain">evening(){</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Good Evening"</code><code class="kt plain">)</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае функция <code>displayMessage()</code> через параметр <code>mes</code> принимает функцию типа <code>() -&gt; Unit</code>, то есть такую функцию, 
+которая не имеет параметров и ничего не возвращает.</p>
+<div><div id="highlighter_954486" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">displayMessage(mes: () -&gt; Unit){</code></div></div></td></tr></tbody></table></div></div>
+<p>При вызове этой функции мы можем передать этому параметру функцию, которая соответствует этому типу:</p>
+<div><div id="highlighter_824043" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">displayMessage(::morning)</code></div></div></td></tr></tbody></table></div></div>
+<p>Рассмотрим пример параметра-функции, которая принимает параметры:</p>
+<div><div id="highlighter_335335" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">action(5, 3, ::sum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 8</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">action(5, 3, ::multiply)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 15</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">action(5, 3, ::subtract)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 2</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt keyword">fun</code> <code class="kt plain">action (n1: Int, n2: Int, op: (Int, Int)-&gt; Int){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">result = op(n1, n2)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(result)</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div><div class="line number12 index11 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int): Int{</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div><div class="line number15 index14 alt2"><code class="kt keyword">fun</code> <code class="kt plain">subtract(a: Int, b: Int): Int{</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a - b</code></div><div class="line number17 index16 alt2"><code class="kt plain">}</code></div><div class="line number18 index17 alt1"><code class="kt keyword">fun</code> <code class="kt plain">multiply(a: Int, b: Int): Int{</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a * b</code></div><div class="line number20 index19 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция <code>action</code> принимает три параметра. Первые два параметра - значения типа Int. А третий параметр представляет функцию, которая имеет тип 
+<code>(Int, Int)-&gt; Int</code>, то есть принимает два числа и возвращает некоторое число.</p>
+<p>В самой функции action вызываем эту параметр-функцию, передавая ей два числа, и полученный результат выводим на консоль.</p>
+<p>При вызове функции action мы можем передать для ее третьего параметра конкретную функцию, которая соответствует этому параметру по типу:</p>
+<div><div id="highlighter_952472" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">action(5, 3, ::sum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 8</code></div><div class="line number2 index1 alt1"><code class="kt plain">action(5, 3, ::multiply)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 15</code></div><div class="line number3 index2 alt2"><code class="kt plain">action(5, 3, ::subtract)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 2</code></div></div></td></tr></tbody></table></div></div>
+<h3>Возвращение функции из функции</h3>
+<p>В более редких случаях может потребоваться возвратить функцию из другой функции. В этом случае для функции в качестве возвращаемого типа устанавливается 
+тип другой функции. А в теле функции возвращается лямбда выражение. Например:</p>
+<div><div id="highlighter_53377" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action1 = selectAction(1)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(action1(8,5))&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 13</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">action2 = selectAction(2)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(action2(8,5))&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 3</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt keyword">fun</code> <code class="kt plain">selectAction(key: Int): (Int, Int) -&gt; Int{</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// определение возвращаемого результата</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">when</code><code class="kt plain">(key){</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">1 -&gt; </code><code class="kt keyword">return</code> <code class="kt plain">::sum</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">2 -&gt; </code><code class="kt keyword">return</code> <code class="kt plain">::subtract</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">3 -&gt; </code><code class="kt keyword">return</code> <code class="kt plain">::multiply</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">else</code> <code class="kt plain">-&gt; </code><code class="kt keyword">return</code> <code class="kt plain">::empty</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div><div class="line number17 index16 alt2"><code class="kt keyword">fun</code> <code class="kt plain">empty (a: Int, b: Int): Int{</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">0</code></div><div class="line number19 index18 alt2"><code class="kt plain">}</code></div><div class="line number20 index19 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int): Int{</code></div><div class="line number21 index20 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number22 index21 alt1"><code class="kt plain">}</code></div><div class="line number23 index22 alt2"><code class="kt keyword">fun</code> <code class="kt plain">subtract(a: Int, b: Int): Int{</code></div><div class="line number24 index23 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a - b</code></div><div class="line number25 index24 alt2"><code class="kt plain">}</code></div><div class="line number26 index25 alt1"><code class="kt keyword">fun</code> <code class="kt plain">multiply(a: Int, b: Int): Int{</code></div><div class="line number27 index26 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a * b</code></div><div class="line number28 index27 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция <code>selectAction</code> принимает один параметр - key, который представляет тип <code>Int</code>. В качестве возвращаемого типа у 
+функции указан тип <code>(Int, Int) -&gt; Int</code>. То есть <code>selectAction</code> будет возвращать некую функцию, которая принимает два параметра типа Int и возвращает объект типа Int.</p>
+<p>В теле функции selectAction в зависимости от значения параметра key возвращается определенная функция, которая соответствует типу <code>(Int, Int) -&gt; Int</code>.</p>
+<p>Далее в функции <code>main</code> определяется переменная <code>action1</code> хранит результат функции <code>selectAction</code>. Так как 
+<code>selectAction()</code> возвращает функцию, то и переменная action1 будет хранить эту функцию. Затем через переменную action1 можно вызвать эту функцию.</p>
+<p>Поскольку возвращаемая функция соответствует типу <code>(Int, Int) -&gt; Int</code>, то при вызове в <code>action1</code> необходимо передать 
+два числа, и соответственно мы можем получить результат и вывести его на консоль.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

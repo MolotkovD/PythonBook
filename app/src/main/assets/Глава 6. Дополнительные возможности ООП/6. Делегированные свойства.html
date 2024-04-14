@@ -1,0 +1,123 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Делегированные свойства</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Делегированные свойства позволяют делегировать получение или присвоение их значения во вне - другому классу. Это позволяет нам добавить некоторую дополнительную 
+ логику при операции со свойствами, например, логгирование, какую-то предобработку и т.д.</p>
+<p>Формальный синтаксис делегированного свойства:</p>
+<div><div id="highlighter_848600" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code><code class="kt plain">/</code><code class="kt keyword">var</code> <code class="kt plain">имя_свойства: тип_данных by выражение</code></div></div></td></tr></tbody></table></div></div>
+<p>После типа данных свойства идет ключевое слово <span class="b">by</span>, после которого указывается выражение. 
+Выражение представляет класс, который условно называется делегатом. Делегаты свойств могут не применять никаких интерфейсов, 
+однако они должны предоставлять функции <span class="b">getValue()</span> и 
+<span class="b">setValue()</span>. А выполнение методов доступа <code>get()</code> и <code>set()</code>, которые есть у свойства, делегируется 
+функциям <code>getValue()</code> и <code>setValue()</code> класса делегата.</p>
+<p>Стоит отметить, что мы не можем объявлять делегированные свойства в первичном конструкторе.</p>
+<h3>Делегированные свойства для чтения</h3>
+<p>Для свойств только для чтения (то есть <span class="b">val</span>-свойств), делегат должен предоставлять функцию <span class="b">getValue()</span>, которая принимает следующие параметры:</p>
+<ul><li><p><span class="b">thisRef</span>: должен представлять тот же тип, что и свойство, к которому применяется делегат. Это может быть и родительский 
+тип.</p></li>
+<li><p><span class="b">property</span>: должен представлять тот же тип <span class="b">KProperty&lt;*&gt;</span> или его родительский тип</p></li>
+</ul>
+<p>При этом функция <code>getValue()</code> должна возвращать результат того же типа, что и тип свойства (либо его производного типа).</p>
+<p>Рассмотрим на примере:</p>
+<div><div id="highlighter_180491" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlin.reflect.KProperty</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom = Person()</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tom.name)&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">bob = Person()</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(bob.name)&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt keyword">class</code> <code class="kt plain">Person{</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">name: String by LoggerDelegate()</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt keyword">class</code> <code class="kt plain">LoggerDelegate {</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">operator </code><code class="kt keyword">fun</code> <code class="kt plain">getValue(thisRef: Person, property: KProperty&lt;*&gt;): String {</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Запрошено свойство: ${property.name}"</code><code class="kt plain">)</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt string">"Tom"</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number19 index18 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь класс Person определяет свойство <code>name</code>, которое является делегированным - оно делегирует операцию получения значения функции <code>getValue()</code> класса 
+<code>LoggerDelegate</code>.</p>
+<p>Поскольку свойство определено в классе Person, то первый параметр функции <code>getValue()</code> представляет тип Person. Благодаря этому мы можем 
+выудить из этого параметра какую-то дополнительную информацию об объекте, если она необходима.</p>
+<p>Поскольку свойство представляет тип <code>String</code>, то функция также возвращает значение типа <code>String</code> - это то значение, которое будет 
+возвращаться самим свойством <code>name</code>. В данном случае возвращается строка "Tom". То есть при каждом обращении к свойству <code>name</code> объекта 
+<code>Person</code> будет возвращаться строка "Tom".</p>
+<p>Теперь немного видоизменим пример:</p>
+<div><div id="highlighter_633202" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlin.reflect.KProperty</code></div><div class="line number2 index1 alt1"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tom.name)&nbsp;&nbsp; </code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">bob = Person(</code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(bob.name)</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt keyword">class</code> <code class="kt plain">Person(_name: String){</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">name: String by LoggerDelegate(_name)</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div><div class="line number12 index11 alt1"><code class="kt keyword">class</code> <code class="kt plain">LoggerDelegate(</code><code class="kt keyword">val</code> <code class="kt plain">personName: String) {</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">operator </code><code class="kt keyword">fun</code> <code class="kt plain">getValue(thisRef: Person, property: KProperty&lt;*&gt;): String {</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Запрошено свойство ${property.name}"</code><code class="kt plain">)</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Устанавливаемое значение: $personName"</code><code class="kt plain">)</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">personName</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number18 index17 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Теперь первичный конструктор Person принимает устанавливаемое значение для свойства name. Далее оно передается в конструктор классу LoggerDelegate, который использует 
+его для логгирования на консоль. И в конце возвращает его в качестве значения свойства name.</p>
+
+<h3>Изменяемые свойства</h3>
+<p>Для изменяемых свойств (<span class="b">var</span>-свойств) делегат должен также предоставить функцию <span class="b">setValue()</span>, 
+которая принимает следующие параметры:</p>
+<ul><li><p><span class="b">thisRef</span>: должен представлять тот же тип, что и свойство, к которому применяется делегат. Это может быть и родительский 
+тип.</p></li>
+<li><p><span class="b">property</span>: должен представлять тот же тип <span class="b">KProperty&lt;*&gt;</span> или его родительский тип</p></li>
+<li><p><span class="b">value</span>: должен представлять тот же тип, что и свойство, или его родительский тип</p></li>
+</ul>
+<p>Рассмотрим на примере:</p>
+<div><div id="highlighter_416916" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlin.reflect.KProperty</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">, 37)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tom.age)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">//37</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom.age = 38</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tom.age)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">//38</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom.age = -139</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(tom.age)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">//38</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div><div class="line number13 index12 alt2"><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, _age: Int){</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">age: Int by LoggerDelegate(_age)</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div><div class="line number16 index15 alt1"><code class="kt keyword">class</code> <code class="kt plain">LoggerDelegate(</code><code class="kt keyword">private</code> <code class="kt keyword">var</code> <code class="kt plain">personAge: Int) {</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">operator </code><code class="kt keyword">fun</code> <code class="kt plain">getValue(thisRef: Person, property: KProperty&lt;*&gt;): Int{</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">personAge</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number20 index19 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">operator </code><code class="kt keyword">fun</code> <code class="kt plain">setValue(thisRef: Person, property: KProperty&lt;*&gt;, value: Int){</code></div><div class="line number21 index20 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Устанавливаемое значение: $value"</code><code class="kt plain">)</code></div><div class="line number22 index21 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(value &gt; 0 &amp;&amp; value &lt; 110) personAge = value</code></div><div class="line number23 index22 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number24 index23 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь класс Person определяет делегированное свойство <code>age</code>. Оно делегирует установку и получение значения классу LoggerDelegate и его 
+функциям <code>getValue()</code> и <code>setValue()</code>. Само значение сохраняется в свойстве <code>personAge</code> класса LoggerDelegate. 
+Функция <code>getValue()</code> просто возвращает значение это свойства.</p>
+<p>Функция <code>setValue()</code> с помощью третьего параметра - <code>value</code>, которое представляет тот же тип, что и свойство - тип <code>Int</code>, 
+получает устанавливаемое значение. И если оно соответствует некоторому диапазону, то передает в свойство personAge.</p>
+<p>Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">37
+Устанавливаемое значение: 38
+38
+Устанавливаемое значение: -139
+38
+</pre>
+</div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

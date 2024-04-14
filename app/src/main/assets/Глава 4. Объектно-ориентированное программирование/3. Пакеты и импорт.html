@@ -1,0 +1,120 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Пакеты и импорт</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Пакеты в Kotlin представляют логический блок, который объединяет функционал, например, классы и функции, используемые для решения близких по характеру задач. 
+Так, классы и функции, которые предназначены для решения одной задачи, можно поместить в один пакет, классы и функции для других задач можно 
+поместить в другие пакеты.</p>
+<p>Для определения пакета применяется ключевое слово <span class="b">package</span>, после которого идет имя пакета:</p>
+<div><div id="highlighter_384737" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">package</code> <code class="kt plain">email</code></div></div></td></tr></tbody></table></div></div>
+<p>Определение пакета помещается в самое начало файла. И все содержимое файла рассматривается как содержимое этого пакета.</p>
+<p>Например, добавим в проект новый файл <span class="b">email.kt</span>:</p>
+<img src="../pics/4.1.png" alt="Пакеты в Kotlin">
+<p>И определим в нем следующий код:</p>
+<div><div id="highlighter_946047" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">package</code> <code class="kt plain">email</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">class</code> <code class="kt plain">Message(</code><code class="kt keyword">val</code> <code class="kt plain">text: String)</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt keyword">fun</code> <code class="kt plain">send(message: Message, address: String){</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Message `${message.text}` has been sent to $address"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Пакет называется "email". Он содержит класс <code>Message</code>, который содежит одно свойство <code>text</code>. Условно говоря, это класс представляет email-сообщение, а свойство text - его текст.</p>
+<p>Также в этом пакете определена функция <code>send()</code>, которая условно отправляет сообшение на некоторый адрес.</p>
+<p>Допустим, мы хотим использовать функционал этого пакета в другом файле. Для подключения сущностей из пакета необходимо применить директиву 
+<span class="b">import</span>. Здесь возможны различные способы подключения функционала из пакета. Можно подключить в целом весь пакет:</p>
+<div><div id="highlighter_138572" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import email.*</code></div></div></td></tr></tbody></table></div></div>
+<p>После названия пакета ставится точка и звездочка, тем самым импортируются все типы из этого пакета. Например, возьмем другой файл проекта - 
+<span class="ii">app.kt</span>, который определяет функцию main, и используем в нем функционал пакета email:</p>
+<div><div id="highlighter_550214" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import email.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">myMessage = Message(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">send(myMessage, </code><code class="kt string">"tom@gmail.com"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Поскольку в начале файла импортированы все типы из пакета email, то мы можем использовать класс Message и функцию send в функции main.</p>
+<p>Консольный вывод данной программы:</p>
+<div class="console">
+<pre class="consoletext">Message `Hello Kotlin` has been sent to tom@gmail.com
+</pre>
+</div>
+<p>Также можно импортировать типы, определенные в пакете, по отдельности:</p>
+<div><div id="highlighter_90911" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import email.send</code></div><div class="line number2 index1 alt1"><code class="kt plain">import email.Message</code></div></div></td></tr></tbody></table></div></div>
+<h3>Псевдонимы</h3>
+<p>С помощью оператора <span class="b">as</span> можно определять псевдоним для подключаемого типа и затем обращаться к этому типу через его псевдоним:</p>
+<div><div id="highlighter_661629" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import email.send </code><code class="kt keyword">as</code> <code class="kt plain">sendEmail</code></div><div class="line number2 index1 alt1"><code class="kt plain">import email.Message </code><code class="kt keyword">as</code> <code class="kt plain">EmailMessage</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">myMessage = EmailMessage(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sendEmail(myMessage, </code><code class="kt string">"tom@gmail.com"</code><code class="kt plain">)</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь для функции <code>send()</code> определен псевдоним <code>sendEmail</code>. И далее для обращения к этой функции надо использовать ее псевдоним:</p>
+<div><div id="highlighter_259308" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">sendEmail(myMessage, </code><code class="kt string">"tom@gmail.com"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>Также для класса Message определен псевдоним EmailMessage. Соответственно при использовании класса необходимо применять его псевдоним, а не оригинальное имя:</p>
+<div><div id="highlighter_842335" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">myMessage = EmailMessage(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>Псевдонимы могут нам особенно пригодится, если у нас импортируются из разных пакетов типы с одним и тем же именем. Например, пусть в проекте есть файл 
+<span class="b">sms.kt</span>:</p>
+<div><div id="highlighter_361774" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">package</code> <code class="kt plain">sms</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">class</code> <code class="kt plain">Message(</code><code class="kt keyword">val</code> <code class="kt plain">text: String)</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt keyword">fun</code> <code class="kt plain">send(message: Message, phoneNumber: String){</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Message `${message.text}` has been sent to $phoneNumber"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь определен пакет <code>sms</code> также с классом Message и функцией send для отправке сообшения по sms.</p>
+<p>Допустим, в файле <span class="b">app.kt</span> мы одновременно хотим использовать класс Message и функцию send и из файла <span class="b">email.kt</span>, и 
+из файла <span class="b">sms.kt</span>:</p>
+<div><div id="highlighter_636211" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import email.send </code><code class="kt keyword">as</code> <code class="kt plain">sendEmail</code></div><div class="line number2 index1 alt1"><code class="kt plain">import email.Message </code><code class="kt keyword">as</code> <code class="kt plain">EmailMessage</code></div><div class="line number3 index2 alt2"><code class="kt plain">import sms.send </code><code class="kt keyword">as</code> <code class="kt plain">sendSms</code></div><div class="line number4 index3 alt1"><code class="kt plain">import sms.Message </code><code class="kt keyword">as</code> <code class="kt plain">SmsMessage</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">myEmailMessage = EmailMessage(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sendEmail(myEmailMessage, </code><code class="kt string">"tom@gmail.com"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">mySmsMessage = SmsMessage(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sendSms(mySmsMessage, </code><code class="kt string">"+1234567890"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h3>Встроенные пакеты</h3>
+<p>Kotlin имеет ряд встроенных пакетов, которые подключаюся по умолчанию в любой файл на языке Kotlin:</p>
+<ul>
+<li><p><code>kotlin.*</code></p></li>
+<li><p><code>kotlin.annotation.*</code></p></li>
+<li><p><code>kotlin.collections.*</code></p></li>
+<li><p><code>kotlin.comparisons.*</code></p></li>
+<li><p><code>kotlin.io.*</code></p></li>
+<li><p><code>kotlin.ranges.*</code></p></li>
+<li><p><code>kotlin.sequences.*</code></p></li>
+<li><p><code>kotlin.text.*</code></p></li>
+</ul>
+<p>Поэтому если возникнет необходимость использовать какие-то типы, определенные в этих пакетах, то явным образом эти пакеты не нужно импортировать.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="53cf092ed9"></div></div></body></html>

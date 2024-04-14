@@ -1,0 +1,119 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Переменные</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Для хранения данных в программе в Kotlin, как и в других языках программирования, применяются переменные. 
+<span class="b">Переменная</span> представляет именованный участок памяти, который хранит некоторое значение.</p>
+<p>Каждая переменная характеризуется определенным именем, типом данных и значением. Имя переменной представляет поизвольный идентификатор, который может содержать алфавитно-цифровые символы или символ подчеркивания и 
+должен начинаться либо с алфавитного символа, либо со знака подчеркивания. Для определения переменной можно использовать либо ключевое слово 
+<span class="b">val</span>, либо ключевое слово <span class="b">var</span>.</p>
+<p>Формальное определение переменной:</p>
+<div><div id="highlighter_834035" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code><code class="kt plain">|</code><code class="kt keyword">var</code> <code class="kt plain">имя_переменной: тип_переменной</code></div></div></td></tr></tbody></table></div></div>
+<p>Вначале идет слово <span class="b">val</span> или <span class="b">var</span>, затем имя переменной и через двоеточие тип переменной.</p>
+<p>Например, определим переменную age:</p>
+<div><div id="highlighter_300708" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть в данном случае объявлена переменная age, которая имеет тип <span class="b">Int</span>. Тип Int говорит о том, что переменная будет содержать целочисленные значения.</p>
+<p>После определения переменной ей можно присвоить значение:</p>
+<div><div id="highlighter_742540" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">age = 23</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Для присвоения значения переменной используется знак равно. Затем мы можем производить с переменной различные операции. Например, в данном 
+случае с помощью функции <code>println()</code> значение переменной выводится на консоль. И при запуске этой программы на консоль будет выведено число 23.</p>
+<p>Присвоение значения переменной должно производиться только после ее объявления. И также мы можем сразу присвоить переменной начальное значение при ее объявлении. 
+Такой прием называется инициализацией:</p>
+<div><div id="highlighter_60437" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">age: Int = 23</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако обязательно надо присвоить переменной некоторое значение до ее использования:</p>
+<div><div id="highlighter_826877" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code><code class="kt comments">// Ошибка, переменная не инициализирована</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h3>Изменяемые и неизменяемые переменные</h3>
+<p>Выше было сказано, что переменные могут объявляться как с помощью слова <span class="b">val</span>, так и с помощью слова <span class="b">var</span>. 
+В чем же разница между двумя этими способами?</p>
+<p>С помощью ключевого слова <span class="b">val</span> определяется неизменяемая переменная (immutable variable) или <span class="b">переменная только для чтения</span> (read-only). 
+То есть мы можем присвоить значение такой переменной только один раз, но изменить его после первого присвоения мы уже не сможем. Например, в следующем случае мы получим ошибку:</p>
+<div><div id="highlighter_254912" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">age: Int</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">age = 23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// здесь норм - первое присвоение</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">age = 56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// здесь ошибка - переопределить значение переменной нельзя</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>А у переменной, которая определена с помощью ключевого слова <span class="b">var</span> мы можем многократно менять значения (mutable variable):</p>
+<div><div id="highlighter_893883" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">age = 23</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">age = 56</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(age)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Поэтому если не планируется изменять значение переменной в программе, то лучше определять ее с ключевым словом <span class="b">val</span>.</p>
+<h3>Определение констант</h3>
+<p>Также Kotlin поддерживает константы времени компиляции. Для их определения применяются ключевые слова <span class="b">const val</span>:</p>
+<div><div id="highlighter_877398" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">const </code><code class="kt keyword">val</code> <code class="kt plain">maxAge = 120&nbsp; </code><code class="kt comments">// константа</code></div><div class="line number2 index1 alt1"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(maxAge)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае <code>maxAge</code> является константой.</p>
+<p>Отличительной особенностью констант является то, что они на стадии <span class="b">компиляции</span> должны иметь некоторое значение, и это значение изменить нельзя. Это 
+накладывает на использование констант ряд ограничений:</p>
+<ul>
+<li><p>Естественно нельзя изменить значение константы:</p>
+<div><div id="highlighter_869096" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">const </code><code class="kt keyword">val</code> <code class="kt plain">maxAge = 120&nbsp; </code><code class="kt comments">// константа</code></div><div class="line number2 index1 alt1"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">maxAge = 1500&nbsp;&nbsp; </code><code class="kt comments">// ошибка </code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(maxAge)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь при попытке присвоения константе maxAge нового значения в функции main мы столкнемся с ошибкой на стадии компиляции. Если мы работаем в среде Intellij IDEA или Android Studio, 
+то уже при написании кода на подобные ошибки укажет сама среда разработки.</p>
+</li>
+
+<li><p>Константа должна объявляться на самом верхнем уровне (вне класса/функции):</p>
+<div><div id="highlighter_717148" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">const </code><code class="kt keyword">val</code> <code class="kt plain">maxAge = 120&nbsp;&nbsp; </code><code class="kt comments">// ошибка </code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(maxAge)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div></li>
+
+<li><p>Тип данных константы должен соответствовать одному из примитивных (например, Int) или типу String</p></li>
+</ul>
+
+<p>Также стоит отметит отличие <span class="b">val</span>-переменных от констант (<span class="b">const val</span>): значение <span class="b"></span>val-переменных 
+устанавливается во время выполнения, а значение констант - во время компиляции. Значение <span class="b">val</span>-переменной также нельзя изменить после установки, однако мы можем объявить <span class="b">val</span>-переменную, а потом дальше в программе присвоить ей значение. Константе 
+же необходимо присвоить значение сразу при определении.</p>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

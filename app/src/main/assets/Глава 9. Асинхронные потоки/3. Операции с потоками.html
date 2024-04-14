@@ -1,0 +1,96 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Операции с потоками</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Для работы с потоками в Kotlin для интерфейса <span class="b">Flow</span> определено ряд функций. В зависимости от того, возвращают они конкретное значение или 
+обработанный поток эти функции делятся на два вида: терминальные функции и промежуточные функции. Рассмотрим основные из них.</p>
+<h3>Терминальные функции потоков</h3>
+<p>Терминальные функции потоков (terminal operators) представляют suspend-функции, которые позволяют непосредственно получать объекты из потока или возвращают какое-то конечное значение:</p>
+<ul>
+<li><p><span class="b">collect()</span>: получает из потока переданные значения</p></li>
+<li><p><span class="b">toList()</span>: преобразует поток значений в коллекцию List</p></li>
+<li><p><span class="b">toSet()</span>: преобразует поток значений в коллекцию Set</p></li>
+<li><p><span class="b">first() / firstOrNull()</span>: получает первый объект из потока</p></li>
+<li><p><span class="b">last() / lastOrNull()</span>: получает последний объект из потока</p></li>
+<li><p><span class="b">single() / singleOrNull()</span>: ожидает получение одного объекта из потока</p></li>
+<li><p><span class="b">count()</span>: получает количество элементов в потоке</p></li>
+<li><p><span class="b">reduce()</span>: получает результат определенной операции над элементами потока</p></li>
+<li><p><span class="b">fold()</span>: получает результат определенной операции над элементами потока, в отличие от функции <code>reduce()</code> принимает начальное значение</p></li>
+</ul>
+<h3>Промежуточные функции</h3>
+<p>Промежуточные функции (Intermediate operator) принимают поток и возвращают обработанный поток.</p>
+<ul>
+<li><p><span class="b">combine()</span>: объединяет два потока в один, после применения к их элементам функции преобразования</p></li>
+<li><p><span class="b">drop()</span>: исключает из начала потока определенное количество значений и возвращает полученный поток</p></li>
+<li><p><span class="b">filter()</span>: фильтрует поток, оставляя те элементы, которые соответствуют условию</p></li>
+<li><p><span class="b">filterNot()</span>: фильтрует поток, оставляя те элементы, которые НЕ соответствуют условию</p></li>
+<li><p><span class="b">filterNotNull()</span>: фильтрует поток, удаляя все элементы, которые равны <code>null</code></p></li>
+<li><p><span class="b">map()</span>: применяет к элементам потока фукцию преобразования</p></li>
+<li><p><span class="b">onEach()</span>: применяет к элементам потока определенную функцию перед тем, как они будут переданы в возвращаемый поток</p></li>
+<li><p><span class="b">take()</span>: выбирает из потока определенное количество элементов</p></li>
+<li><p><span class="b">transform()</span>: применяет к элементам потока функцию преобразования</p></li>
+<li><p><span class="b">zip()</span>: из двух потоков создает один, применяя к их элементам функцию преобразования</p></li>
+</ul>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

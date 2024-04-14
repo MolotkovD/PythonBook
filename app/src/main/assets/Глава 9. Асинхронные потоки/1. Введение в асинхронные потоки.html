@@ -1,0 +1,131 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h1>Асинхронные потоки</h1><h2>Введение в асинхронные потоки</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Корутины позволяют возвращать одиночные значения. Для этого мы можем, к примеру, создавать корутину с помощью построителя <span class="b">async</span>. Но Kotlin также позволяет создавать асинхронные 
+потоки (Asynchronous Flow), которые возвращают набор объектов.</p>
+<p>В принципе для получения набора объектов мы могли бы в корутине возвращать коллекцию элементов, например, список <span class="b">List</span>, наподобие следующего:</p>
+<div><div id="highlighter_977492" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope&lt;Unit&gt;{</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch {</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">getUsers().forEach { user -&gt; println(user) }</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">getUsers(): List&lt;String&gt; {</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(1000L)&nbsp; </code><code class="kt comments">// имитация продолжительной работы</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако проблема таких коллекций в том, что они одномоментно возвращают все объекты. Например, если в списке ожидается 1000 объектов, то соответственно пока функция <code>getUsers()</code> 
+не возвратит список из 1000 объектов (например, получая их из базы данных или из внешнего интернет-ресурса), мы не сможем манипулировать объектами из этого списка.</p>
+<p>Эту проблему в Kotlin как раз и позволяют решить асинхронные потоки. Изменим пример выше с применением асинхронных потоков:</p>
+<div><div id="highlighter_958343" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">getUsers().collect { user -&gt; println(user) }</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt keyword">fun</code> <code class="kt plain">getUsers(): Flow&lt;String&gt; = flow {</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">database = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">)&nbsp; </code><code class="kt comments">// условная база данных</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">i = 1;</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(item </code><code class="kt keyword">in</code> <code class="kt plain">database){</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L) </code><code class="kt comments">// имитация продолжительной работы</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Emit $i item"</code><code class="kt plain">)</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">emit(item) </code><code class="kt comments">// емитируем значение</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">i++</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number17 index16 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Для создания асинхронного потока данных применяется интерфейс <span class="b">Flow</span>. То есть по сути асинхронный поток - это объект Flow. Он типизируется 
+типом тех данных, которые должны передаваться в потоке. В данном случае передаем строки, поэтому <code>Flow</code> типизируется типом <code>String</code>.</p>
+<div><div id="highlighter_900850" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">getUsers(): Flow&lt;String&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом при определении функции-потока (в данном случае функции <code>getUsers</code>) необязательно использовать модификатор <span class="b">suspend</span>.</p>
+<p>Для создания объекта Flow применяется специальная функция <span class="b">flow()</span></p>
+<div><div id="highlighter_259002" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">getUsers(): Flow&lt;String&gt; = flow {</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// создание асинхронного потока в функции flow</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В самой функции в данном случае имитируется получение объектов из условной базы данных, коей здесь для простоты служит список List. В цикле пробегаемся по этому 
+списку и отправляем в поток текущий объект с помощью функции <span class="b">emit()</span>:</p>
+<div><div id="highlighter_349565" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">emit(item) </code><code class="kt comments">// передаем значение в поток</code></div></div></td></tr></tbody></table></div></div>
+<p>Это ключевой момент. Благодаря этому внешний код сможет получит переданное через <code>emit()</code> в поток значение и использовать его.</p>
+<p>Для индикации номера отправляемого объекта я добавил переменную-счетчик <code>i</code>, которая увеличивается при переходе к другому объекту списка. 
+Вывод номера отправляемого объекта позволяет увидеть, что получение внешним кодом объектов из списка происходит по мере его передачи в поток с помощью функции <code>emit()</code>, а не когда будут отправлены 
+все объекты из списка.</p>
+<p>Во внешнем коде в функции main вызываем функцию-поток <code>getUsers()</code>. Для управления объектами из потока для интерфейса Flow определен ряд 
+функций, одной из которых является функция <code>collect()</code>. В качестве параметра она принимает функцию, в которую передает эмитируемый объект из потока. Так, в данном случае 
+это просто функция вывода на консоль:</p>
+<div><div id="highlighter_999933" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">getUsers().collect { user -&gt; println(user) }</code></div></div></td></tr></tbody></table></div></div>
+<p>В итоге мы получим следующий консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Emit 1 item
+Tom
+Emit 2 item
+Bob
+Emit 3 item
+Sam
+</pre>
+</div>
+<p>Таким образом, программа не ждет, когда функция getUsers возвратит все строки. А получает строки по мере их отправки в поток через функцию <code>emit()</code>.</p>
+<p>Другой пример - создадим и используем асинхронный поток чисел:</p>
+<div><div id="highlighter_377501" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">getNumbers().collect { number -&gt; println(number) }</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">getNumbers(): Flow&lt;Int&gt; = flow{</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(item </code><code class="kt keyword">in</code> <code class="kt plain">1..5){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">emit(item * item)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь в принципе все то же самое. Функция <code>getNumbers()</code> представляет асинхронный поток объектов Int. В качестве объектов в поток добавляются 
+квадраты чисел от 1 до 5. Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">1
+4
+9
+16
+25
+</pre>
+</div>
+<h3>Запуск Flow</h3>
+<p>Стоит отметить, что асинхронный поток не запускается, пока не будет применена терминальная операция над получаемыми даными, например, функция <code>collect()</code>:</p>
+<div><div id="highlighter_925396" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numberFlow = getNumbers()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// поток создан, но не запущен</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"numberFlow has created"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"launch collect function"</code><code class="kt plain">)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numberFlow.collect { number -&gt; println(number) }&nbsp;&nbsp; </code><code class="kt comments">// запуск потока</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt keyword">fun</code> <code class="kt plain">getNumbers() = flow{</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"numberFlow has started"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(item </code><code class="kt keyword">in</code> <code class="kt plain">1..5){</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">emit(item * item)</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">numberFlow has created
+launch collect function
+numberFlow has started
+1
+4
+9
+16
+25
+</pre>
+</div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

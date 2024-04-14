@@ -1,0 +1,98 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Получение отдельных элементов</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<h3>Получение элемента по индексу</h3>
+<p>Для получения элемента по индексу применяется функция <span class="b">elementAt()</span>, в которую передается индекс элемента:</p>
+<div><div id="highlighter_799411" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt comments">// получаем элемент по индексу 1</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.elementAt(1))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Sam</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако если переданный индекс выходит за границы коллекции/последовательности, то приложение сгенерирует ошибку. В этом случае мы можем использовать 
+функцию <span class="b">elementAtOrNull()</span>, которая возвращает null, если индекс вне границ:</p>
+<div><div id="highlighter_173149" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(people.elementAtOrNull(1))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Sam</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.elementAtOrNull(6))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div></div></td></tr></tbody></table></div></div>
+<p>Также в этом случае можно использовать функцию <span class="b">elementAtOrElse()</span>:</p>
+<div><div id="highlighter_8298" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">elementAtOrElse(index: Int, defaultValue: (Int) -&gt; T): T</code></div></div></td></tr></tbody></table></div></div>
+<p>Первый параметр функции - индекс элемента, а второй - функция, которая получает индекс и возвращает значение по умолчанию, если индекс находится вне границ 
+коллекции/последовательности.</p>
+<div><div id="highlighter_483931" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">println(people.elementAtOrElse(1){</code><code class="kt string">"Undefined"</code><code class="kt plain">})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Sam</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(people.elementAtOrElse(6){</code><code class="kt string">"Undefined"</code><code class="kt plain">})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Undefined</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(people.elementAtOrElse(8){</code><code class="kt string">"Index $it out of bounds"</code><code class="kt plain">})&nbsp; </code><code class="kt comments">// Index 8 out of bounds</code></div></div></td></tr></tbody></table></div></div>
+<h3>Получение по условию</h3>
+<p>Если надо получить первый или последний элементы коллекции/последовательности, то можно использовать соответственно функции <span class="b">first()</span> 
+и <span class="b">last()</span>:</p>
+<div><div id="highlighter_946228" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(people.first())&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.last())&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Alice</code></div></div></td></tr></tbody></table></div></div>
+<p>В качестве параметра эти функции могут принимать функцию предиката</p>
+<div><div id="highlighter_675612" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">first(predicate: (T) -&gt; Boolean): T</code></div><div class="line number2 index1 alt1"><code class="kt plain">last(predicate: (T) -&gt; Boolean): T</code></div></div></td></tr></tbody></table></div></div>
+<p>Эти функции возвращают первый и последний элементы, которые соответствуют условию предиката:</p>
+<div><div id="highlighter_485086" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt comments">// первый элемент с длиной в 4 символа</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.first{it.length==4})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Kate</code></div><div class="line number4 index3 alt1"><code class="kt comments">// последний элемент с длиной в 3 символа</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(people.last{it.length==3})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Bob</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако если коллеккция пуста, или в коллекции/последовательности нет элементов, которые соответствуют условию, то программа генерирует ошибку. В этом случае 
+можно применять функции <span class="b">firstOrNull()</span> и <span class="b">lastOrNull()</span>, которые возвращают null, если коллекция пуста или 
+в ней нет элементов, соответствующих условию:</p>
+<div><div id="highlighter_252793" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">firstOrNull(): T?</code></div><div class="line number2 index1 alt1"><code class="kt plain">firstOrNull(predicate: (T) -&gt; Boolean): T?</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="kt plain">lastOrNull(): T?</code></div><div class="line number5 index4 alt2"><code class="kt plain">lastOrNull(predicate: (T) -&gt; Boolean): T?</code></div></div></td></tr></tbody></table></div></div>
+<p>Пример применения:</p>
+<div><div id="highlighter_281539" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">println(people.firstOrNull{it.length==3})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(people.firstOrNull{it.length==33})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt plain">println(people.lastOrNull{it.length==3})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Bob</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(people.lastOrNull{it.length==33})&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div></div></td></tr></tbody></table></div></div>
+<h3>Выбор случайного элемента</h3>
+<p>Для извлечения случайного элемента применяется функция <span class="b">random()</span></p>
+<div><div id="highlighter_263861" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(people.random())</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако если коллекция/последовательность пуста, то эта функция генерирует ошибку. В этом случае можно использовать функцию <span class="b">randomOrNull()</span>, 
+которая в этом случае возвращает null:</p>
+<div><div id="highlighter_535336" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf&lt;String&gt;()</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(people.randomOrNull())&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

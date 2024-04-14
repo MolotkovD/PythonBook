@@ -1,0 +1,89 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Переменное количество параметров. Vararg</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Функция может принимать переменное количество параметров одного типа. Для определения таких параметров применяется ключевое слово 
+<span class="b">vararg</span>. Например, нам необходимо передать в функцию несколько строк, но сколько именно строк, мы точно не знаем. 
+Их может быть пять, шесть, семь и т.д.:</p>
+<div><div id="highlighter_40530" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">printStrings(vararg strings: String){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(str </code><code class="kt keyword">in</code> <code class="kt plain">strings)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(str)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div><div class="line number5 index4 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">printStrings(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">printStrings(</code><code class="kt string">"Kotlin"</code><code class="kt plain">, </code><code class="kt string">"JavaScript"</code><code class="kt plain">, </code><code class="kt string">"Java"</code><code class="kt plain">, </code><code class="kt string">"C#"</code><code class="kt plain">, </code><code class="kt string">"C++"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Функция printStrings принимает неопределенное количество строк. В самой функции мы можем работать с параметром как с последовательностью строк, 
+например, перебирать элементы последовательности в цикле и производить с ними некоторые действия.</p>
+<p>При вызове функции мы можем ей передать любое количество строк.</p>
+<p>Другой пример - подсчет суммы неопределенного количества чисел:</p>
+<div><div id="highlighter_117594" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(vararg numbers: Int){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">result=0</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt plain">numbers)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">result += n</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Сумма чисел равна $result"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sum(1, 2, 3, 4, 5)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sum(1, 2, 3, 4, 5, 6, 7, 8, 9)</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Если функция принимает несколько параметров, то обычно <span class="b">vararg</span>-параметр является последним.</p>
+<div><div id="highlighter_411697" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">printUserGroup(count:Int, vararg users: String){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Count: $count"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(user </code><code class="kt keyword">in</code> <code class="kt plain">users)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(user)</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">printUserGroup(3, </code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако это необязательно, но если после <span class="b">vararg</span>-параметра идут еще какие-нибудь параметры, то при вызове функции значения этим 
+параметрам передаются через именованные аргументы:</p>
+<div><div id="highlighter_250282" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">printUserGroup(group: String, vararg users: String, count:Int){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Group: $group"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Count: $count"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(user </code><code class="kt keyword">in</code> <code class="kt plain">users)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(user)</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">printUserGroup(</code><code class="kt string">"KT-091"</code><code class="kt plain">, </code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, count=3)</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция printUserGroup принимает три параметра. Значения параметрам до <span class="b">vararg</span>-параметра передаются по позициям. То есть в данном случае 
+"KT-091" будет представлять значение для параметра group. Последующие значения интерпретируются как значения для <span class="b">vararg</span>-параметра вплоть до именнованных аргументов.</p>
+<h3>Оператор *</h3>
+<p>Оператор <span class="b">*</span> (spread operator) (не стоит путать со знаком умножения) позволяет передать параметру в качестве 
+значения элементы из массива:</p>
+<div><div id="highlighter_791801" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">changeNumbers(vararg numbers: Int, koef: Int){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(number </code><code class="kt keyword">in</code> <code class="kt plain">numbers)</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(number * koef)</code></div><div class="line number4 index3 alt1"><code class="kt plain">}</code></div><div class="line number5 index4 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">nums = intArrayOf(1, 2, 3, 4)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">changeNumbers(*nums, koef=2)</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Обратите внимание на звездочку перед nums при вызове функции: <code>changeNumbers(<span class="b">*nums</span>, koef=2)</code>. 
+Без применения данного оператора мы столкнулись бы с ошибкой, поскольку параметры функции представляют не массив, а неопределенное количество значений типа Int.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

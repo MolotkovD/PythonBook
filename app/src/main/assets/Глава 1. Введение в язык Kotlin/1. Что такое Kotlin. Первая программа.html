@@ -1,0 +1,139 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h1>Введение в язык Kotlin</h1><h2>Что такое Kotlin. Первая программа</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p><span class="b">Kotlin</span> представляет современный, статически типизированный и один из самых быстроразвивающихся языков 
+программирования, созданный и развиваемый компанией JetBrains. 
+Kotlin можно использовать для создания самых разных приложений. Это и приложения для мобильных устройств - Android, iOS. Причем Kotlin позволяет писать кроссплатформенный 
+код, который будет применяться на всех платформах. Это и веб-приложения, причем как серверные приложения, которые отрабатывают на стороне на стороне сервера - бекэнда, 
+так и браузерные клиентские приложения - фронтенд. Kotlin также можно применять для создания десктопных приложений, для Data Science и так далее.</p>
+<p>Таким образом, круг платформ, для которых можно создавать приложения на Kotlin, чрезвычайно широк - Windows, Linux, Mac OS, iOS, Android.</p>
+
+<p>Самым популярным направлением, где применяется Kotlin, является прежде всего разработка под ОС Android. Причем настолько популярным, 
+что компания Google на конференции Google I/O 2017 провозгласила Kotlin одним из официальных языков для разработки под Android (наряду с 
+Java и C++), а инструменты по работе с данным языком были по умолчанию включены в функционал среды разработки Android Studio начиная с версии 3.0.</p>
+<p>Официальный сайт языка - <a href="https://kotlinlang.org/" rel="nofollow">https://kotlinlang.org/</a>, где можно найти самую последнюю и самую подробную информацию по языку.</p>
+<p>Первая версия языка вышла 15 февраля 2016 года. Хотя сама разработка языка велась с 2010 года. Текущей версией языка на данный момент 
+является версия 1.9, которая вышла в июле 2023 году.</p>
+<p>Свое название язык Kotlin получил от названия острова, который расположен близ города Санкт-Петербург, в котором в.</p>
+<p>Kotlin испытал влияние многих языков: Java, Scala, Groovy, C#, JavaScript, Swift и позволяет писать программы как в объектно-ориентированном, так и в функциональном стиле. 
+Он имеет ясный и понятный синтаксис и довольно легок для обучения.</p>
+<p>Но Kotlin - это не просто очередной язык программирования. На сегодняшний день это целая экосистема:</p>
+<img src="../pics/1.0.png" alt="Экосистема языка Kotlin">
+<p>Ядро этой экосистемы - <span class="b">Common Kotlin</span>, которое включает в себя собственно язык, основные библиотеки и базовые инструменты для построения программ.</p>
+<p>Для взаимодействия с конкретной платформой имеются предназначенные для этой платформы версия Kotlin: <span class="b">Kotlin/JVM</span>, 
+<span class="b">Kotlin/JS</span> и <span class="b">Kotlin/Native</span>. Эти специфические версии представляют расширения для языка Kotlin, 
+а также специфичные для конкретной платформы бибилиотеки и инструменты разработки.</p>
+<p>Также стоит отметить, что Kotin развивается как opensource, исходный код проекта можно посмотреть в репозитории на github по адресу 
+<a href="https://github.com/JetBrains/kotlin/" rel="nofollow">https://github.com/JetBrains/kotlin/</a>.</p>
+<p>Перед началом работы с Kotlin следует отметить, что нам потребуется JDK (Java Development Kit). Про установку Java можно прочитать на данном сайте https://metanit.com в статье <a href="https://metanit.com/java/tutorial/1.6.php">Установка Java</a>. Однако знать сам язык программирования Java необязательно. 
+Достаточно лишь знать, что в общем случае Kotlin работает поверх виртуальной машины Java (JVM). Благодаря этому Kotlin может использовать 
+библиотеки, написанные на Java. Аналогично из программы на Java можно запускать код Kotlin. Однако Kotlin/Native позволяет писать приложения, которые компилируются в нативный код и которые 
+выполняются без JVM.</p>
+<p>Также стоит отметить, что так как одно из самых популярных направлений разработки на Kotlin представляет разработка под Android, то на этом сайте https://metanit.com также имеется 
+<a href="https://metanit.com/kotlin/jetpack">руководство по созданию мобильных приложений</a> на Kotlin</p>
+
+<h3>Первая программа на Kotlin</h3>
+<p>Создадим первую программу на языке Kotlin. В дальнейшем при работе с Kotlin мы будем использовать специальную программу - среду разработки <b>Intellij IDEA</b>, которая во многом облегчает 
+написание приложений на Kotlin. Однако эта среда довольно тяжеловесна, и в реальности для создания приложений нам нужно всего два компонента - текстовый редактор для набора кода программы и 
+компилятор для компиляции кода в приложение.</p>
+<p>В качестве текстового редактора можно взять любой понравившийся. Например, я буду ориентироватья на Visual Studio Code.</p>
+<p>Загрузить компилятор непосредственно для самого языка Kotlin можно по адресу <a href="https://github.com/JetBrains/kotlin/releases/latest/" rel="nofollow">https://github.com/JetBrains/kotlin/releases/latest/</a>. 
+В самом низу страницы под заголовком <span class="b">Assets</span> мы можем найти общую версию компилятора, версии компилятора Kotlin/Native для разных операционных систем, а также исходный код. Нас интересует общая версия компилятора, которая называется по шаблону 
+<code>kotlin-compiler-x.x.x.zip</code>, где <code>x.x.x</code> - это номер версии. Например, в моем случае это файл <span class="b">kotlin-compiler-1.9.22.zip</span>:</p>
+<img src="../pics/1.9.png" alt="Компилятор Kotlin" style="width:700px;">
+<p>Загрузим и распакуем из архива папку <span class="b">kotlinc</span>. В распакованном архиве в папке bin мы можем найти утилиту <span class="b">kotlinc</span> - этои есть компилятор Kotlin. 
+Кроме того, здесь также располагается приложение <b>kotlin</b>, которое выполняет скомпилированный код:</p>
+<img src="../pics/1.10.png" alt="Компилятор для языка Kotlin">
+<p>Стоит отметить, что на Linux, например, на Ubuntu, Kotlin можно установить через пакетный менеджер snap с помощью команды</p>
+<pre class="sh">sudo snap install kotlin --classic</pre>
+<h4>Написание кода программы</h4>
+<p>Теперь определим на жестком диске каталог для файлов с исходным кодом. Например, в моем случае каталог будет находиться по пути <span class="b">c:/kotlin</span>. 
+В этом каталоге создадим новый файл, который назовем <span class="b">app.kt</span>. Расширение <span class="b">kt</span> - это расширение файлов на языке Kotlin.</p>
+<p>Далее определим в этом файле код, который будет выводить некоторое сообщение на консоль:</p>
+<div><div id="highlighter_334479" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello METANIT.COM"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Точкой входа в программу на Kotlin является функция <span class="b">main</span>. Для определения функции применяется ключевое слово <span class="b">fun</span>, 
+после которого идет название функции - то есть <span class="b">main</span>. Данная функция не принимает никаких параметров, поэтому после названия функции указываются пустые скобки.</p>
+<p>Далее в фигурных скобках определяются собственно те действия, которые выполняет функция main. 
+В данном случае внутри функции main выполняется другая функция - <span class="b">println()</span>, которая выводит некоторое сообщение на консоль.</p>
+<img src="../pics/1.11.png" alt="Первая программа на Kotlin в текстовом редакторе" style="width:400px;">
+<p>Откроем командную строку. Вначале с помощью команды <span class="b">cd</span> перейдем к папке, где находится файл <span class="b">app.kt</span>. 
+Затем для компиляции программы введем следующую команду:</p>
+<pre class="sh">c:\kotlinc\bin\kotlinc app.kt 
+</pre>
+<p>В данном случае мы передаем компилятору <span class="b">c:\kotlin\bin\kotlinc</span> для компиляции файл app.kt. (Чтобы не писать полный путь к компилятору, 
+путь к нему можно добавить в переменную PATH в переменных среды). В результате в папке с исходным кодом появится файл <span class="b">AppKt.class</span> - это скомпилированный код в виде бай-кода для виртуальной машины Java.</p>
+<p>Теперь запустим приложение с помощью второй утилиты - <b>kotlin</b>:</p> 
+<pre class="sh">c:\kotlinc\bin\kotlin AppKt 
+</pre>
+<p>И консоль должна нам вывести сообщение "Hello METANIT.COM". Полный вывод:</p>
+<pre class="sh">C:\Windows\system32&gt;cd c:\kotlin
+c:\kotlin&gt;c:\kotlinc\bin\kotlinc app.kt 
+c:\kotlin&gt;c:\kotlinc\bin\kotlin AppKt 
+Hello METANIT.COM
+
+c:\kotlin&gt;
+</pre>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="898f2614b7"></div></div></body></html>

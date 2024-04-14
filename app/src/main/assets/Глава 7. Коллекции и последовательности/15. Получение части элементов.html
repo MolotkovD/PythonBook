@@ -1,0 +1,119 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Получение части элементов</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<h3>slice</h3>
+<p>Функция <span class="b">slice()</span> возвращает часть коллекции, элементы которой располагаются на определенных индексах. Индексы передаеются в функцию 
+либо в виде диапазона <code>IntRange</code>, либо коллекции значений <code>Iterable&lt;Int&gt;</code>. Результатом функции является список 
+List&lt;T&gt;, который содержит элементы по указанным индексам:</p>
+<div><div id="highlighter_670399" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">println(people.slice(1..3))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Bob, Sam, Kate]</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(people.slice(0..5 step 2))&nbsp; </code><code class="kt comments">// [Tom, Sam, Alice]</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(people.slice(listOf(1, 3, 5, 1)))&nbsp;&nbsp; </code><code class="kt comments">// [Bob, Kate, Mike, Bob]</code></div></div></td></tr></tbody></table></div></div>
+<p>Стоит отметить, что для последовательностей эта функция не доступна.</p>
+<h3>Take и takeWhile</h3>
+<p>Функция <span class="b">take()</span> извлекает из начала коллекции/последовательности определенное количество элементов</p>
+<div><div id="highlighter_526418" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">take(n: Int): List&lt;T&gt;/Sequence&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Например, выберем 3 первых элементов:</p>
+<div><div id="highlighter_221717" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(people.take(3))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ["Tom", "Bob", "Sam"]</code></div></div></td></tr></tbody></table></div></div>
+<p>Для коллекций также доступна функция <span class="b">takeLast()</span>, которая извлекает определенное количество элементов из конца коллекции</p>
+<div><div id="highlighter_259974" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt comments">// получаем три последних элемента</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.takeLast(3))&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ["Kate", "Alice", "Mike"]</code></div></div></td></tr></tbody></table></div></div>
+<p>Функция <span class="b">takeWhile()</span> отбирает элементы с начала коллекции/последовательности, которые соответвуют условию предиката:</p>
+<div><div id="highlighter_276079" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">takeWhile(predicate: (T) -&gt; Boolean): List&lt;T&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// для коллекций</code></div><div class="line number2 index1 alt1"><code class="kt plain">takeWhile(predicate: (T) -&gt; Boolean): Sequence&lt;T&gt;&nbsp;&nbsp; </code><code class="kt comments">// для последовательностей</code></div></div></td></tr></tbody></table></div></div>
+<p>функция предиката получает в качестве параметра текущий элемент и возращает true, если элемент соответствует условию:</p>
+<div><div id="highlighter_385465" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.takeWhile{it.length == 3}</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ["Tom", "Sam"]</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае условие предиката возвращает true, если длина строки равна 3: <code>{it.length == 3}</code>, 
+поэтому функция takeWhile отбирает строки, пока они соответствуют этому условию. Так, в данном случае в результирующем списке окажется первые два элемента: 
+<code>["Tom", "Sam"]</code>. Когда функция <code>takeWhile()</code> встретит хоть один элемент, который не соответствует условию, она завершит работу. 
+Хотя в списке people есть еще элементы с длиной в три символа (элемент <code>"Bob"</code>). Поэтому если в списке первый элемент уже не соответствует условию предиката, то функция возвратит пустой список:</p>
+<div><div id="highlighter_707471" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.takeWhile{it.length == 4}&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// выбираем строки с длиной в 4 символа</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [] - пустой список</code></div></div></td></tr></tbody></table></div></div>
+<p>Для коллекций также доступа функция <span class="b">takeLastWhile()</span>, которая работает аналогичным образом, только выбирает элементы с конца списка</p>
+<div><div id="highlighter_72965" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.takeLastWhile{it.length !=3} </code><code class="kt comments">// длина НЕ равна 3</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ["Alice", "Mike"]</code></div></div></td></tr></tbody></table></div></div>
+<h3>drop и dropWhile</h3>
+<p>Функция <span class="b">drop()</span> позволяет пропустить определенное количество элементов в коллекции/последовательности:</p>
+<div><div id="highlighter_546426" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.drop(3) </code><code class="kt comments">// пропускаем первые 3 элемента</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Bob, Alice, Mike]</code></div></div></td></tr></tbody></table></div></div>
+<p>Для коллекций также доступна функция <span class="b">dropLast()</span>, которая проупскает определенное количество элементов из конца коллекции</p>
+<div><div id="highlighter_209663" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.dropLast(2) </code><code class="kt comments">// пропускаем последние 2 элемента</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Tom, Sam, Kate, Bob]</code></div></div></td></tr></tbody></table></div></div>
+<p>Функция <span class="b">dropWhile()</span> пропускает элементы с начала коллекции/последовательности, которые соответвуют условию предиката:</p>
+<div><div id="highlighter_772336" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">dropWhile(predicate: (T) -&gt; Boolean): List&lt;T&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// для коллекций</code></div><div class="line number2 index1 alt1"><code class="kt plain">dropWhile(predicate: (T) -&gt; Boolean): Sequence&lt;T&gt;&nbsp;&nbsp; </code><code class="kt comments">// для последовательностей</code></div></div></td></tr></tbody></table></div></div>
+<p>функция предиката получает в качестве параметра текущий элемент и возращает true, если элемент соответствует условию:</p>
+<div><div id="highlighter_36585" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.dropWhile{it.length == 3}</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Kate, Bob, Alice, Mike]</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае условие предиката возвращает true, если длина строки равна 3: <code>{it.length == 3}</code>, 
+поэтому функция <code>dropWhile()</code> пропускает строки, пока они соответствуют этому условию. Так, в данном случае в результирующем списке окажется первые два элемента: 
+<code>[Kate, Bob, Alice, Mike]</code>. Когда функция <code>dropWhile()</code> встретит хоть один элемент, который не соответствует условию, она завершит работу. 
+Хотя в списке people есть еще элементы с длиной в три символа (элемент <code>"Bob"</code>). Поэтому если в списке первый элемент уже не соответствует условию предиката, то функция возвратит список со всеми элементами.</p>
+<p>Для коллекций также доступа функция <span class="b">dropLastWhile()</span>, которая работает аналогичным образом, только пропускает элементы с конца списка</p>
+<div><div id="highlighter_699263" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">part = people.dropLastWhile{it.length !=3} </code><code class="kt comments">// длина НЕ равна 3</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(part)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// ["Tom", "Sam", "Kate", "Bob"]</code></div></div></td></tr></tbody></table></div></div>
+<h3>Разделение на части</h3>
+<p>Функция <span class="b">chuncked()</span> позволяет разбить коллекцию/последовательность на списки определенной длины:</p>
+<div><div id="highlighter_772380" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">chunked(size: Int): List&lt;List&lt;T&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// для коллекций</code></div><div class="line number2 index1 alt1"><code class="kt plain">chunked(size: Int): Sequence&lt;List&lt;T&gt;&gt;&nbsp; </code><code class="kt comments">// для последовательностей</code></div></div></td></tr></tbody></table></div></div>
+<p>В качестве параметра в функцию передается размер списков, в которые будут помещаться элементы:</p>
+<div><div id="highlighter_347721" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">parts = people.chunked(3)</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(parts)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [[Tom, Sam, Kate], [Bob, Alice, Mike]]</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае разбиваем коллекцию на списки по 3 элемента, соответственно результирующая коллекция будет содержать два списка по три элемента.</p>
+<p>Дополнительная версия функции в качестве второго параметра принимает функцию преобразования элементов:</p>
+<div><div id="highlighter_745147" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">chunked(size: Int, transform: (List&lt;T&gt;) -&gt; R): List&lt;R&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// для коллекций</code></div><div class="line number2 index1 alt1"><code class="kt plain">chunked(size: Int,transform: (List&lt;T&gt;) -&gt; R): Sequence&lt;R&gt; </code><code class="kt comments">// для последовательностей</code></div></div></td></tr></tbody></table></div></div>
+<p>То есть сначала коллекция/последовательность разбивается на несколько списков длиной size, затем каждый список передается в функцию преобразования, 
+где на его основе можно сгенерировать новое значение. Например:</p>
+<div><div id="highlighter_102525" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">parts = people.chunked(3){it.first()}</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(parts)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Tom, Bob]</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае коллекция разделяется на два списка длиной по 3 элемента. В функции преобразования из каждого списка выбирается и возвращается 
+первый элемент каждого списка. Соответственно результатом функции будет список из двух первых элементов.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

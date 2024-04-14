@@ -1,0 +1,120 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Async, await и Deferred</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Наряду с <code>launch</code> в пакете <code>kotlinx.coroutines</code> есть еще один построитель корутин - функция <span class="b">async</span>. 
+Эта функция применяется, когда надо получить из корутины некоторый результат.</p>
+<p><span class="b">async</span> запускает отдельную корутину, которая выполняется параллельно с остальными корутинами. Например:</p> 
+<div><div id="highlighter_765421" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">async{ printHello()}</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Program has finished"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">printHello(){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(500L)&nbsp; </code><code class="kt comments">// имитация продолжительной работы</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello work!"</code><code class="kt plain">)</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">Program has finished
+Hello work!
+</pre>
+</div>
+<p>Кроме того, async-корутина возвращает объект 
+<span class="b">Deferred</span>, который ожидает получения результата корутины. (Интерфейс <span class="b">Deferred</span> унаследован от интерфейса 
+<span class="b">Job</span>, поэтому для также доступны весь функционал, определенный для интефейса Job)</p>
+<p>Для получения результата из объекта <span class="b">Deferred</span> применяется функция <span class="b">await()</span>. Рассмотрим на примере:</p>
+<div><div id="highlighter_714639" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">message: Deferred&lt;String&gt; = async{ getMessage()}</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"message: ${message.await()}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Program has finished"</code><code class="kt plain">)</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">getMessage() : String{</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(500L)&nbsp; </code><code class="kt comments">// имитация продолжительной работы</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt string">"Hello"</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае для имитации продолжительной работы определена функция <code>getMessage()</code>, которая возвращает строку.</p>
+<p>С помощью функции <span class="b">async</span> запускаем корутину, которая выполняет эту функцию.</p>
+<div><div id="highlighter_894806" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">async{ getMessage()}</code></div></div></td></tr></tbody></table></div></div>
+<p>Поскольку функция <code>getMessage()</code> возвращает объект типа <code>String</code>, то возвращаемый корутиной объект представляет тип 
+<code>Deferred&lt;String&gt;</code> (объект Deferred типизиуется возвращаемым типом функции, то есть в данном случае типом String).</p>
+<div><div id="highlighter_320837" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">message: Deferred&lt;String&gt; = async{ getMessage()}</code></div></div></td></tr></tbody></table></div></div>
+<p>Далее у объекта Deferred для получения результата функции <code>getMessage()</code> вызываем метод <span class="b">await()</span>. Он ожидает, пока не будет 
+получен результат. Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">message: Hello
+Program has finished
+</pre>
+</div>
+<p>Поскольку функция <code>getMessage()</code> возвращает объект типа String, то метод <span class="b">await()</span> в данном случае также будет возвращать строку, 
+которую мы могли бы, например, присвоить переменной:</p>
+<div><div id="highlighter_14861" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">text: String = message.await()</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом мы можем с помощью <code>async</code> запустить несколько корутин, которые будут выполняться параллельно:</p>
+<div><div id="highlighter_41684" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numDeferred1 = async{ sum(1, 2)}</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numDeferred2 = async{ sum(3, 4)}</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numDeferred3 = async{ sum(5, 6)}</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">num1 = numDeferred1.await()</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">num2 = numDeferred2.await()</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">num3 = numDeferred3.await()</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"number1: $num1&nbsp; number2: $num2&nbsp; number3: $num3"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int) : Int{</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(500L) </code><code class="kt comments">// имитация продолжительной работы</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number17 index16 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь запускается три корутины, каждая из которых выполняет функцию <code>sum()</code>. Эта функция складывает два числа и возвращает их сумму в виде объекта <code>Int</code>. 
+Поэтому корутины возвращают объект <code>Deferred&lt;Int&gt;</code>. Соответственно вызов метода <code>await()</code> у этого объекта возвратит объект <code>Int</code>, то есть 
+сумму двух чисел. При этом все три корутины будет запущены одновременно. Например, ниже на скриншоте отладчика корутин видно, что две корутины уже работают (или находятся в состоянии 
+<code>Running</code>), и еще одна корутина только создана и ожидает запуска (состояние <code>Created</code>)</p>
+<img src="../pics/coroutine5.png" alt="Coroutine async and await in Kotlin">
+<h3>Отложенный запуск</h3>
+<p>По умолчанию построитель корутин <span class="b">async</span> создает и сразу же запускает корутину. Но как и при создании корутины с помощью 
+<code>launch</code> для async-корутин можно применять технику отложенного запуска. Только в данном случае корутина запускается не только 
+при вызове метода <span class="b">start</span> объекта Deferred (который усналедован от интерфейса Job), но также и с помощью 
+метода <span class="b">await()</span> при обращении к результу корутины. Например:</p>
+<div><div id="highlighter_605474" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// корутина создана, но не запущена</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">sum = async(start = CoroutineStart.LAZY){ sum(1, 2)}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(1000L)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Actions after the coroutine creation"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"sum: ${sum.await()}"</code><code class="kt plain">)&nbsp;&nbsp; </code><code class="kt comments">// запуск и выполнение корутины</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div><div class="line number12 index11 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int) : Int{</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Coroutine has started"</code><code class="kt plain">)</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">Actions after the coroutine creation
+Coroutine has started
+sum: 3
+</pre>
+</div>
+<p>Если необходимо, чтобы корутина еще до метода <code>await()</code> начала выполняться, то можно вызвать метод <span class="b">start()</span>:</p>
+<div><div id="highlighter_307745" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// корутина создана, но не запущена</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">sum = async(start = CoroutineStart.LAZY){ sum(1, 2)}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(1000L)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Actions after the coroutine creation"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sum.start()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// запуск корутины</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"sum: ${sum.await()}"</code><code class="kt plain">)&nbsp;&nbsp; </code><code class="kt comments">// получаем результат</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div><div class="line number13 index12 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int) : Int{</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Coroutine has started"</code><code class="kt plain">)</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

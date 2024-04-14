@@ -1,0 +1,109 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Инфиксная нотация</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p><span class="b">Инфиксная нотация</span> представляет помещение оператора или функции перед операндами или аргументами. Инфиксная нотация часто применяется для определения 
+математических и логических выражений. К примеру, выражение <code>(+ a b)</code> представляет инфиксную нотацию записи суммы чисел <code>a + b</code>.</p>
+<p>Для определения инфиксной функции вначале ее определения указывается ключевое слово 
+<span class="b">infix</span>:</p>
+<div><div id="highlighter_504464" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">название_функции(параметр: тип_параметра): тип_возвращаемого_значения{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// действия функции</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Инфиксная функция должна принимать только один параметр. При этом параметр не должен иметь значение по умолчанию и не должен представлять неопределенный 
+набор значений.</p>
+<p>Есть два способа определения инфиксной функции: либо внутри класса, либо как функции расширения.</p>
+<p>Определим вначале внутри класса:</p>
+<div><div id="highlighter_25217" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">acc = Account(1000)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc put 150</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// равноценно вызову</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc.put(150)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc.printSum()&nbsp; </code><code class="kt comments">// 1300</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt keyword">class</code> <code class="kt plain">Account(</code><code class="kt keyword">var</code> <code class="kt plain">sum: Int) {</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">put(amount: Int){</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">sum = sum + amount</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">fun</code> <code class="kt plain">printSum() = println(sum)</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь определен класс Account - класс банковского счета, который через конструктор принимает начальную сумму на счете. С помощью инфиксной функции 
+<code>put()</code> определяем добавление на счет суммы, переданной через параметр функции.</p>
+<p>Вызов функции выглядит следующим образом:</p>
+<div><div id="highlighter_423936" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">acc put 150</code></div></div></td></tr></tbody></table></div></div>
+<p>Первый параметр (здесь переменная <code>acc</code>) представляет объект, который вызывает функцию. А второй параметр - данные, которые непосредственно 
+будут передаваться инфиксной функции через ее параметр. То есть данный вызов фактически аналогичен вызову:</p>
+<div><div id="highlighter_32333" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">acc.put(150)</code></div></div></td></tr></tbody></table></div></div>
+<p>Также инфиксная функция может определяться как функция расширения. Например, перепишем выше использованную функцию <code>put()</code> в виде функции расширения:</p>
+<div><div id="highlighter_91763" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">acc = Account(1000)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc put 150</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc.put(150)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">acc.printSum()&nbsp; </code><code class="kt comments">// 1300</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">Account.put(amount: Int){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">this</code><code class="kt plain">.sum = </code><code class="kt keyword">this</code><code class="kt plain">.sum + amount</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt keyword">class</code> <code class="kt plain">Account(</code><code class="kt keyword">var</code> <code class="kt plain">sum: Int) {</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">fun</code> <code class="kt plain">printSum() = println(sum)</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+
+
+<p>Стоит отметить, что функция расширения в отличие от функции внутри класса имеет доступ только тем свойствам, которые являются публичными.</p>
+<p>Однако использование функций расширений позволяет добавить инфиксные функции к уже существующим типам. Например, определим инфиксную функцию для подсчета 
+частоты символа в строке:</p>
+<div><div id="highlighter_916848" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">hello = </code><code class="kt string">"hello world"</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">lCount = hello wordCount </code><code class="kt string">'l'</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">oCount = hello wordCount </code><code class="kt string">'o'</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(lCount)&nbsp;&nbsp; </code><code class="kt comments">// 3</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(oCount)&nbsp;&nbsp; </code><code class="kt comments">// 2</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">String.wordCount(c: Char) : Int{</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">count = 0</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt keyword">this</code><code class="kt plain">){</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(n == c) count++</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">count</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция <code>wordCount</code> проходит по всем символам строки и подсчитывает, сколько раз встречается символ, передаваемый через параметр функции. 
+Результат возвращается функцией. Затем мы можем применить инфиксную нотацию:</p>
+<div><div id="highlighter_390482" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">lCount = hello wordCount </code><code class="kt string">'l'</code></div></div></td></tr></tbody></table></div></div>
+<p>Поскольку функция возвращает результат типа Int, то мы можем получить этот результат в переменную.</p>
+
+<p>Инфиксная функция позволяет задать способ описания действия, более близкий к естественному языку. Например:</p>
+<div><div id="highlighter_402745" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom says </code><code class="kt string">"Hello"</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String) {</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">says(words: String){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"$name says: ${words}"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь определен класс Person, который представляет человека и который через параметр name конструктора получает имя человека. В этом классе в виде инфиксной функции 
+определен метод "says", который принимает параметр words - это условные слова, которые произносит человек.</p>
+<p>Для вызова метода says мы можем написать следующим образом:</p>
+<div><div id="highlighter_249378" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">tom says </code><code class="kt string">"Hello"</code></div></div></td></tr></tbody></table></div></div>
+<p>что может показаться более естественным выражения действия на английском, нежели:</p>
+<div><div id="highlighter_784976" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">tom.says(</code><code class="kt string">"Hello"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>И не только на английском. Например:</p>
+<div><div id="highlighter_135089" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">Том = Person(</code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Том говорит </code><code class="kt string">"Привет"</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String) {</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">infix </code><code class="kt keyword">fun</code> <code class="kt plain">говорит(words: String){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"$name говорит: ${words}"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

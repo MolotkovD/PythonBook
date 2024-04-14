@@ -1,0 +1,77 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Перегрузка функций</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p><b>Перегрузка функций</b> (f<b>unction overloading</b>) представляет определение нескольких функций с одним и тем же именем, но с различными параметрами. 
+Параметры перегруженных функций могут отличаться по количеству, типу или по порядку в списке параметров.</p>
+<div><div id="highlighter_340069" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int) : Int{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div><div class="line number4 index3 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Double, b: Double) : Double{</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Int, c: Int) : Int{</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b + c</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Int, b: Double) : Double{</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div><div class="line number13 index12 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Double, b: Int) : Double{</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае для одной функции <code>sum()</code> определено пять перегруженных версий. Каждая из версий отличается либо по типу, либо количеству, либо по порядку параметров. 
+При вызове функции sum компилятор в зависимости от типа и количества параметров сможет выбрать для выполнения нужную версию:</p>
+<div><div id="highlighter_438835" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">a = sum(1, 2)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">b = sum(1.5, 2.5)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">c = sum(1, 2, 3)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">d = sum(2, 1.5)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">e = sum(1.5, 2)</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом при перегрузке не учитывает возвращаемый результат функции. Например, пусть у нас будут две следующие версии функции sum:</p>
+<div><div id="highlighter_229005" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Double, b: Int) : Double{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">a + b</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div><div class="line number4 index3 alt1"><code class="kt keyword">fun</code> <code class="kt plain">sum(a: Double, b: Int) : String{</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt string">"$a + $b"</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Они совпадают во всем за исключением возвращаемого типа. Однако в данном случае мы сталкивамся с ошибкой, так как перегруженные версии 
+должны отличаться именно по типу, порядку или количеству параметров. Отличие в возвращаемом типе не имеют значения.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

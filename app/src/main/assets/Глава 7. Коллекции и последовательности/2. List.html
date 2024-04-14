@@ -1,0 +1,114 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>List</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p><span class="b">List</span> представляет последовательный список элементов. При этом List представляет неизменяемую (immutable) коллекцию, которая в основном 
+только обеспечивает получение элементов по позиции.</p>
+<p>Интерфейс List расширяет интерфейс <span class="b">Collection</span>, поэтому перенимает его возможности.</p>
+<p>Для создания объекта List применяется метод <span class="b">listOf()</span>:</p>
+<div><div id="highlighter_192668" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">numbers = listOf(1, 2, 3, 4, 5)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// объект List&lt;Int&gt;</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)&nbsp;&nbsp; </code><code class="kt comments">// объект List&lt;String&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Списки поддерживают перебор с помощью цикла for, кроме для списка по умолчанию задача реализация toString, которая выводит все элементы списка в 
+удобочитаемом виде:</p>
+<div><div id="highlighter_404724" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt keyword">for</code><code class="kt plain">(person </code><code class="kt keyword">in</code> <code class="kt plain">people) println(person)</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(people) </code><code class="kt comments">// [Tom, Sam, Kate, Bob, Alice]</code></div></div></td></tr></tbody></table></div></div>
+<h4>Методы списков</h4>
+<p>Кроме унаследованных методов класс List имеет ряд специфичных. Рассмотрим некоторые из них.</p>
+<p>Для получения элемента по индексу можно применять метод <span class="b">get(index)</span>, который возвращает элемент по индексу</p>
+<div><div id="highlighter_671422" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">first = people.get(0)</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">second = people.get(1)</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(first)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(second)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Sam</code></div></div></td></tr></tbody></table></div></div>
+<p>Вместо метода get для обращения по индексу можно использовать квадратные скобки <span class="b">[]</span>:</p>
+<div><div id="highlighter_782765" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">first = people[0]</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">second = people[1]</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(first)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(second)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Sam</code></div></div></td></tr></tbody></table></div></div>
+<p>Однако, если индекс выходит за границы списка, то при использовании метода  <code>get()</code> и квадратных скобок генерируется исключение. 
+Чтобы избежать подобной ситуации, можно применять метод <span class="b">getOrNull()</span>, который возвращает null, если индекс находится вне границ списка:</p>
+<div><div id="highlighter_433249" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">first = people.getOrNull(0)</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">tenth = people.getOrNull(10)</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(first)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(tenth)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// null</code></div></div></td></tr></tbody></table></div></div>
+<p>Либо в качестве альтернативы можно применять метод <span class="b">getOrElse()</span>:</p>
+<div><div id="highlighter_181075" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">getOrElse(index: Int, defaultValue: (Int) -&gt; T): T</code></div></div></td></tr></tbody></table></div></div>
+<p>Первый параметр представляет индекс, а второй параметр - функция, которая получает запрошенный индекс и возвращает значение, которое возвращается, если индекс выходит 
+за границы списка:</p>
+<div><div id="highlighter_720660" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">first = people.getOrElse(0){</code><code class="kt string">"Undefined"</code><code class="kt plain">}</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">seventh = people.getOrElse(7){</code><code class="kt string">"Invalid index $it"</code><code class="kt plain">}</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">tenth = people.getOrElse(10){</code><code class="kt string">"Undefined"</code><code class="kt plain">}</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number6 index5 alt1"><code class="kt plain">println(first)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(seventh)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Invalid index 7</code></div><div class="line number8 index7 alt1"><code class="kt plain">println(tenth)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Undefined</code></div></div></td></tr></tbody></table></div></div>
+<h4>Получение части списка</h4>
+<p>Метод <span class="b">subList()</span> возвращает часть списка и в качестве параметров принимает начальный и конечный индексы извлекаемых элементов:</p>
+<div><div id="highlighter_126649" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">subList(fromIndex: Int, toIndex: Int): List&lt;E&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Например, получим подсписок с 1 по 4 индексы:</p>
+<div><div id="highlighter_350309" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">subPeople = people.subList(1, 4)</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(subPeople)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Sam, Kate, Bob]</code></div></div></td></tr></tbody></table></div></div>
+<h3>Изменяемые списки</h3>
+<p>Изменяемые списки представлены интерфейсом <span class="b">MutableList</span>. Он расширяет интерфейс List и позволяют добавлять и удалять элементы. 
+Данный интерфейс реализуется классом <span class="b">ArrayList</span>.</p>
+<p>Для создания изменяемых списков можно использовать ряд методов:</p>
+<ul>
+<li><p><span class="b">arrayListOf()</span>: создает объект ArrayList</p></li>
+<li><p><span class="b">mutableListOf()</span>: создает объект MutableList</p></li>
+</ul>
+<p>Создание изменяемых списков:</p>
+<div><div id="highlighter_208902" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">numbers : ArrayList&lt;Int&gt; = arrayListOf(1, 2, 3, 4, 5)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">var</code> <code class="kt plain">numbers2: MutableList&lt;Int&gt; = mutableListOf(5, 6, 7)</code></div></div></td></tr></tbody></table></div></div>
+<p>Если необходимо добавлять или удалять элементы, то надо использовать методы MutableList:</p>
+<ul>
+<li><p><span class="b">add(index, element)</span>: добавлят элемент по индексу</p></li>
+<li><p><span class="b">add(element)</span>: добавляет элемент</p></li>
+<li><p><span class="b">addAll(collection)</span>: добавляет коллекцию элементов</p></li>
+<li><p><span class="b">remove(element)</span>: удаляет элемент</p></li>
+<li><p><span class="b">removeAt(index)</span>: удаляет элемент по индексу</p></li>
+<li><p><span class="b">clear()</span>: удаляет все элементы коллекции</p></li>
+</ul>
+<div><div id="highlighter_541660" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numbers1 : ArrayList&lt;Int&gt; = arrayListOf(1, 2, 3, 4, 5)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers1.add(4)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers1.clear()</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">numbers2: MutableList&lt;Int&gt; = mutableListOf(5, 6, 7)</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers2.add(12)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers2.add(0, 23)</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers2.addAll(0, listOf(-3, -2, -1))</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers2.removeAt(0)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">numbers2.remove(5)</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(n </code><code class="kt keyword">in</code> <code class="kt plain">numbers2){ println(n) }</code></div><div class="line number16 index15 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

@@ -1,0 +1,153 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Операции с числами</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<h3>Арифметические операции</h3>
+<p>Kotlin поддерживает базовые арифметические операции:</p>
+<ul>
+<li><p><span class="b">+</span> (сложение): возвращает сумму двух чисел.</p>
+<div><div id="highlighter_642736" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x + y</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 11</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">-</span> (вычитание): возвращает разность двух чисел.</p>
+<div><div id="highlighter_126460" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x - y&nbsp; </code><code class="kt comments">// z = -1</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">*</span> (умножение): возвращает произведение двух чисел.</p>
+<div><div id="highlighter_321171" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x * y&nbsp; </code><code class="kt comments">// z = 30</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">/</span> (деление): возвращает частное двух чисел.</p>
+<div><div id="highlighter_190024" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 60</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 10</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x / y&nbsp; </code><code class="kt comments">// z = 6</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом если в операции деления оба операнда представляют целые числа, то результатом тоже будет целое число, а если в процессе деления образовалась дробная часть, то она отбрасывается:</p>
+<div><div id="highlighter_521464" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">x = 11</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">y = 5</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">z = x / y&nbsp; </code><code class="kt comments">// z =2</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(z)</code><code class="kt comments">// 2</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Так в данном случае, хотя если согласно стандартной математике разделить 11 на 5, то получится 2.2. Однако поскольку оба операнда представляют целочисленный тип, а именно тип <code>Int</code>, 
+то дробная часть - 0.2 отрабрасывается, поэтому результатом будет число 2, а переменная <code>z</code> будет представлять тип <code>Int</code>.</p>
+<p>Чтобы результатом было дробное число, один из операндов должен представлять число с плавающей точкой:</p>
+<div><div id="highlighter_579292" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">x = 11</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">y = 5.0</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">z = x / y&nbsp;&nbsp; </code><code class="kt comments">// z =2.2</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 2.2</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае переменная <code>y</code> представляет тип <code>Double</code>, поэтому результатом деления будет число 2.2, а переменная <code>z</code> также 
+будет представлять тип <code>Double</code></p>
+
+</li>
+<li><p><span class="b">%</span>: возвращает остаток от целочисленного деления двух чисел.</p>
+<div><div id="highlighter_436741" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 65</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 10</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x % y&nbsp; </code><code class="kt comments">// z = 5</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">++</span> (инкремент): увеличивает значение на единицу.</p>
+<p>Префиксный инкремент возвращает увеличенное значение:</p>
+<div><div id="highlighter_258490" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = ++x</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// x = 6</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// y = 6</code></div></div></td></tr></tbody></table></div></div>
+<p>Постфиксный инкремент возвращает значение до увеличения на единицу:</p>
+<div><div id="highlighter_276078" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = x++</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// x = 6</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// y = 5</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">--</span> (декремент): уменьшает значение на единицу.</p>
+<p>Префиксный декремент возвращает уменьшенное значение:</p>
+<div><div id="highlighter_742918" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = --x</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// x = 4</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// y = 4</code></div></div></td></tr></tbody></table></div></div>
+<p>Постфиксный декремент возвращает значение до уменьшения на единицу:</p>
+<div><div id="highlighter_331757" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">x = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = x--</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// x = 4</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// y = 5</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<p>Также есть ряд операций присвоения, которые сочетают арифметические операции и присвоение:</p>
+<ul>
+<li><p><span class="b">+=</span>: присваивание после сложения. Присваивает левому операнду сумму левого и правого операндов: <span class="b">A += B</span> эквивалентно 
+<span class="b">A = A + B</span></p></li>
+<li><p><span class="b">-=</span>: присваивание после вычитания. Присваивает левому операнду разность левого и правого операндов: 
+<span class="b">A -= B</span> эквивалентно <span class="b">A = A - B</span></p></li>
+<li><p><span class="b">*=</span>: присваивание после умножения. Присваивает левому операнду произведение левого и правого операндов: 
+<span class="b">A *= B</span> эквивалентно <span class="b">A = A * B</span></p></li>
+<li><p><span class="b">/=</span>: присваивание после деления. Присваивает левому операнду частное левого и правого операндов: 
+<span class="b">A /= B</span> эквивалентно <span class="b">A = A / B</span></p></li>
+<li><p><span class="b">%=</span>: присваивание после деления по модулю. Присваивает левому операнду остаток от целочисленного деления левого операнда на правый: 
+<span class="b">A %= B</span> эквивалентно <span class="b">A = A % B</span></p></li>
+</ul>
+<h3>Поразрядные операции</h3>
+<p>Ряд операций выполняется над двоичными разрядами числа. Здесь важно понимать, как выглядит двоичное представление тех или иных чисел. 
+В частности, число 4 в двоичном виде - 100, а число 15 - 1111.</p>
+<p>Есть следующие поразрядные операторы (они применяются только к данным типов Int и Long):</p>
+<ul>
+<li><p><span class="b">shl</span>: сдвиг битов числа со знаком влево</p>
+<div><div id="highlighter_532805" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = 3 shl 2&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 11 &lt;&lt; 2 = 1100 </code></div><div class="line number2 index1 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">d = 0b11 shl 2</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// d = 12</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае число сдвигается на два разряда влево, поэтому справа число в двоичном виде дополняется двумя нулями. То есть в двоичном виде 3 представляет 11. Сдвигаем 
+на два разряда влево (дополняем справа двумя нулями) и получаем 1100, то есть в десятичной системе число 12.</p>
+</li>
+<li><p><span class="b">shr</span>: сдвиг битов числа со знаком вправо</p>
+<div><div id="highlighter_371144" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = 12 shr 2&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 1100 &gt;&gt; 2 = 11</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 3</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">d = 0b1100 shr 2</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// d = 3</code></div></div></td></tr></tbody></table></div></div>
+<p>Число 12 сдвигается на два разряда вправо, то есть два числа справа факически отбрасываем и получаем число 11, то есть 3 в десятичой системе.</p>
+</li>
+<li><p><span class="b">ushr</span>: сдвиг битов беззнакового числа вправо</p>
+<div><div id="highlighter_234025" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = 12 ushr 2&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 1100 &gt;&gt; 2 = 11</code></div><div class="line number2 index1 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 3</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">and</span>: побитовая операция AND (логическое умножение или конъюнкция). Эта операция сравнивает соответствующие разряды двух чисел и возвращает единицу, если эти разряды обоих чисел равны 1. 
+Иначе возвращает 0.</p>
+<div><div id="highlighter_824715" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5&nbsp;&nbsp; </code><code class="kt comments">// 101</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6&nbsp;&nbsp; </code><code class="kt comments">// 110</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x and y&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 101 &amp; 110 = 100</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 4</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 0b101 and 0b110</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// d = 4</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">or</span>: побитовая операция OR (логическое сложение или дизъюнкция). Эта операция сравнивают два соответствуюших разряда обоих чисел и 
+возвращает 1, если хотя бы один разряд равен 1. Если оба разряда равны 0, то возвращается 0.</p>
+<div><div id="highlighter_753763" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5&nbsp;&nbsp; </code><code class="kt comments">// 101</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6&nbsp;&nbsp; </code><code class="kt comments">// 110</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x or y&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 101 | 110 = 111</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 7</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 0b101 or 0b110</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// d = 7</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">xor</span>: побитовая операция XOR. Сравнивает два разряда и возвращает 1, если один из разрядов равен 1, а другой равен 0. 
+Если оба разряда равны, то возвращается 0.</p>
+<div><div id="highlighter_383528" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">x = 5&nbsp;&nbsp; </code><code class="kt comments">// 101</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">y = 6&nbsp;&nbsp; </code><code class="kt comments">// 110</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">z = x xor y&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 101 ^ 110 = 011</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// z = 3</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 0b101 xor 0b110</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// d = 3</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">inv</span>: логическое отрицание или инверсия - инвертирует биты числа</p>
+<div><div id="highlighter_836299" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">b = 11&nbsp; </code><code class="kt comments">// 1011</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">c = b.inv()</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// -12</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

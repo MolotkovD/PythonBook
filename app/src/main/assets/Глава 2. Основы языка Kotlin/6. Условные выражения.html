@@ -1,0 +1,119 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Условные выражения</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Условные выражения представляют некоторое условие, которое возвращает значение типа <span class="b">Boolean</span>: либо 
+<span class="b">true</span> (если условие истинно), либо <span class="b">false</span> (если условие ложно).</p>
+<h3>Операции отношения</h3>
+<ul>
+<li><p><span class="b">&gt;</span> (больше чем): возвращает true, если первый операнд больше второго. Иначе возвращает false</p>
+<div><div id="highlighter_725934" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c : Boolean =&nbsp; a &gt; b</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false - a меньше чем b</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 35 &gt; 12</code></div><div class="line number7 index6 alt2"><code class="kt plain">println(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true - 35 больше чем 12</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">&lt;</span> (меньше чем): возвращает true, если первый операнд меньше второго. Иначе возвращает false</p>
+<div><div id="highlighter_10806" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c =&nbsp; a &lt; b&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt keyword">val</code> <code class="kt plain">d = 35 &lt; 12&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">&gt;=</span> (больше чем или равно): возвращает true, если первый операнд больше или равен второму</p>
+<div><div id="highlighter_710892" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a &gt;= b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 11 &gt;= a&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">&lt;=</span> (меньше чем или равно): возвращает true, если первый операнд меньше или равен второму.</p>
+<div><div id="highlighter_328705" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a &lt;= b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = 15 &lt;= a&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">==</span> (равно): возвращает true, если оба операнда равны. Иначе возвращает false</p>
+<div><div id="highlighter_190750" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a == b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = b == 12&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">!=</span> (не равно): возвращает true, если оба операнда НЕ равны</p>
+<div><div id="highlighter_875306" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 11</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = 12</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a != b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = b != 12&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<h3>Логические операции</h3>
+<p>Операндами в логических операциях являются два значения типа Boolean. Нередко логические операции объединяют несколько операций отношения:</p>
+<ul>
+<li><p><span class="b">and</span>: возвращает true, если оба операнда равны true.</p>
+<div><div id="highlighter_29158" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = </code><code class="kt keyword">true</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = </code><code class="kt keyword">false</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a and b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = (11 &gt;= 5) and (9 &lt; 10)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number5 index4 alt2"><code class="kt plain">println(c)</code></div><div class="line number6 index5 alt1"><code class="kt plain">println(d)</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">or</span>: возвращает true, если хотя бы один из операндов равен true.</p>
+<div><div id="highlighter_315454" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = </code><code class="kt keyword">true</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = </code><code class="kt keyword">false</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a or b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = (11 &lt; 5) or (9 &gt; 10)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">xor</span>: возвращает true, если только один из операндов равен true. Если операнды равны, возвращается false</p>
+<div><div id="highlighter_132727" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = </code><code class="kt keyword">true</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = </code><code class="kt keyword">false</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = a xor b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true</code></div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">d = a xor (90 &gt; 10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">!</span>: возвращает true, если операнд равен false. И, наоборот, если операнд равен true, возвращается false.</p>
+<div><div id="highlighter_316679" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = </code><code class="kt keyword">true</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = !a&nbsp; </code><code class="kt comments">// false</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = !b&nbsp; </code><code class="kt comments">// true</code></div></div></td></tr></tbody></table></div></div>
+<p>В качестве альтернативы оператору ! можно использовать метод <span class="b">not()</span>:</p>
+<div><div id="highlighter_885698" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = </code><code class="kt keyword">true</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = a.not()&nbsp; </code><code class="kt comments">// false</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">c = b.not()&nbsp; </code><code class="kt comments">// true</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">in</span>: возвращает true, если операнд имеется в некоторой последовательности.</p>
+<div><div id="highlighter_857237" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 5</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = a </code><code class="kt keyword">in</code> <code class="kt plain">1..6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true - число 5 входит в последовательность от 1 до 6</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="kt keyword">val</code> <code class="kt plain">c = 4</code></div><div class="line number5 index4 alt2"><code class="kt keyword">val</code> <code class="kt plain">d = c </code><code class="kt keyword">in</code> <code class="kt plain">11..15&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// false - число 4 НЕ входит в последовательность от 11 до 15</code></div></div></td></tr></tbody></table></div></div>
+<p>Выражение <code>1..6</code> создает последовательность чисел от 1 до 6. И в данном случае оператор in проверяет, есть ли значение 
+переменной a в этой последовательности. Поскольку значение переменной a имеется в данной последовательности, то возвращается 
+true.</p>
+<p>А выражение <code>11..15</code> создает последовательность чисел от 11 до 15. И поскольку значение переменной с в эту последовательность 
+не входит, поэтому возвращается false.</p>
+<p>Если нам, наоборот, хочется возвращать <code>true</code>, если числа <span class="b">нет</span> в указанной последовательности, 
+то можно применить комбинацию операторов <span class="b">!in</span>:</p>
+<div><div id="highlighter_909167" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">a = 8</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">b = a !</code><code class="kt keyword">in</code> <code class="kt plain">1..6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// true - число 8 не входит в последовательность от 1 до 6</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

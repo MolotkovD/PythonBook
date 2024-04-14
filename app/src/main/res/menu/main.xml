@@ -3,36 +3,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:title="Глава 1">
+    <item android:title="Глава 1. Введение в язык Kotlin">
         <menu>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-
+            <item android:title="1. Что такое Kotlin. Первая программа" />
+            <item android:title="2. Первая программа на Kotlin в IntelliJ IDEA" />
         </menu>
     </item>
-    <item
-        android:title="Глава 2">
-        <menu>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
-            <item
-                android:title="@string/app_name"/>
 
+
+    <item android:title="Глава 2. Основы языка Kotlin">
+        <menu>
+            <item android:title="1. Структура программы" />
+            <item android:title="2. Переменные" />
+            <item android:title="3. Типы данных" />
+            <item android:title="4. Консольный ввод и вывод" />
+            <item android:title="5. Операции с числами" />
+            <item android:title="6. Условные выражения" />
+            <item android:title="7. Условная конструкция if...else" />
+            <item android:title="8. Конструкция when" />
+            <item android:title="9. Циклы" />
+            <item android:title="10. Диапазоны" />
+            <item android:title="11. Ведение в массивы" />
         </menu>
     </item>
+
+
+    <item android:title="Глава 3. Функциональное программирование">
+        <menu>
+            <item android:title="1. Функции и их параметры" />
+
+            <item android:title="2. Переменное количество параметров. Vararg" />
+            <item android:title="3. Возвращение результата. Оператор return" />
+            <item android:title="4. Однострочные и локальные функции" />
+            <item android:title="5. Перегрузка функций" />
+            <item android:title="6. Тип функции" />
+            <item android:title="7. Функции высокого порядка" />
+            <item android:title="8. Анонимные функции" />
+            <item android:title="9. Лямбда-выражения" />
+            <item android:title="10. Замыкания" />
+        </menu>
+    </item>
+
+
+    <item android:title="Глава 4. Объектно-ориентированное программирование">
+        <menu>
+            <item android:title="1. Классы и объекты" />
+            <item android:title="2. Конструкторы" />
+            <item android:title="3. Пакеты и импорт" />
+            <item android:title="4. Наследование" />
+            <item android:title="5. Модификаторы видимости" />
+            <item android:title="6. Геттеры и сеттеры" />
+            <item android:title="7. Переопределение методов и свойств" />
+            <item android:title="8. Абстрактные классы и методы" />
+            <item android:title="9. Интерфейсы" />
+            <item android:title="10. Вложенные и внутренние классы и интерфейсы" />
+            <item android:title="11. Data-классы" />
+            <item android:title="12. Перечисления enums" />
+            <item android:title="13. Делегирование" />
+            <item android:title="14. Анонимные классы и объекты" />
+            <item android:title="15. Companion-объекты" />
+        </menu>
+    </item>
+
+
+    <item android:title="Глава 5. Обобщения">
+        <menu>
+            <item android:title="1. Обобщенные классы и функции" />
+            <item android:title="2. Ограничения обобщений" />
+            <item android:title="3. Вариантность, ковариантность и контравариантность" />
+        </menu>
+    </item>
+
+
+    <item android:title="Глава 6. Дополнительные возможности ООП">
+        <menu>
+            <item android:title="1. Обработка исключений" />
+            <item android:title="2. Null и nullable-типы" />
+            <item android:title="3. Преобразование типов" />
+            <item android:title="4. Функции расширения" />
+            <item android:title="5. Перегрузка операторов" />
+            <item android:title="6. Делегированные свойства" />
+            <item android:title="7. Scope-функции" />
+            <item android:title="8. Инфиксная нотация" />
+        </menu>
+    </item>
+
+
+    <item android:title="Глава 7. Коллекции и последовательности">
+        <menu>
+            <item android:title="1. Изменяемые и неизменяемые коллекции" />
+
+            <item android:title="2. List" />
+            <item android:title="3. Set" />
+            <item android:title="4. Map" />
+            <item android:title="5. Последовательности" />
+            <item android:title="6. Массивы" />
+            <item android:title="7. Отличие последовательности от коллекций Iterable" />
+            <item android:title="8. Фильтрация" />
+            <item android:title="9. Проверка элементов" />
+            <item android:title="10. Трансформации" />
+            <item android:title="11. Группировка" />
+            <item android:title="12. Сортировка" />
+            <item android:title="13. Агрегатные операции" />
+            <item android:title="14. Сложение, вычитание и объединение коллекций" />
+            <item android:title="15. Получение части элементов" />
+            <item android:title="16. Получение отдельных элементов" />
+        </menu>
+    </item>
+
+
+    <item android:title="Глава 8. Корутины">
+        <menu>
+            <item android:title="1. Введение в корутины" />
+            <item android:title="2. Область корутины" />
+            <item android:title="3. launch и Job" />
+            <item android:title="4. Async, await и Deferred" />
+            <item android:title="5. Диспетчер корутины" />
+            <item android:title="6. Отмена выполнения корутин" />
+            <item android:title="7. Каналы" />
+        </menu>
+    </item>
+
+
+
+    <item android:title="Глава 9. Асинхронные потоки">
+        <menu>
+            <item android:title="1. Введение в асинхронные потоки" />
+            <item android:title="2. Создание асинхронного потока" />
+            <item android:title="3. Операции с потоками" />
+            <item android:title="4. Функции count, take и drop. Количество элементов в потоке" />
+            <item android:title="5. Функции first, last, single" />
+            <item android:title="6. Преобразование данных. Функции map и transform" />
+            <item android:title="7. Фильтрация данных" />
+            <item android:title="8. Сведение данных. Функции reduce и fold" />
+            <item android:title="9. Объединение потоков" />
+        </menu>
+    </item>
+
 </menu>

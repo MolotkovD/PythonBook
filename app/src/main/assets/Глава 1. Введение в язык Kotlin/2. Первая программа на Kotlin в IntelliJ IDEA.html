@@ -1,0 +1,112 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Первая программа на Kotlin в IntelliJ IDEA</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Хотя мы можем компилировать приложения на Kotlin в консоли, однако, как правило, для разработки на KOtlin применяется 
+такая программа как <span class="b">IntelliJ IDEA</span>. Это среда разработки или IDE от компании JetBrains, которая значительно упрощает процесс разрабтки. 
+Для ее установки IntelliJ IDEA загрузим установочный дистрибутив с официального сайта <a href="https://www.jetbrains.com/idea/download" rel="nofollow">https://www.jetbrains.com/idea/download</a>. 
+По этому адресу можно найти пакеты для Windows, MacOS, Linux. Кроме того, сама среда доступна в двух версиях - Ultimate (платная с триальным бесплатным периодом) 
+и Community (бесплатная). В данном случае выберем бесплатную версию <span class="b">Community</span>.</p>
+<img src="../pics/1.30.png" alt="Установка IntelliJ IDEA" style="width:600px;">
+<p>Обратите внимание, что на сайте сначала идет платная Ultimate-версия и только потом бесплатная Community-версия. Эта среда доступна как для платформы Intel x64, так и для 
+платформы ARM64. Для Windows и MacOS доступны установочные пакеты, для Linux доступны только архивы. Однако ряде ОС на Linux, например, на Ubuntu, для установки 
+можно использовать пакетный менеджер snap и установить среду с помощью команды:</p>
+<pre class="sh">sudo snap install intellij-idea-community --classic</pre>
+<p>После установки запустим IntelliJ IDEA и создадим первый проект. Для этого на стартовом экране выберем <span class="b">New Project</span>:</p>
+
+<img src="../pics/1.31.png" alt="Создание проекта в IntelliJ IDEA" style="width:700px;">
+<p>После этого откроется окно создания нового проекта:</p>
+<img src="../pics/1.32.png" alt="Создание проекта Kotlin в IntelliJ IDEA" style="width:700px;">
+<p>В поле <span class="b">Name</span> укажем имя проекта. Пусть проект будет называться HelloKotlin.</p>
+<p>В поле <span class="b">Location</span> можно указать путь к проекту, если не устраивает путь по умолчанию.</p>
+<p>Поскольку мы будем работать с языком Kotlin, в поле <span class="b">Language</span> выберем пункт <span class="b">Kotlin</span></p>
+<p>Кроме того, в поле <span class="b">JDK</span> можно указать путь к Java SDK, который будет использоваться 
+в проекте. Как правило, это поле по умолчанию уже содержит путь к JDK, который установлен на локальном компьютере. Если это поле пусто, то его надо установить.</p>
+<p>И также <span class="b">уберем</span> отметку в поле <span class="b">Add sample code</span>, чтобы не добавлять в проект файл с кодом по умолчанию.</p>
+<p>После этого нажмем на кнопку Create. После этого среда создаст и откроет проект.</p>
+<img src="../pics/1.33.png" alt="Первый проект на Kotlin в IntelliJ IDEA" style="width:630px;">
+
+<p>В левой части мы можем увидеть структуру проекта. Все файлы с исходным кодом помещаются в папку <span class="b">src</span>. По умолчанию она пуста, и 
+никаких файлов кода у нас в проекте пока нет. Поэтому добавим файл с исходным кодом. Для этого нажмем на папку <span class="b">src</span> правой кнопкой мыши 
+и в контекстном меню выберем пункт <span class="b">New -&gt; Kotlin Class/File</span>:</p>
+<img src="../pics/1.34.png" alt="Добавления файла с кодом в проект на Kotlin в IntelliJ IDEA" style="width:770px;">
+<p>После этого нам откроется небольшое окошко, в которое надо ввести имя файла. Пусть файл будет называться <span class="b">app</span>:</p>
+<img src="../pics/1.35.png" alt="Добавления кода в проект на Kotlin в IntelliJ IDEA">
+<p>После нажатия на клавишу Enter в папку src будет добавлен новый файл с кодом Kotlin (в случае выше файл <span class="b">app.kt</span>). А в центральной части откроется его 
+содержимое - собственно исходный код. По умолчанию он пуст. Поэтому добавим в него пакой-нибудь примитивный код:</p>
+<div><div id="highlighter_968065" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello METANIT.COM"</code><code class="kt plain">)</code></div><div class="line number3 index2 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Точкой входа в программу на Kotlin является функция <span class="b">main</span>. Для определения функции применяется ключевое слово <span class="b">fun</span>, 
+после которого идет название функции - то есть <span class="b">main</span>. Даннуя функция не принимает никаких параметров, поэтому после названия функции указываются пустые скобки.</p>
+<p>Далее в фигурных скобках определяются собственно те действия, которые выполняет функция main. 
+В данном случае внутри функции main выполняется другая функция - <span class="b">println()</span>, которая выводит некоторое сообщение на консоль.</p>
+<img src="../pics/1.36.png" alt="Первая программа на Kotlin">
+<p>Запустим эту примитивную программу на выполнение. Для этого нажмем на значок Kotlin рядом с первой строкой кода или на название файла и выберем 
+в появившемся меню пункт <span class="b">Run 'AppKt'</span>:</p>
+<img src="../pics/1.37.png" alt="Первая программа на Kotlin в IntelliJ IDEA">
+<p>После этого будет выполнено построение проекта, и скомпилированная программа будет запущена в консоли 
+в IntelliJ IDEA:</p>
+<img src="../pics/1.38.png" alt="Запуск программы на Kotlin в IntelliJ IDEA">
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="d7ca2c05ca"></div></div></body></html>

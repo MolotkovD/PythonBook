@@ -1,0 +1,95 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Фильтрация</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<h3>Фильтрация по условию</h3>
+<p>Фильтрация является одной из распространенных операций. Для фильтрации по условию применяется функция <span class="b">filter()</span>, 
+которая в качестве параметра принимает условие-предикат в виде функции <code>(T) -&gt; Boolean</code>.</p>
+<div><div id="highlighter_96256" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">filter(predicate: (T) -&gt; Boolean): List&lt;T&gt;/Map&lt;K, V&gt;/Sequence&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Функция предиката принимает в качестве параметра элемент набора. Если элемент соответствует условию, то возвращается true, а данный 
+элемент помещается в возвращаемый набор.</p>
+<p>Для коллекций List и Set эта функция возвращает объект List, для Map - объект Map, для последовательностей Sequence - также объект Sequence:</p>
+<div><div id="highlighter_372189" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">people = sequenceOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">people = people.filter{it.length == 3}&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// получаем значения с длиной в 3 символа</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(people.joinToString())&nbsp; </code><code class="kt comments">// Tom, Sam, Bob</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">employees = listOf(</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Tom"</code><code class="kt plain">, 37),</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bob"</code><code class="kt plain">, 41),</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Sam"</code><code class="kt plain">, 25)</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">employees = employees.filter{it.age &gt; 30} </code><code class="kt comments">// получаем всех Person, у которых age &gt; 30</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(employees.joinToString())&nbsp; </code><code class="kt comments">// Person(name=Tom, age=37), Person(name=Bob, age=41)</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div><div class="line number15 index14 alt2"><code class="kt plain">data </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">age: Int)</code></div></div></td></tr></tbody></table></div></div>
+<p>Если надо получить элементы, которые, наоборот, НЕ соответствует условию, то можно применить функцию <span class="b">filterNot()</span>, 
+которая работает аналогично:</p>
+<div><div id="highlighter_26227" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">var</code> <code class="kt plain">people = sequenceOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt plain">people = people.filterNot{it.length == 3}&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// получаем значения с длиной, не равной 3 символам</code></div><div class="line number3 index2 alt2"><code class="kt plain">println(people.joinToString())&nbsp; </code><code class="kt comments">// Mike, Alice</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>Фильтрация по индексу</h3>
+<p>Еще одна функция - <span class="b">filterIndexed()</span> также получает индекс текущего элемента:</p>
+<div><div id="highlighter_508638" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">filterIndexed(predicate: (index: Int, T) -&gt; Boolean): List&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Например, получим из коллекции строк элементы с четными индексами и длиной в 3 символа:</p>
+<div><div id="highlighter_673222" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Mike"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt comments">// получаем значения с длиной в 3 символа на четных индексах</code></div><div class="line number3 index2 alt2"><code class="kt keyword">val</code> <code class="kt plain">filtered = people.filterIndexed{ index, s -&gt; (index % 2 == 0) &amp;&amp; (s.length == 3)}</code></div><div class="line number4 index3 alt1"><code class="kt plain">println(filtered)&nbsp; </code><code class="kt comments">// [Tom, Sam]</code></div></div></td></tr></tbody></table></div></div>
+<h3>Фильтрация по типу</h3>
+<p>Если коллекция/последовательность содержит элементы разных типов, то с помощью функции <span class="b">filterIsInstance()</span> 
+можно извлечь элементы определенного типа. Например:</p>
+<div><div id="highlighter_162809" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">people = listOf(</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Tom"</code><code class="kt plain">), Employee(</code><code class="kt string">"Bob"</code><code class="kt plain">),</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Sam"</code><code class="kt plain">), Employee(</code><code class="kt string">"Mike"</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// получаем только элементы типа Employee</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">employees = people.filterIsInstance&lt;Employee&gt;();</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(employees)&nbsp; </code><code class="kt comments">// [Bob, Mike]</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div><div class="line number11 index10 alt2"><code class="kt plain">open </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">toString(): String&nbsp; = name</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt keyword">class</code> <code class="kt plain">Employee(name: String): Person(name)</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае получаем из коллекции people только те объекты, которые представляют тип Employee. Чтобы указать тип получаемых объектов, 
+при вызове функция типизируется соответствующим типом.</p>
+<h3>Фильтрация по null</h3>
+<p>Функция <span class="b">filterNotNull()</span> позволяет выфильтровать все значение, которые равны null:</p>
+<div><div id="highlighter_736521" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">filterNotNull(): List&lt;T&gt;/Sequence&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Например:</p>
+<div><div id="highlighter_490234" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">people = listOf(Person(</code><code class="kt string">"Tom"</code><code class="kt plain">), </code><code class="kt keyword">null</code><code class="kt plain">, Person(</code><code class="kt string">"Sam"</code><code class="kt plain">), </code><code class="kt keyword">null</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(people)&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// [Tom, null, Sam, null]</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">filtered = people.filterNotNull()</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(filtered)&nbsp; </code><code class="kt comments">// [Tom, Sam]</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt plain">open </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">toString(): String&nbsp; = name</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

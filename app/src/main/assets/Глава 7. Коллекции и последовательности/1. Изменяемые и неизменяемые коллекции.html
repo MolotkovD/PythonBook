@@ -1,0 +1,355 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h1>Коллекции и последовательности</h1><h2>Изменяемые и неизменяемые коллекции</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Коллекции представляют контейнеры, которые используются для хранения данных. В зависимости от типа коллекции различаются способы работы с данными.</p>
+<p>Kotlin не имеет собственной библиотеки коллекций и полностью полагается на классы коллекций, которые предоставляет Java. В то же время эти коллекции в Kotlin расширяются 
+ дополнительными возможностями.</p>
+<p>Так, в Kotlin коллекции разделяются на изменяемые (mutable) и неизменяемые (immutable) коллекции.</p>
+<p>Mutable-коллекция может изменяться, в нее можно добавлять, в ней можно изменять, удалять элементы. Immutable-коллекция также поддерживает добавление, замену и удаление 
+ данных, однако в процессе подобных операций коллекция будет заново пересоздаваться.</p>
+<p>Все коллекции в Kotlin располагаются в пакете <span class="b">kotlin.collections</span>.  Полный список интерфейсов и классов, которые представляют коллекции, можно найти <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html" rel="nofollow">здесь</a>.</p>
+<img src="../pics/5.1.png" alt="Коллекции в Kotlin">
+<h3>Неизменяемые коллекции</h3>
+<p>На вершине иерархии находится интерфейс <span class="b">Iterable</span>, который определяет функцию итератор для перебора коллекции.</p>
+<p>Основным интерфейсом, который позволяет работать с коллекциями, 
+является <span class="b">kotlin.Collection</span>. Данный интерфейс определяет функциональность для перебора элементов, проверки наличия элементов, чтения данных. 
+Однако он не предоставляет возможности по добавлению и удалению данных. Его основные компоненты:</p>
+<ul>
+<li><p><span class="b">size</span>: возвращает количество элементов в коллекции</p></li>
+<li><p><span class="b">isEmpty()</span>: возвращает true, если коллекция пустая</p></li>
+<li><p><span class="b">contains(element)</span>: возвращает true, если коллекция содержит element</p></li>
+<li><p><span class="b">containsAll(collection)</span>: возвращает true, если коллекция содержит элементы коллекции collection</p></li>
+</ul>
+<p>Этот интерфейс расширяется другими интерфейсами, которые представляют неизменяемые коллекции - <span class="b">List</span>, который представляет обычный список, 
+и <span class="b">Set</span>, который представляет неупорядоченную коллекцию элементов, не допускающую дублирования элементов.</p>
+<p>Особняком стоит интерфейс <span class="b">Map</span>. Он не расширяет Collection и представляет набор пар ключ-значение, где каждому ключу 
+сопоставляет некоторое значение. Все ключи в коллекции являются уникальными.</p>
+<h3>Изменяемые коллекции</h3>
+<p>Все изменяемые коллекции реализуют интерфейс <span class="b">MutableIterable</span>. Он представляет функцию итератора для перебора коллекции.</p>
+<p>Для изменения данных в Kotlin также определен интерфейс <span class="b">kotlin.MutableCollection</span>, который расширяет интерфейс 
+<code>kotlin.Collection</code> и предоставляет методы для удаления и добавления элементов. В частности:</p>
+<ul>
+<li><p><span class="b">add(element)</span>: добавляет элемент</p></li>
+<li><p><span class="b">remove(element)</span>: удаляет элемент</p></li>
+<li><p><span class="b">addAll(elements)</span>: добавляет набор элементов</p></li>
+<li><p><span class="b">removeAll(elements)</span>: удаляет набор элементов</p></li>
+<li><p><span class="b">clear()</span>: удаляет все элементы из коллекции</p></li>
+</ul> 
+<p>Этот интерфейс расширяется интерфейсами <span class="b">MutableList</span>, который представляет изменяемый список, 
+и <span class="b">MutableSet</span>, который предствляет изменяемую неупорядоченную коллекцию уникальных элементов.</p>
+<p>И еще одна изменяемая коллекция представлена интерфейсом <span class="b">MutableMap</span> - изменяемая карта, где каждый элемент представляет 
+пару ключ-значение.</p>
+<h3>Операции с коллекциями</h3>
+<p>Кроме выше рассмотренных методов интерфейс <span class="b">Iterable</span> также предоставляет ряд функций для выполнения различных операций над коллекциями. 
+Рассмотрим основные операции:</p>
+<ul>
+<li><p><span class="b">all(predicate: (T) -&gt; Boolean): Boolean</span></p>
+<p>возвращает <code>true</code>, если все элементы соответствуют предикату, который передается в функцию в качестве параметра</p>
+</li>
+
+<li><p><span class="b">any(): Boolean</span></p>
+<p>возвращает <code>true</code>, если коллекция содержит хотя бы один элемент</p>
+<p>Дополнительная версия возвращает <code>true</code>, если хотя бы один элемент соответствуют предикату, который передается в функцию в качестве параметра</p>
+<p><span class="b">any(predicate: (T) -&gt; Boolean): Boolean</span></p>
+</li>
+<li><p><span class="b">asSequence(): Sequence&lt;T&gt;</span></p>
+<p>создает из коллекции последовательность</p>
+</li>
+<li><p><span class="b">average(): Double</span></p>
+<p>возвращает среднее значение для числовой коллекции типов Byte, Int, Short, Long, Float, Double</p></li>
+
+<li><p><span class="b">chunked(size: Int): List&lt;List&lt;T&gt;&gt;</span></p>
+<p>расщепляет коллекцию на список, который состоит из объектов List, параметр size устанавливает максимальное количество элементов в каждом из списков</p>
+<p>Дополнительная версия в качестве второго параметра получает функцию преобразования, которая преобразует каждый список в элемент новой коллекции</p>
+<p><span class="b">chunked(size: Int,transform: (List&lt;T&gt;) -&gt; R): List&lt;R&gt;</span></p>
+</li>
+
+<li><p><span class="b">contains(element: T): Boolean</span></p>
+<p>возвращает <code>true</code>, если коллекция содержит элемент element</p>
+</li>
+
+<li><p><span class="b">count(): Int</span></p>
+<p>возвращает количество элементов в коллекции</p>
+<p>Дополнительная версия возвращает количество элементов, которые соответствуют предикату</p>
+<p><span class="b">count(predicate: (T) -&gt; Boolean): Int</span></p>
+</li>
+
+<li><p><span class="b">distinct(): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию, которая содержит только уникальные элементы</p>
+</li>
+
+<li><p><span class="b">distinctBy(selector: (T) -&gt; K): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию, которая содержит только уникальные элементы с учетом функции селектора, которая передается в качестве параметра</p>
+</li>
+
+<li><p><span class="b">drop(n: Int): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию, которая содержит все элементы за исключением первых n элементов</p>
+</li>
+
+<li><p><span class="b">dropWhile(predicate: (T) -&gt; Boolean): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию, которая содержит все элементы за исключением первых элементов, которые соответствуют предикату</p>
+</li>
+
+<li><p><span class="b">elementAt(index: Int): T</span></p>
+<p>возвращает элемент по индексу index. Если индекс выходит за пределы коллекции, то генерируется исключение типа IndexOutOfBoundsException </p>
+</li>
+
+<li><p><span class="b">elementAtOrElse(index: Int, defaultValue: (Int) -&gt; T): T</span></p>
+<p>возвращает элемент по индексу index. Если индекс выходит за пределы коллекции, то возвращается значение, устанавливаемое функцией из параметра defaultValue</p>
+</li>
+
+<li><p><span class="b">elementAtOrNull(index: Int): T?</span></p>
+<p>возвращает элемент по индексу index. Если индекс выходит за пределы коллекции, то возвращается null</p>
+</li>
+
+<li><p><span class="b">filter(predicate: (T) -&gt; Boolean): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию из элементов, которые соответствуют предикату</p>
+</li>
+
+<li><p><span class="b">filterNot(predicate: (T) -&gt; Boolean): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию из элементов, которые НЕ соответствуют предикату</p>
+</li>
+
+<li><p><span class="b">filterNotNull(): List&lt;T&gt;</span></p>
+<p>возвращает новую коллекцию из элементов, которые не равны null</p>
+</li>
+
+
+<li><p><span class="b">find(predicate: (T) -&gt; Boolean): T?</span></p>
+<p>возвращает первый элемент, который соответствует предикату. Если элемент не найден, то возвращается null</p>
+</li>
+
+<li><p><span class="b">findLast(predicate: (T) -&gt; Boolean): T?</span></p>
+<p>возвращает последний элемент, который соответствует предикату. Если элемент не найден, то возвращается null</p>
+</li>
+
+<li><p><span class="b">first(): T</span></p>
+<p>возвращает первый элемент коллекции</p>
+<p>Дополнительная версия возвращает первый элемент, которые соответствует предикату</p>
+<p><span class="b">first(predicate: (T) -&gt; Boolean): T</span></p>
+<p>Если элемент не найден, то генерируется исключение типа NoSuchElementException</p>
+</li>
+
+<li><p><span class="b">firstOrNull(): T?</span></p>
+<p>возвращает первый элемент коллекции</p>
+<p>Дополнительная версия возвращает первый элемент, которые соответствует предикату</p>
+<p><span class="b">firstOrNull(predicate: (T) -&gt; Boolean): T?</span></p>
+<p>Если элемент не найден, то возвращается null</p>
+</li>
+<li><p><span class="b">flatMap(transform: (T) -&gt; List&lt;R&gt;): List&lt;R&gt;</span></p>
+<p>преобразует коллекцию элементов типа T в коллекцию элементов типа R, используя функцию преобразования, которая передается в качестве параметра</p>
+</li>
+<li><p><span class="b">fold(initial: R, operation: (acc: R, T) -&gt; R): R</span></p>
+<p>Возвращает значение, которое является результатом действия функции operation над каждым элементом коллекции. Первый параметр функции 
+operation - результат работы функции над предыдущим элементом коллекции (при первом вызове - значение из параметра initial), в 
+второй параметр - текущий элемент коллекции.</p>
+</li>
+
+<li><p><span class="b">forEach(action: (T) -&gt; Unit)</span></p>
+<p>Выполняет для каждого элемента коллекции действие action.</p>
+</li>
+
+<li><p><span class="b">groupBy(keySelector: (T) -&gt; K): Map&lt;K, List&lt;T&gt;&gt;</span></p>
+<p>Группирует элементы по ключу, который возвращается функцией keySelector. Результат функции карта Map, где ключ - собственно ключ элементов, а значение - 
+список List из элементов, которые соответствуют этому ключу</p>
+<p>Дополнительная версия принимает функцию преобразования элементов:</p>
+<p><span class="b">groupBy(keySelector: (T) -&gt; K, valueTransform: (T) -&gt; V): Map&lt;K, List&lt;V&gt;&gt;</span></p>
+</li>
+
+<li><p><span class="b">indexOf(element: T): Int</span></p>
+<p>Возвращает индекс первого вхождения элемента element. Если элемент не найден, возвращается -1</p>
+</li>
+<li><p><span class="b">indexOfFirst(predicate: (T) -&gt; Boolean): Int</span></p>
+<p>Возвращает индекс первого элемента, который соответствует предикату. Если элемент не найден, возвращается -1</p>
+</li>
+<li><p><span class="b">indexOfLast(predicate: (T) -&gt; Boolean): Int</span></p>
+<p>Возвращает индекс последнего элемента, который соответствует предикату. Если элемент не найден, возвращается -1</p>
+</li>
+<li><p><span class="b">intersect(other: Iterable<t>): Set<t></t></t></span></p>
+<p>Возвращает все элементы текущей коллекции, которые есть в коллекции other</p>
+</li>
+<li><p><span class="b">joinToString(): String</span></p>
+<p>Генерирует из коллекции строку</p>
+</li>
+
+<li><p><span class="b">last(): T</span></p>
+<p>возвращает последний элемент коллекции</p>
+<p>Дополнительная версия возвращает последний элемент, которые соответствует предикату</p>
+<p><span class="b">last(predicate: (T) -&gt; Boolean): T</span></p>
+<p>Если элемент не найден, то генерируется исключение типа NoSuchElementException</p>
+</li>
+
+<li><p><span class="b">lastOrNull(): T?</span></p>
+<p>возвращает последний элемент коллекции</p>
+<p>Дополнительная версия возвращает последний элемент, которые соответствует предикату</p>
+<p><span class="b">lastOrNull(predicate: (T) -&gt; Boolean): T?</span></p>
+<p>Если элемент не найден, то возвращается null</p>
+</li>
+
+<li><p><span class="b">lastIndexOf(element: T): Int</span></p>
+<p>Возвращает последний индекс элемента element. Если элемент не найден, возвращается -1</p>
+</li>
+
+<li><p><span class="b">map(transform: (T) -&gt; R): List&lt;R&gt;</span></p>
+<p>Применяет к элементам коллекции функцию трансформации и возвращает новую коллекцию из новых элементов</p>
+</li>
+
+<li><p><span class="b">mapIndexed(transform: (index: Int, T) -&gt; R): List&lt;R&gt;</span></p>
+<p>Применяет к элементам коллекции и их индексам функцию трансформации и возвращает новую коллекцию из новых элементов</p>
+</li>
+
+
+<li><p><span class="b">mapNotNull(transform: (T) -&gt; R?): List&lt;R&gt;</span></p>
+<p>Применяет к элементам коллекции функцию трансформации и возвращает новую коллекцию из новых элементов, которые не равны null</p>
+</li>
+
+
+<li><p><span class="b">maxOf(selector: (T) -&gt; Double): Double</span></p>
+<p>Возвращает максимальное значение на основе селектора</p>
+</li>
+<li><p><span class="b">maxOfOrNull(selector: (T) -&gt; Double): Double?</span></p>
+<p>Возвращает максимальное значение на основе селектора. Если коллекцию пуста, возвращается null</p>
+</li>
+<li><p><span class="b">maxOrNull(): Double?</span></p>
+<p>Возвращает максимальное значение. Если коллекцию пуста, возвращается null</p>
+</li>
+<li><p><span class="b">minOf(selector: (T) -&gt; Double): Double</span></p>
+<p>Возвращает минимальное значение на основе селектора</p>
+</li>
+<li><p><span class="b">minOfOrNull(selector: (T) -&gt; Double): Double?</span></p>
+<p>Возвращает минимальное значение на основе селектора. Если коллекцию пуста, возвращается null</p>
+</li>
+<li><p><span class="b">minOrNull(): Double?</span></p>
+<p>Возвращает минимальное значение. Если коллекцию пуста, возвращается null</p>
+</li>
+<li><p><span class="b">minus(element: T): List&lt;T&gt;</span></p>
+<p>Возвращает новую коллекцию, которая содержит все элементы текущей за исключением элемента element.</p>
+<p>Имеет разновидности, которую позволяют исключить из коллекции наборы элементов:</p>
+<div><div id="highlighter_179092" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">minus(elements: Array&lt;T&gt;): List&lt;T&gt;</code></div><div class="line number2 index1 alt1"><code class="kt plain">minus(elements: Iterable&lt;T&gt;): List&lt;T&gt;</code></div><div class="line number3 index2 alt2"><code class="kt plain">minus(elements: Sequence&lt;T&gt;): List&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">plus(element: T): List&lt;T&gt;</span></p>
+<p>Возвращает новую коллекцию, которая содержит все элементы текущей за исключением плюс элемент element.</p>
+<p>Имеет разновидности, которую позволяют включить в коллекцию наборы элементов:</p>
+<div><div id="highlighter_536513" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">plus(elements: Array&lt;T&gt;): List&lt;T&gt;</code></div><div class="line number2 index1 alt1"><code class="kt plain">plus(elements: Iterable&lt;T&gt;): List&lt;T&gt;</code></div><div class="line number3 index2 alt2"><code class="kt plain">plus(elements: Sequence&lt;T&gt;): List&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><p><span class="b">reduce(operation: (acc: S, T) -&gt; S): S</span></p>
+<p>Возвращает значение, которое является результатом действия функции operation над каждым элементом коллекции. Первый параметр функции 
+operation - результат работы функции над предыдущим элементом коллекции, в 
+второй параметр - текущий элемент коллекции.</p>
+</li>
+
+<li><p><span class="b">shuffled(): List&lt;T&gt;</span></p>
+<p>Условно перемешивает коллекцию</p>
+</li>
+
+<li><p><span class="b">sorted(): List&lt;T&gt;</span></p>
+<p>Сортирует коллекцию по возрастанию</p>
+</li>
+<li><p><span class="b">sortedBy(selector: (T) -&gt; R?): List&lt;T&gt;</span></p>
+<p>Сортирует коллекцию по возрастанию на основе селектора</p>
+</li>
+<li><p><span class="b">sortedByDescending(selector: (T) -&gt; R?): List&lt;T&gt;</span></p>
+<p>Сортирует коллекцию по убыванию на основе функции-селектора</p>
+</li>
+<li><p><span class="b">sortedDescending(): List&lt;T&gt;</span></p>
+<p>Сортирует коллекцию по убыванию</p>
+</li>
+<li><p><span class="b">sum(): Int</span></p>
+<p>Возвращает сумму элементов коллекции.</p>
+</li> 
+<li><p><span class="b">subtract(other: Iterable<t>): Set<t></t></t></span></p>
+<p>Возвращает набор элементов, которые есть в текущей коллекции и отсутствуют 
+в коллекции other.</p>
+</li> 
+<li><p><span class="b">sum(): Int</span></p>
+<p>Возвращает сумму элементов коллекции</p>
+</li> 
+<li><p><span class="b">sumOf(selector: (T) -&gt; Int): Int</span></p>
+<p>Возвращает сумму элементов коллекции на основе функции-селектора</p>
+</li> 
+<li><p><span class="b">take(n: Int): List&lt;T&gt;</span></p>
+<p>Возвращает новую коллекцию, которая содержит n первых элементов текущей коллекции</p>
+</li> 
+<li><p><span class="b">takeWhile(predicate: (T) -&gt; Boolean): List&lt;T&gt;</span></p>
+<p>Возвращает новую коллекцию, которая содержит n первых элементов текущей коллекции, соответствующих функции-предикату</p>
+</li>
+<li><p><span class="b">toHashSet(): HashSet&lt;T&gt;</span></p>
+<p>Создает из коллекции объект HashSet</p>
+</li> 
+<li><p><span class="b">toList(): List&lt;T&gt;</span></p>
+<p>Создает из коллекции объект List</p>
+</li> 
+<li><p><span class="b">toMap(): Map&lt;K, V&gt;</span></p>
+<p>Создает из коллекции объект Map</p>
+</li> 
+<li><p><span class="b">toSet(): Set&lt;T&gt;</span></p>
+<p>Создает из коллекции объект Set</p>
+</li>
+<li><p><span class="b">union(other: Iterable<t>): Set<t></t></t></span></p>
+<p>Возвращает набор уникальных элементов, которые есть в текущей коллекции и коллекции other</p>
+</li> 
+</ul>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="f99581dc43"></div></div></body></html>

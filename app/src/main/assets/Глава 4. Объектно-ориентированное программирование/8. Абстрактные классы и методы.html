@@ -1,0 +1,91 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Абстрактные классы и методы</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Абстрактные классы - это классы, определенные с модификатором <span class="b">abstract</span>. Отличительной особенностью абстрактных классов является то, что 
+мы не можем создать объект подобного класса. Например, определим абстрактный класс Human:</p>
+<div><div id="highlighter_351710" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">abstract </code><code class="kt keyword">class</code> <code class="kt plain">Human(</code><code class="kt keyword">val</code> <code class="kt plain">name: String)</code></div></div></td></tr></tbody></table></div></div>
+<p>Абстрактный класс, как и обычный, может иметь свойства, функции, конструкторы, но создать его объект напрямую вызвав его конструктор мы не можем:</p>
+<div><div id="highlighter_21675" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">kate: Human&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// норм, просто определение переменной</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">alice: Human = Human(</code><code class="kt string">"Alice"</code><code class="kt plain">)&nbsp;&nbsp; </code><code class="kt comments">// ! ошибка, создать объект нельзя</code></div></div></td></tr></tbody></table></div></div>
+<p>Такой класс мы можем только унаследовать:</p>
+<div><div id="highlighter_874059" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">abstract </code><code class="kt keyword">class</code> <code class="kt plain">Human(</code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">fun</code> <code class="kt plain">hello(){</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"My name is $name"</code><code class="kt plain">)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">class</code> <code class="kt plain">Person(name: String): Human(name)</code></div></div></td></tr></tbody></table></div></div>
+<p>Стоит отметить, что в данном случае перед абстрактным классом не надо указывать аннотацию <span class="b">open</span>, как при наследовании неабстрактных классов.</p>
+<div><div id="highlighter_390233" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(args: Array&lt;String&gt;) {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">kate: Person = Person(</code><code class="kt string">"Kate"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">slim: Human = Person(</code><code class="kt string">"Slim Shady"</code><code class="kt plain">)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">kate.hello()&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// My name is Kate</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">slim.hello()&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// My name is Slim Shady</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Абстрактные классы могут иметь абстрактные методы и свойства. Это такие функции и свойства, которые определяются с ключевым словом <span class="b">abstract</span>. 
+Абстрактные методы не содержат реализацию, то есть у них нет тела. А для абстрактных свойств не указывается значение. 
+При этом абстрактные методы и свойства можно определить только в абстрактных классах:</p>
+<div><div id="highlighter_58010" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">abstract </code><code class="kt keyword">class</code> <code class="kt plain">Human(</code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">fun</code> <code class="kt plain">hello()</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(name: String): Human(name){</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">var</code> <code class="kt plain">age : Int = 1</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">hello(){</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"My name is $name"</code><code class="kt plain">)</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Если класс наследуется от абстрактного класса, то он должен либо реализовать все его абстрактные методы и свойства, либо также быть абстрактным.</p>
+<p>Так, в данном случае класс Person должен обязательно 
+определить реализацию для функции <code>hello()</code> и свойства <code>age</code>. При этом, как и при переопределении обычных методов и свойств, применяется аннотация <span class="b">override</span>.</p>
+<p>Абстрактные свойства также можно реализовать в первичном конструкторе:</p>
+<div><div id="highlighter_191389" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">abstract </code><code class="kt keyword">class</code> <code class="kt plain">Human(</code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">var</code> <code class="kt plain">age: Int</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">fun</code> <code class="kt plain">hello()</code></div><div class="line number5 index4 alt2"><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person(name: String, </code><code class="kt keyword">override</code> <code class="kt keyword">var</code> <code class="kt plain">age : Int): Human(name){</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">hello(){</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"My name is $name"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+<p>Зачем нужны абстрактные классы? Классы обычно отражают какие-то сущности реального мира. Но некоторые из этих сущностей представляют абстракцию, которая 
+непосредственного воплощения не имеет. Например, возьмем систему геометрических фигур. В реальности не существует геометрической фигуры как таковой. 
+Есть круг, прямоугольник, квадрат, но просто фигуры нет. Однако же и круг, и прямоугольник имеют что-то общее и являются фигурами. В этом случае мы 
+можем определить абстрактный класс фигуры и затем от него унаследовать все остальные классы фигур:</p>
+<div><div id="highlighter_999542" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt comments">// абстрактный класс фигуры</code></div><div class="line number2 index1 alt1"><code class="kt plain">abstract </code><code class="kt keyword">class</code> <code class="kt plain">Figure {</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// абстрактный метод для получения периметра</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">fun</code> <code class="kt plain">perimeter(): Float</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// абстрактный метод для получения площади</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">abstract </code><code class="kt keyword">fun</code> <code class="kt plain">area(): Float</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt comments">// производный класс прямоугольника</code></div><div class="line number10 index9 alt1"><code class="kt keyword">class</code> <code class="kt plain">Rectangle(</code><code class="kt keyword">val</code> <code class="kt plain">width: Float, </code><code class="kt keyword">val</code> <code class="kt plain">height: Float) : Figure()</code></div><div class="line number11 index10 alt2"><code class="kt plain">{</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// переопределение получения периметра</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">perimeter(): Float{</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">width * 2 + height * 2;</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// переопрелеление получения площади</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">area(): Float{</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code> <code class="kt plain">width * height;</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number20 index19 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

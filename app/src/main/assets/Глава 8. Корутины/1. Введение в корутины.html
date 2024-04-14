@@ -1,0 +1,167 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h1>Корутины</h1><h2>Введение в корутины</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>В последнее время поддержка асинхронности и параллельных вычислений стала неотъемлимой чертой многих языков программирования. И Kotlin не является исключением. Зачем нужны асинхронность и параллельные вычисления? 
+Параллельные вычисления позволяют выполнять несколько задач одновременно, а асинхронность позволяет не блокировать основной ход приложения во время выполнения 
+задачи, которая занимает продолжительное время. Например, мы создаем графическое приложение для десктопа или мобильного устройства. И нам надо по нажатию на кнопку отправлять запрос к интернет-ресурсу. 
+Однако подобный запрос может занять продолжительное время. И чтобы приложение не зависало на период отправки запроса, подобные запросы к интернет-ресурсам 
+следует отправлять асинхронно. При асинхронных запросах пользователь не ждет пока придет ответ от интернет-ресурса, а продолжает работу с приложением, а при получении ответа 
+получит соответствующее уведомление.</p>
+<p>В языке Kotlin поддержка асинхронности и параллельных вычислений воплощена в виде <span class="b">корутин</span> (<span class="b">coroutine</span>). 
+По сути корутина представляет блок кода, который может выполняться параллельно с остальным кодом. А базовая функциональность, связанная с корутинами, сосредоточена в библиотеке <span class="b">kotlinx.coroutines</span>.</p>
+<p>Рассмотрим определение и применение корутины на простейшем примере.</p>
+<h3>Добавление kotlinx.coroutines</h3>
+<p>Прежде всего стоит отметить, что функциональность корутин (библиотека <span class="b">kotlinx.coroutines</span>) по умолчанию не включена в проект. И нам ее 
+надо добавить. Если мы создаем проект консольного приложения в IntelliJ IDEA, то мы можем добавить соответствующую библиотеку в проект. 
+Для этого в меню <span class="b">File</span> перейдем к пункту <span class="b">Project Structure..</span></p>
+<img src="../pics/coroutine1.png" alt="Добавление в проект kotlinx.coroutines">
+<p>Далее на вкладке "Project Settings" перейдем к пункту <span class="b">Libraries</span>. В центральном поле отобразятся библиотеки, добавленные в проект.</p>
+<img src="../pics/coroutine7.png" alt="Добавление библиотеки kotlinx.coroutines в проект на Kotlin">
+<p> И для добавления новой библиотеки нажмем на знак плюса и в контекстном меню выберем пункт <span class="b">From Maven...</span></p>
+<p>После этого нам откроется окно для добавления библиотеки через Maven. В этом окне в поле ввода введем название нужной нам библиотеки - <span class="b">kotlinx-coroutines-core-jvm</span> 
+и нажмем на кнопку поиска. Если соответствующая библиотека найдена, то нам отобразится выпадающий список с результатами</p>
+<img src="../pics/coroutine8.png" alt="Добавление библиотеки kotlinx-coroutines-core-jvm в проект на Kotlin">
+<p>Выберем из него последнюю версию, которая называется наподобие <span class="b">org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4</span> - в данном случае используется 
+версия 1.6.4, но конкретный номер версии может отличаться.</p>
+<p>Отметим все необходимые флажки и нажмем на кнопку OK</p>
+<img src="../pics/coroutine9.png" alt="Добавление библиотеки kotlinx-coroutines-core-jvm через Maven в проект на Kotlin">
+<p>После установки библиотеки мы сможем найти ее файл в списке библиотек</p>
+<img src="../pics/coroutine10.png" alt="библиотека kotlinx-coroutines-core-jvm в проекте на Kotlin">
+
+<p>В качестве альтернативы мы могли бы вручную подключить нужную библиотеку из локального хранилища. Так, на Windows это будет папка 
+<code>C:\Users\[Имя_пользователя]\AppData\Roaming\JetBrains\IdeaIC[номер_версии]\plugins\Kotlin\kotlinc\lib</code></p> 
+<p>Далее в этой папке выберем библиотеку <span class="b">kotlinx-coroutines-core-jvm.jar</span> и нажмем на OK для ее добавления:</p>
+<img src="../pics/coroutine11.png" alt="Добавление в проект на  kotlinx-coroutines-core-jvm.jar">
+
+<h3>Определение suspend-функции</h3>
+<p>Сначала рассмотрим пример, который не использует корутины:</p>
+<div><div id="highlighter_553189" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello Coroutines"</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь в функции main перебираем последовательность от 0 до 5 и выводит текущий элемент последовательности на консоль. Для имитации продолжительной работы 
+внутри цикла вызываем специальную функцию <span class="b">delay()</span> из пакета <code>kotlinx.coroutines</code>. В эту функцию передается количество миллисекунд, на 
+которое выполняется задержка. Передаваемое значение должно иметь тип Long. То есть здесь функция будет выполнять задержку в 400 миллисекунд перед выводом на 
+консоль текущего элемента последовательности.</p>
+<p>После выполнения работы цикла выводим на консоль строку "Hello Coroutines".</p>
+<p>И чтобы использовать внутри функции main функцию <code>delay()</code>, функция main предваряется модификатром <span class="b">suspend</span>. 
+Модификатор <span class="b">suspend</span> определяет функцию, которая может приостановить свое выполнение и возобновить его через некоторый период времени.</p>
+<p>Сама функция <span class="b">delay()</span> тоже является подобной функцией, которая определена с модификатором <span class="b">suspend</span>. А любая функция с модификатором 
+<code>suspend</code> может вызываться либо из другой функции, которая тоже имеет модификатор <span class="b">suspend</span>, либо из корутины.</p>
+<p>Если мы запустим приложение, то мы увидим следующий консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">0
+1
+2
+3
+4
+5
+Hello Coroutines
+</pre>
+</div>
+<p>Здесь мы видим, что строка "Hello Coroutines" выводится после выполнения цикла. Но вместо цикла у нас могла бы быть более содержательная, но и более 
+продолжительная работа, например, обращение к интернет-ресурсу, к удаленой базе данных, какие-то операции с файлами и т.д. И в этом случае все определенные после этой работы 
+действия ожидали бы завершения этой продолжительной работы, как в данном случае строка "Hello Coroutines" ждет завершения цикла.</p>
+<h3>Определение корутины</h3>
+<p>Теперь вынесем продолжительную работу - то есть цикл в корутину:</p>
+<div><div id="highlighter_455266" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main() = coroutineScope{</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch{</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello Coroutines"</code><code class="kt plain">)</code></div><div class="line number12 index11 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Прежде всего для определения и выполнения корутины нам надо определить для нее контекст, так как корутина может вызываться только в <span class="b">контексте корутины</span> (coroutine scope). 
+Для этого применяется функция <span class="b">coroutineScope()</span> - создает контекст корутины. Кроме того, эта функция ожидает выполнения всех 
+определенных внутри нее корутин. Стоит отметить, что <span class="b">coroutineScope()</span> может применяться только в функции с модификатором <span class="b">suspend</span>, коей является функция main.</p>
+<p>Сама корутина определяется и запускается с помощью построителя корутин - функции <span class="b">launch</span>. 
+Она создает корутину в виде блока кода - в данном случае это:</p>
+<div><div id="highlighter_725517" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">{</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>и запускает эту корутину параллельно с остальным кодом. То есть данная корутина выполняется независимо от прочего кода, определенного в функции main.</p>
+<p>В итоге при выполнении программы мы увидим несколько другой консольный вывод:</p>
+<div class="console">
+<pre class="consoletext">Hello Coroutines
+0
+1
+2
+3
+4
+5
+</pre>
+</div>
+<p>Теперь строка "Hello Coroutines" не ожидает, пока завершится цикл, а выполняется параллельно с ним.</p>
+<h3>Вынесение кода корутин в отдельную функцию</h3>
+<p>Выше код корутины располагался непосредственно в функции main. Но также можно определить его в виде отдельной функции и вызывать в корутине эту функцию:</p>
+<div><div id="highlighter_969705" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main()= coroutineScope{</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch{ doWork() }</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Hello Coroutines"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt plain">}</code></div><div class="line number8 index7 alt1"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">doWork(){</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number13 index12 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае основной код корутины вынесен в функцию <code>doWork()</code>. Поскольку в этой функции применяется функция <code>delay()</code>, то <code>doWork()</code> определена с модификатором 
+<span class="b">suspend</span>. Сама корутина создается также с помощью функции <code>launch()</code>, которая вызывает функцию <code>doWork()</code>.</p>
+
+<p>Обратите внимание, что в примере выше в конце функции main вызывается функция <code>println()</code>, которая выводит строку на консоль. Если мы ее удалим, 
+то мы столкнемся с ошибкой - функция main должна возвращать значение Unit. В этом случае мы можем либо явным образом возвратить значение Unit:</p>
+<div><div id="highlighter_787769" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main()= coroutineScope{</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch{</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Unit</code></div><div class="line number11 index10 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Либо можно типизировать функцию coroutineScope типом Unit:</p>
+<div><div id="highlighter_285538" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main()= coroutineScope&lt;Unit&gt;{</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">launch{</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code><code class="kt plain">(i </code><code class="kt keyword">in</code> <code class="kt plain">0..5){</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(i)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">delay(400L)</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>Корутины и потоки</h3>
+<p>В ряде языков программирования есть такие структуры, которые позволяют использовать потоки. Однако между корутинами и потоками нет прямого соответствия. 
+Корутина не привязана к конкретному потоку. Она может быть приостановить выполнение в одном потоке, а возобновить выполнение в другом.</p>
+<p>Когда корутина приостанавливает свое выполнение, например, как в случае выше при вызове задержки с помощью функции <code>delay()</code>, 
+эта корутина освобождает поток, в котором она выполнялась, и сохраняется в памяти. 
+А освобожденный поток может быть зайдествован для других задач. А когда завершается запущенная задача (например, выполнение функции <code>delay()</code>), корутина возобновляет свою работу 
+в одном из свободных потоков.</p>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position: fixed; left: -99px;"><div id="01f68cf27d"></div></div></body></html>

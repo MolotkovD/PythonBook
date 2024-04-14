@@ -1,0 +1,110 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Фильтрация данных</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<h3>Функция filter</h3>
+<p>Оператор <span class="b">filter</span> выполняет фильтрацию объектов в потоке. В качестве параметра он принимает функцию-условие, которая получает объект потока и возвращает true (если объект 
+подходит фильтрацию) и false (если не проходит):</p>
+<div><div id="highlighter_846726" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">inline</code> <code class="kt keyword">fun</code> <code class="kt plain">&lt;T&gt; Flow&lt;T&gt;.filter(</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">crossinline predicate: suspend (T) -&gt; Boolean</code></div><div class="line number3 index2 alt2"><code class="kt plain">): Flow&lt;T&gt; (source)</code></div></div></td></tr></tbody></table></div></div>
+<p>Рассмотрим на примере:</p>
+<div><div id="highlighter_297809" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">peopleFlow = listOf(</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Tom"</code><code class="kt plain">, 37),</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bill"</code><code class="kt plain">, 5),</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Sam"</code><code class="kt plain">, 14),</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bob"</code><code class="kt plain">, 21),</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">).asFlow()</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">peopleFlow.filter{ person -&gt; person.age &gt; 17}</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">.collect { person -&gt; println(</code><code class="kt string">"name: ${person.name}&nbsp;&nbsp; age:&nbsp; ${person.age} "</code><code class="kt plain">)}</code></div><div class="line number14 index13 alt1"><code class="kt plain">}</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="kt plain">data </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">age: Int)</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь для фильтрации применяется условие <code>person.age &gt; 17</code>. Если возраст пользователя больше 17, то он оказывается в выходном потоке. Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">name: Tom   age:  37 
+name: Bob   age:  21 
+</pre>
+</div>
+<h3>takeWhile</h3>
+<p>Кроме того, Kotlin предоставляет еще ряд операций фильтрации для различных ситуаций. Например, оператор <span class="b">takeWhile</span> выбирает из потока элементы, 
+пока будет истино некоторое условие:</p>
+<div><div id="highlighter_927159" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">&lt;T&gt; Flow&lt;T&gt;.takeWhile(</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">predicate: suspend (T) -&gt; Boolean</code></div><div class="line number3 index2 alt2"><code class="kt plain">): Flow&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Рассмотрим на примере:</p>
+<div><div id="highlighter_659033" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">peopleFlow = listOf(</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Tom"</code><code class="kt plain">, 37),</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Alice"</code><code class="kt plain">, 32),</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bill"</code><code class="kt plain">, 5),</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Sam"</code><code class="kt plain">, 14),</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bob"</code><code class="kt plain">, 25),</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">).asFlow()</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">peopleFlow.takeWhile{ person -&gt; person.age &gt; 17}</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">.collect { person -&gt; println(</code><code class="kt string">"name: ${person.name}&nbsp;&nbsp; age:&nbsp; ${person.age} "</code><code class="kt plain">)}</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="kt plain">data </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">age: Int)</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае оператор <code>takeWhile</code> будет извлекать в возвращаемый поток все объекты Person, у которых значение <code>age</code> больше 17. Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">name: Tom   age:  37 
+name: Alice   age:  32 
+</pre>
+</div>
+<p>Из консольного вывода мы видим, что несмотря на то, что в потоке еще есть объекты Person, которые соответствуют условию, но столкнувшись с первым объектом, который не соответствует условию, 
+<code>takeWhile</code> перестает выбирать объекты в возвращаемый поток.</p>
+
+<h3>dropWhile</h3>
+<p>Оператор <span class="b">dropWhile</span> противоположен по своему действию оператору <code>takeWhile</code>. <span class="b">dropWhile</span> 
+удаляет из потока элементы, пока они не начнут соответствовать некоторому условию:</p>
+<div><div id="highlighter_159321" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">&lt;T&gt; Flow&lt;T&gt;.dropWhile(</code></div><div class="line number2 index1 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">predicate: suspend (T) -&gt; Boolean</code></div><div class="line number3 index2 alt2"><code class="kt plain">): Flow&lt;T&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Так, возьмем предыдущий пример, только вместо <code>takeWhile</code> используем <span class="b">dropWhile</span>:</p>
+<div><div id="highlighter_708096" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">import kotlinx.coroutines.flow.*</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt plain">suspend </code><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">peopleFlow = listOf(</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Tom"</code><code class="kt plain">, 37),</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Alice"</code><code class="kt plain">, 32),</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bill"</code><code class="kt plain">, 5),</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Sam"</code><code class="kt plain">, 14),</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Person(</code><code class="kt string">"Bob"</code><code class="kt plain">, 25),</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">).asFlow()</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">peopleFlow.dropWhile{ person -&gt; person.age &gt; 17}</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">.collect { person -&gt; println(</code><code class="kt string">"name: ${person.name}&nbsp;&nbsp; age:&nbsp; ${person.age} "</code><code class="kt plain">)}</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="kt plain">data </code><code class="kt keyword">class</code> <code class="kt plain">Person(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">age: Int)</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае оператор <code>dropWhile</code> пропустит первые два объекта Person, которые соответствовуют условию <code>person.age &gt; 17</code>. 
+Третий элемент потока НЕ соответствовует этому условию, поэтому начиная с третьего элемента все остальные элементы попадут в возвращаемый поток (даже если они опять же соответствуют данному условию). 
+Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">name: Bill   age:  5 
+name: Sam   age:  14 
+name: Bob   age:  25 
+</pre>
+</div>
+
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>

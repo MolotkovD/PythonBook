@@ -1,0 +1,112 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h1>Обобщения</h1><h2>Обобщенные классы и функции</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p><span class="b">Generics</span> или обобщения представляют технику, посредством которой методы и классы могут использовать объекты, типы которых на момент определения классов и функций неизвестны. 
+Обобщения позволяют определять шаблоны, в которые можно подставлять различные типы.</p>
+<p>Какие задачи решают обобщения? Допустим, у нас есть следующий класс</p>
+<h3>Обобщенные типы</h3>
+<p>Обобщенные типы (generic types) представляют типы, в которых типы объектов параметризированы. Что это значит? Рассмотрим следующий класс:</p>
+<div><div id="highlighter_418937" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">class</code> <code class="kt plain">Person&lt;T&gt;(</code><code class="kt keyword">val</code> <code class="kt plain">id: T, </code><code class="kt keyword">val</code> <code class="kt plain">name: String)</code></div></div></td></tr></tbody></table></div></div>
+<p>Класс Person использует параметр <span class="b">T</span>. Параметры указываются после имени класса в угловых скобках. Данный параметр будет 
+представлять некоторый тип данных, который на момент определения класса неизвестен.</p>
+<p>В первичном конструкторе определяется свойство <code>id</code>, которое представляет идентификатор. Оно представляет тип, 
+который передается через параметр T. На момент определения класса Person мы не знаем, что это будет за тип.</p>
+<p>Само название параметра произвольное (если оно не совпадает с ключевыми словами). Но нередко используется T как сокращение от слова type.</p>
+
+<p>При использовании типа Person необходимо его типизировать определенным типом, то есть указать, какой тип будет передаваться через параметр T:</p>
+<div><div id="highlighter_256126" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom: Person&lt;Int&gt; = Person(367, </code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">bob: Person&lt;String&gt; = Person(</code><code class="kt string">"A65"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"${tom.id} - ${tom.name}"</code><code class="kt plain">)</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"${bob.id} - ${bob.name}"</code><code class="kt plain">)</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person&lt;T&gt;(</code><code class="kt keyword">val</code> <code class="kt plain">id: T, </code><code class="kt keyword">val</code> <code class="kt plain">name: String)</code></div></div></td></tr></tbody></table></div></div>
+<p>Для типизации объекта после названия типа в угловых скобках указывается конкретный тип:</p>
+<div><div id="highlighter_680445" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">tom: Person&lt;Int&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае мы говорим, что параметр T фактически будет представлять тип Int. Поэтому в конструктор объекта Person для свойства id необходимо 
+передать числовое значение Int:</p>
+<div><div id="highlighter_925245" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">Person(367, </code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>Второй объект типизируется типом String, поэтому в конструкторе для свойства id передается строка:</p>
+<div><div id="highlighter_531449" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">bob: Person&lt;String&gt; = Person(</code><code class="kt string">"A65"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>Если конструктор использует параметр T, то в принципе мы можем не указывать, каким типом типизируется объект - данный тип будет выводиться из типа параметра конструктора:</p>
+<div><div id="highlighter_554652" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">tom = Person(367, </code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">bob = Person(</code><code class="kt string">"A65"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">)</code></div></div></td></tr></tbody></table></div></div>
+<p>При этом параметры типа могут широко применяться внутри класса, не только при определении свойств, но и в функциях:</p>
+<div><div id="highlighter_686698" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">tom = Person(</code><code class="kt string">"qwrtf2"</code><code class="kt plain">, </code><code class="kt string">"Tom"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom.checkId(</code><code class="kt string">"qwrtf2"</code><code class="kt plain">)&nbsp;&nbsp; </code><code class="kt comments">// The same</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">tom.checkId(</code><code class="kt string">"q34tt"</code><code class="kt plain">)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Different</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="kt keyword">class</code> <code class="kt plain">Person&lt;T&gt;(</code><code class="kt keyword">val</code> <code class="kt plain">id: T, </code><code class="kt keyword">val</code> <code class="kt plain">name: String){</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">fun</code> <code class="kt plain">checkId(_id: T){</code></div><div class="line number11 index10 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(id == _id){</code></div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"The same"</code><code class="kt plain">)</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">else</code><code class="kt plain">{</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"Different"</code><code class="kt plain">)</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number18 index17 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь класс Person определяет функцию <code>checkId()</code>, которая проверяет, равен ли id значению параметра _id. При этом параметр _id имеет тип T - то 
+есть он будет представлять тот же тип, что и свойство id.</p>
+<p>Стоит отметить, что generic-типы широко используются в Kotlin. Самый показательный пример, который представлен классом - <code>Array&lt;T&gt;</code>. Параметр класса 
+определяет, элементы какого типа массив будет хранить:</p>
+<div><div id="highlighter_729529" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">val</code> <code class="kt plain">people: Array&lt;String&gt; = arrayOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">)</code></div><div class="line number2 index1 alt1"><code class="kt keyword">val</code> <code class="kt plain">numbers: Array&lt;Int&gt; = arrayOf(1, 2, 3, 4)</code></div></div></td></tr></tbody></table></div></div>
+<h3>Применение нескольких параметров</h3>
+<p>Можно одновременно использовать несколько параметров:</p>
+<div><div id="highlighter_572990" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">word1: Word&lt;String, String&gt; = Word(</code><code class="kt string">"one"</code><code class="kt plain">, </code><code class="kt string">"один"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">var</code> <code class="kt plain">word2: Word&lt;String, Int&gt; = Word(</code><code class="kt string">"two"</code><code class="kt plain">, 2)</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"${word1.source} - ${word1.target}"</code><code class="kt plain">)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// one - один</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(</code><code class="kt string">"${word2.source} - ${word2.target}"</code><code class="kt plain">)&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// two - 2</code></div><div class="line number8 index7 alt1"><code class="kt plain">}</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="kt keyword">class</code> <code class="kt plain">Word&lt;K, V&gt;(</code><code class="kt keyword">val</code> <code class="kt plain">source: K, </code><code class="kt keyword">var</code> <code class="kt plain">target: V)</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае класс <code>Word</code> применяет два параметра - K и V. При создании объекта Word эти параметры могут представлять один и тот же тип, а могут представлять и 
+разные типы.</p>
+<h3>Обобщенные функции</h3>
+<p>Функции, как и классы, могут быть обобщенными.</p>
+<div><div id="highlighter_74935" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">display(</code><code class="kt string">"Hello Kotlin"</code><code class="kt plain">)</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">display(1234)</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">display(</code><code class="kt keyword">true</code><code class="kt plain">)</code></div><div class="line number6 index5 alt1"><code class="kt plain">}</code></div><div class="line number7 index6 alt2"><code class="kt keyword">fun</code> <code class="kt plain">&lt;T&gt; display(obj: T){</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(obj)</code></div><div class="line number9 index8 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Функция <code>display()</code> параметризирована параметром T. Параметр также указывается в угловых скобках после слова <span class="b">fun</span> и перед названием функции. 
+Функция принимает один параметр типа T и выводит его значение на консоль. И при использовании функции мы можем передавать в нее данные любых типов.</p>
+<p>Другой более практический пример - определим функцию, которая будет возвращать наибольший массив:</p>
+<div><div id="highlighter_273439" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main() {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">arr1 = getBiggest(arrayOf(1,2,3,4), arrayOf(3, 4, 5, 6, 7, 7))</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">arr1.forEach { item -&gt; print(</code><code class="kt string">"$item "</code><code class="kt plain">) }&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 7</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println()</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">arr2 = getBiggest(arrayOf(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Bob"</code><code class="kt plain">), arrayOf(</code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Alice"</code><code class="kt plain">))</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">arr2.forEach { item -&gt; print(</code><code class="kt string">"$item "</code><code class="kt plain">) }&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// Tom&nbsp; Sam&nbsp; Bob</code></div><div class="line number10 index9 alt1"><code class="kt plain">}</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt keyword">fun</code> <code class="kt plain">&lt;T&gt; getBiggest(args1: Array&lt;T&gt;, args2: Array&lt;T&gt;): Array&lt;T&gt;{</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">if</code><code class="kt plain">(args1.size &gt; args2.size) </code><code class="kt keyword">return</code> <code class="kt plain">args1</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">return</code>&nbsp; <code class="kt plain">args2</code></div><div class="line number15 index14 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь функция <code>getBiggest()</code> в качестве параметров принимает два массива. При этом мы точно не значем, объекты какого типа эти массивы будут содержать. 
+Однако оба массива типизированы параметром T, что гарантирует, что оба массива будут хранить объекты одного и того же типа. Внутри функции сравниваем размер массивов с 
+помощью их свойства <code>size</code> и возвращаем наибольший массив.</p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

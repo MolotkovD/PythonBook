@@ -1,0 +1,94 @@
+<html lang="ru"><head>
+
+
+
+
+
+<link href="../style/css.css" rel="stylesheet"></head>
+<body>
+<div id="container">
+
+<div class="outercontainer">
+<div class="innercontainer">
+ 
+   <div class="item center menC">
+     <h2>Группировка</h2>
+	
+
+	<div style="margin-top:23px;margin-left:5px;">
+		
+		
+		<!-- Yandex.RTB R-A-201190-1 -->
+		
+	</div>
+
+	<p>Для группировки элементов коллекции/последовательности применяется функция <span class="b">groupBy()</span>:</p>
+<div><div id="highlighter_497222" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt plain">groupBy(keySelector: (T) -&gt; K): Map&lt;K, List&lt;T&gt;&gt;</code></div><div class="line number2 index1 alt1"><code class="kt plain">groupBy(keySelector: (T) -&gt; K,valueTransform: (T) -&gt; V): Map&lt;K, List&lt;V&gt;&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>Обе версии в качестве параметра принимают функцию, которая определяет критерий группировки. Вторая версия в дополнение принимает функцию 
+преобразования. Результатом функции является объект  Map, который хранит набор групп. Ключами являются критерии группировки - ключи групп, 
+а значениями - списки List, которые соответствуют этим критериям группировки и представляют группы.</p>
+<p>Например, сгруппирует сотрудников по их компаниям:</p>
+<div><div id="highlighter_747124" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">employees = listOf(</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Microsoft"</code><code class="kt plain">),</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"JetBrains"</code><code class="kt plain">),</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Google"</code><code class="kt plain">),</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Microsoft"</code><code class="kt plain">),</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Google"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">companies = employees.groupBy { it.company }&nbsp;&nbsp;&nbsp; </code><code class="kt comments">// объект Map&lt;String, List&lt;Employee&gt;&gt;</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(companies) </code><code class="kt comments">// {Microsoft=[Tom, Alice], JetBrains=[Bob], Google=[Sam, Kate]}</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// перебор групп</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(company </code><code class="kt keyword">in</code> <code class="kt plain">companies){</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(company.key) </code><code class="kt comments">// название компании</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// перебор списка сотрудников</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(employee </code><code class="kt keyword">in</code> <code class="kt plain">company.value){</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(employee.name)</code></div><div class="line number20 index19 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number21 index20 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println() </code><code class="kt comments">// для отделения групп</code></div><div class="line number22 index21 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number23 index22 alt2"><code class="kt plain">}</code></div><div class="line number24 index23 alt1"><code class="kt keyword">class</code> <code class="kt plain">Employee(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">company: String){</code></div><div class="line number25 index24 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">toString(): String = name</code></div><div class="line number26 index25 alt1"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Здесь критерием группировки является свойство <code>company</code> объекта Employee. Соответственно ключом группы в результирующем объекте Map 
+будет значение этого свойства, а значением - список Employee. Затем можно получить все значения из каждой группы стандартным перебором объекта Map. Консольный вывод программы:</p>
+<div class="console">
+<pre class="consoletext">{Microsoft=[Tom, Alice], JetBrains=[Bob], Google=[Sam, Kate]}
+Microsoft
+Tom
+Alice
+
+JetBrains
+Bob
+
+Google
+Sam
+Kate
+</pre></div>
+<p>Теперь применим другую версию функции groupBy с использованием трансформации:</p>
+<div><div id="highlighter_53081" class="syntaxhighlighter  kt"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="kt keyword">fun</code> <code class="kt plain">main(){</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">employees = listOf(</code></div><div class="line number4 index3 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Tom"</code><code class="kt plain">, </code><code class="kt string">"Microsoft"</code><code class="kt plain">),</code></div><div class="line number5 index4 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Bob"</code><code class="kt plain">, </code><code class="kt string">"JetBrains"</code><code class="kt plain">),</code></div><div class="line number6 index5 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Sam"</code><code class="kt plain">, </code><code class="kt string">"Google"</code><code class="kt plain">),</code></div><div class="line number7 index6 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Alice"</code><code class="kt plain">, </code><code class="kt string">"Microsoft"</code><code class="kt plain">),</code></div><div class="line number8 index7 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">Employee(</code><code class="kt string">"Kate"</code><code class="kt plain">, </code><code class="kt string">"Google"</code><code class="kt plain">)</code></div><div class="line number9 index8 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">)</code></div><div class="line number10 index9 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">val</code> <code class="kt plain">companies = employees.groupBy({it.company}) { it.name }&nbsp; </code><code class="kt comments">// объект Map&lt;String, List&lt;String&gt;&gt;</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(companies) </code><code class="kt comments">// {Microsoft=[Tom, Alice], JetBrains=[Bob], Google=[Sam, Kate]}</code></div><div class="line number13 index12 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// перебор групп</code></div><div class="line number14 index13 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(company </code><code class="kt keyword">in</code> <code class="kt plain">companies){</code></div><div class="line number15 index14 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(company.key) </code><code class="kt comments">// название компании</code></div><div class="line number16 index15 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt comments">// перебор списка сотрудников</code></div><div class="line number17 index16 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">for</code> <code class="kt plain">(employee </code><code class="kt keyword">in</code> <code class="kt plain">company.value){</code></div><div class="line number18 index17 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println(employee)</code></div><div class="line number19 index18 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number20 index19 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">println() </code><code class="kt comments">// для отделения групп</code></div><div class="line number21 index20 alt2"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt plain">}</code></div><div class="line number22 index21 alt1"><code class="kt plain">}</code></div><div class="line number23 index22 alt2"><code class="kt keyword">class</code> <code class="kt plain">Employee(</code><code class="kt keyword">val</code> <code class="kt plain">name: String, </code><code class="kt keyword">val</code> <code class="kt plain">company: String){</code></div><div class="line number24 index23 alt1"><code class="kt spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="kt keyword">override</code> <code class="kt keyword">fun</code> <code class="kt plain">toString(): String = name</code></div><div class="line number25 index24 alt2"><code class="kt plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>В данном случае в качестве критерия группировки опять выступает свойство <code>company</code> объектов Employee (<code>{ it.company }</code>), 
+однако сама группа будет представлять список строк - объект <code>List&lt;String&gt;</code>, поскольку функция преобразования вытаскивает значение свойства 
+<code>name</code> объекта Employee: <code>{ it.name }</code></p>
+	
+	<div style="margin-top:25px;">
+
+	
+	</div>
+
+	
+	
+
+	<div class="commentABl" style="clear:both;margin: 25px 5px 15px 5px;">
+	
+	
+	
+	</div>
+
+	
+	
+
+  </div>
+
+	
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links ad-text adSense adBlock adContent adBanner" style="width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;"></div></body></html>
