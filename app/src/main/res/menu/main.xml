@@ -1,143 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <item android:title="Глава 1. Введение в язык Kotlin">
         <menu>
-            <item android:title="1. Что такое Kotlin. Первая программа" />
-            <item android:title="2. Первая программа на Kotlin в IntelliJ IDEA" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Что такое Kotlin. Первая программа" android:id="@+id/tab1" />
+                <item android:title="2. Первая программа на Kotlin в IntelliJ IDEA" android:id="@+id/tab2" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 2. Основы языка Kotlin">
         <menu>
-            <item android:title="1. Структура программы" />
-            <item android:title="2. Переменные" />
-            <item android:title="3. Типы данных" />
-            <item android:title="4. Консольный ввод и вывод" />
-            <item android:title="5. Операции с числами" />
-            <item android:title="6. Условные выражения" />
-            <item android:title="7. Условная конструкция if...else" />
-            <item android:title="8. Конструкция when" />
-            <item android:title="9. Циклы" />
-            <item android:title="10. Диапазоны" />
-            <item android:title="11. Ведение в массивы" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Структура программы" android:id="@+id/tab3" />
+                <item android:title="2. Переменные" android:id="@+id/tab4" />
+                <item android:title="3. Типы данных" android:id="@+id/tab5" />
+                <item android:title="4. Консольный ввод и вывод" android:id="@+id/tab6" />
+                <item android:title="5. Операции с числами" android:id="@+id/tab7" />
+                <item android:title="6. Условные выражения" android:id="@+id/tab8" />
+                <item android:title="7. Условная конструкция if...else" android:id="@+id/tab9" />
+                <item android:title="8. Конструкция when" android:id="@+id/tab10" />
+                <item android:title="9. Циклы" android:id="@+id/tab11" />
+                <item android:title="10. Диапазоны" android:id="@+id/tab12" />
+                <item android:title="11. Ведение в массивы" android:id="@+id/tab13" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 3. Функциональное программирование">
         <menu>
-            <item android:title="1. Функции и их параметры" />
-
-            <item android:title="2. Переменное количество параметров. Vararg" />
-            <item android:title="3. Возвращение результата. Оператор return" />
-            <item android:title="4. Однострочные и локальные функции" />
-            <item android:title="5. Перегрузка функций" />
-            <item android:title="6. Тип функции" />
-            <item android:title="7. Функции высокого порядка" />
-            <item android:title="8. Анонимные функции" />
-            <item android:title="9. Лямбда-выражения" />
-            <item android:title="10. Замыкания" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Функции и их параметры" android:id="@+id/tab14" />
+                <item android:title="2. Переменное количество параметров. Vararg" android:id="@+id/tab15" />
+                <item android:title="3. Возвращение результата. Оператор return" android:id="@+id/tab16" />
+                <item android:title="4. Однострочные и локальные функции" android:id="@+id/tab17" />
+                <item android:title="5. Перегрузка функций" android:id="@+id/tab18" />
+                <item android:title="6. Тип функции" android:id="@+id/tab19" />
+                <item android:title="7. Функции высокого порядка" android:id="@+id/tab20" />
+                <item android:title="8. Анонимные функции" android:id="@+id/tab21" />
+                <item android:title="9. Лямбда-выражения" android:id="@+id/tab22" />
+                <item android:title="10. Замыкания" android:id="@+id/tab23" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 4. Объектно-ориентированное программирование">
         <menu>
-            <item android:title="1. Классы и объекты" />
-            <item android:title="2. Конструкторы" />
-            <item android:title="3. Пакеты и импорт" />
-            <item android:title="4. Наследование" />
-            <item android:title="5. Модификаторы видимости" />
-            <item android:title="6. Геттеры и сеттеры" />
-            <item android:title="7. Переопределение методов и свойств" />
-            <item android:title="8. Абстрактные классы и методы" />
-            <item android:title="9. Интерфейсы" />
-            <item android:title="10. Вложенные и внутренние классы и интерфейсы" />
-            <item android:title="11. Data-классы" />
-            <item android:title="12. Перечисления enums" />
-            <item android:title="13. Делегирование" />
-            <item android:title="14. Анонимные классы и объекты" />
-            <item android:title="15. Companion-объекты" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Классы и объекты" android:id="@+id/tab24" />
+                <item android:title="2. Конструкторы" android:id="@+id/tab25" />
+                <item android:title="3. Пакеты и импорт" android:id="@+id/tab26" />
+                <item android:title="4. Наследование" android:id="@+id/tab27" />
+                <item android:title="5. Модификаторы видимости" android:id="@+id/tab28" />
+                <item android:title="6. Геттеры и сеттеры" android:id="@+id/tab29" />
+                <item android:title="7. Переопределение методов и свойств" android:id="@+id/tab30" />
+                <item android:title="8. Абстрактные классы и методы" android:id="@+id/tab31" />
+                <item android:title="9. Интерфейсы" android:id="@+id/tab32" />
+                <item android:title="10. Вложенные и внутренние классы и интерфейсы" android:id="@+id/tab33" />
+                <item android:title="11. Data-классы" android:id="@+id/tab34" />
+                <item android:title="12. Перечисления enums" android:id="@+id/tab35" />
+                <item android:title="13. Делегирование" android:id="@+id/tab36" />
+                <item android:title="14. Анонимные классы и объекты" android:id="@+id/tab37" />
+                <item android:title="15. Companion-объекты" android:id="@+id/tab38" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 5. Обобщения">
         <menu>
-            <item android:title="1. Обобщенные классы и функции" />
-            <item android:title="2. Ограничения обобщений" />
-            <item android:title="3. Вариантность, ковариантность и контравариантность" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Обобщенные классы и функции" android:id="@+id/tab39" />
+                <item android:title="2. Ограничения обобщений" android:id="@+id/tab40" />
+                <item android:title="3. Вариантность, ковариантность и контравариантность" android:id="@+id/tab41" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 6. Дополнительные возможности ООП">
         <menu>
-            <item android:title="1. Обработка исключений" />
-            <item android:title="2. Null и nullable-типы" />
-            <item android:title="3. Преобразование типов" />
-            <item android:title="4. Функции расширения" />
-            <item android:title="5. Перегрузка операторов" />
-            <item android:title="6. Делегированные свойства" />
-            <item android:title="7. Scope-функции" />
-            <item android:title="8. Инфиксная нотация" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Обработка исключений" android:id="@+id/tab42" />
+                <item android:title="2. Null и nullable-типы" android:id="@+id/tab43" />
+                <item android:title="3. Преобразование типов" android:id="@+id/tab44" />
+                <item android:title="4. Функции расширения" android:id="@+id/tab45" />
+                <item android:title="5. Перегрузка операторов" android:id="@+id/tab46" />
+                <item android:title="6. Делегированные свойства" android:id="@+id/tab47" />
+                <item android:title="7. Scope-функции" android:id="@+id/tab48" />
+                <item android:title="8. Инфиксная нотация" android:id="@+id/tab49" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 7. Коллекции и последовательности">
         <menu>
-            <item android:title="1. Изменяемые и неизменяемые коллекции" />
-
-            <item android:title="2. List" />
-            <item android:title="3. Set" />
-            <item android:title="4. Map" />
-            <item android:title="5. Последовательности" />
-            <item android:title="6. Массивы" />
-            <item android:title="7. Отличие последовательности от коллекций Iterable" />
-            <item android:title="8. Фильтрация" />
-            <item android:title="9. Проверка элементов" />
-            <item android:title="10. Трансформации" />
-            <item android:title="11. Группировка" />
-            <item android:title="12. Сортировка" />
-            <item android:title="13. Агрегатные операции" />
-            <item android:title="14. Сложение, вычитание и объединение коллекций" />
-            <item android:title="15. Получение части элементов" />
-            <item android:title="16. Получение отдельных элементов" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Изменяемые и неизменяемые коллекции" android:id="@+id/tab50" />
+                <item android:title="2. List" android:id="@+id/tab51" />
+                <item android:title="3. Set" android:id="@+id/tab52" />
+                <item android:title="4. Map" android:id="@+id/tab53" />
+                <item android:title="5. Последовательности" android:id="@+id/tab54" />
+                <item android:title="6. Массивы" android:id="@+id/tab55" />
+                <item android:title="7. Отличие последовательности от коллекций Iterable" android:id="@+id/tab56" />
+                <item android:title="8. Фильтрация" android:id="@+id/tab57" />
+                <item android:title="9. Проверка элементов" android:id="@+id/tab58" />
+                <item android:title="10. Трансформации" android:id="@+id/tab59" />
+                <item android:title="11. Группировка" android:id="@+id/tab60" />
+                <item android:title="12. Сортировка" android:id="@+id/tab61" />
+                <item android:title="13. Агрегатные операции" android:id="@+id/tab62" />
+                <item android:title="14. Сложение, вычитание и объединение коллекций" android:id="@+id/tab63" />
+                <item android:title="15. Получение части элементов" android:id="@+id/tab64" />
+                <item android:title="16. Получение отдельных элементов" android:id="@+id/tab65" />
+            </group>
         </menu>
     </item>
-
-
     <item android:title="Глава 8. Корутины">
         <menu>
-            <item android:title="1. Введение в корутины" />
-            <item android:title="2. Область корутины" />
-            <item android:title="3. launch и Job" />
-            <item android:title="4. Async, await и Deferred" />
-            <item android:title="5. Диспетчер корутины" />
-            <item android:title="6. Отмена выполнения корутин" />
-            <item android:title="7. Каналы" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Введение в корутины" android:id="@+id/tab66" />
+                <item android:title="2. Область корутины" android:id="@+id/tab67" />
+                <item android:title="3. launch и Job" android:id="@+id/tab68" />
+                <item android:title="4. Async, await и Deferred" android:id="@+id/tab69" />
+                <item android:title="5. Диспетчер корутины" android:id="@+id/tab70" />
+                <item android:title="6. Отмена выполнения корутин" android:id="@+id/tab71" />
+                <item android:title="7. Каналы" android:id="@+id/tab72" />
+            </group>
         </menu>
     </item>
-
-
-
     <item android:title="Глава 9. Асинхронные потоки">
         <menu>
-            <item android:title="1. Введение в асинхронные потоки" />
-            <item android:title="2. Создание асинхронного потока" />
-            <item android:title="3. Операции с потоками" />
-            <item android:title="4. Функции count, take и drop. Количество элементов в потоке" />
-            <item android:title="5. Функции first, last, single" />
-            <item android:title="6. Преобразование данных. Функции map и transform" />
-            <item android:title="7. Фильтрация данных" />
-            <item android:title="8. Сведение данных. Функции reduce и fold" />
-            <item android:title="9. Объединение потоков" />
+            <group android:checkableBehavior="single">
+                <item android:title="1. Введение в асинхронные потоки" android:id="@+id/tab73" />
+                <item android:title="2. Создание асинхронного потока" android:id="@+id/tab74" />
+                <item android:title="3. Операции с потоками" android:id="@+id/tab75" />
+                <item android:title="4. Функции count, take и drop. Количество элементов в потоке" android:id="@+id/tab76" />
+                <item android:title="5. Функции first, last, single" android:id="@+id/tab77" />
+                <item android:title="6. Преобразование данных. Функции map и transform" android:id="@+id/tab78" />
+                <item android:title="7. Фильтрация данных" android:id="@+id/tab79" />
+                <item android:title="8. Сведение данных. Функции reduce и fold" android:id="@+id/tab80" />
+                <item android:title="9. Объединение потоков" android:id="@+id/tab81" />
+            </group>
         </menu>
     </item>
-
 </menu>

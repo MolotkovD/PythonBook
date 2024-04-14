@@ -3,7 +3,17 @@
     <style name="Base.Theme.PythonBook" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 
-    <style name="Theme.PythonBook" parent="Base.Theme.PythonBook"/>
+    <style name="Theme.PythonBook" parent="Base.Theme.PythonBook">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="colorPrimary">@color/accent</item>
+    </style>
+
+    <style name="ToolbarColored" parent="Theme.PythonBook">
+        <item name="android:colorControlNormal">@color/select</item>
+        <item name="android:textColorSecondary">@color/select</item>
+    </style>
+
 
 
 </resources>

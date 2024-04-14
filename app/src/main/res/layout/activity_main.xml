@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:openDrawer="start"
     >
 
     <LinearLayout
@@ -19,7 +18,14 @@
             android:id="@+id/headtoolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFF444" />
+            android:background="@color/accent"
+            android:layerType="hardware"
+            android:minHeight="77dp"
+
+            android:theme="@style/ToolbarColored"
+            android:foregroundTint="@color/select"
+
+            app:titleTextColor="@color/select" />
 
         <WebView
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,15 +38,24 @@
     </LinearLayout>
 
 
-
     <com.google.android.material.navigation.NavigationView
-
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:menu="@menu/main"
-        app:headerLayout="@layout/head_menu"
         android:layout_gravity="start"
+        android:background="@color/white"
+        android:foregroundTint="@color/accent"
+        app:dividerInsetEnd="100dp"
+        app:dividerInsetStart="0dp"
+        app:headerLayout="@layout/head_menu"
+        app:itemHorizontalPadding="25dp"
+        app:itemMaxLines="3"
+        app:itemRippleColor="@color/accent"
+        app:itemTextColor="@color/text"
+        app:menu="@menu/main"
+        app:subheaderColor="@color/select"
+        app:subheaderInsetStart="14dp"
+        app:itemBackground="@drawable/shape_select"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
